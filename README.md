@@ -1,4 +1,4 @@
-# Subí que te llevo
+# Subí que te llevo - backend
 
 [![Build Status](https://travis-ci.org/DesarrolloDeAplicaciones-GrupoA/backend.svg?branch=master)](https://travis-ci.org/DesarrolloDeAplicaciones-GrupoA/backend)
 
@@ -16,6 +16,8 @@ Proyecto de la materia "Desarrollo de aplicaciones" de la carrera "Tecnicatura e
 Plataforma donde los usuarios pueden coordinarse para compartir viajes en auto o cualquier otro vehículo que permita llevar al menos 2 personas.
 
 Ver [Vision](./docs/documento_vision.pdf).
+
+Ver [Proyecto frontend](https://github.com/DesarrolloDeAplicaciones-GrupoA/frontend).
 
 ## Profesores:
 
