@@ -4,7 +4,7 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/2709341668804273a8cdc71cee06e1c5)](https://www.codacy.com/app/DesarrolloDeAplicaciones-GrupoA/backend)
 
-[![Codacy Badge](https://api.codacy.com/project/badge/coverage/9fbc7f94d8cd47e7bd4d8d2b2ef11017)](https://www.codacy.com/app/DesarrolloDeAplicaciones-GrupoA/DesarrolloDeAplicaciones-GrupoA)
+[![Codacy Badge](https://api.codacy.com/project/badge/coverage/2709341668804273a8cdc71cee06e1c5)](https://www.codacy.com/app/DesarrolloDeAplicaciones-GrupoA/backend)
 
 ## Introduccion:
 
