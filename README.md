@@ -38,7 +38,7 @@ Ver [Proyecto frontend](https://github.com/DesarrolloDeAplicaciones-GrupoA/front
     * [x] Configuracion de travis
     * [x] Estado del Build en verde
     * [x] Coverage al 90%
-    * [ ] Diagrama UML (en <Proyecto>/docs)
+    * [x] Diagrama UML (en <Proyecto>/docs)
     * [x] 3 mockups de las ventanas de la aplicacion - Home, buscar recorridos y alta de usuario.
     * [x] Pantalla prototipo del uso de la API de gmaps (mostrar recorrido, crear un recorrido)
 * Modelo
