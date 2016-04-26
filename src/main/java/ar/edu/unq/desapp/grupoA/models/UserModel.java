@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupoA.models;
 
+import ar.edu.unq.desapp.grupoA.models.utils.Entity;
 import ar.edu.unq.desapp.grupoA.services.scoring.ScoringModel;
 
 import java.util.ArrayList;
@@ -7,9 +8,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class UserModel implements ScoringModel {
+public class UserModel extends Entity implements ScoringModel {
     
-    private static final long serialVersionUID = -3495963190665047369L;
+    private static final long serialVersionUID = -3495963290665047369L;
 
     private String fullName;
     private String email;

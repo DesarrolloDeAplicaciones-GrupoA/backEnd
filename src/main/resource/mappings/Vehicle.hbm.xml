@@ -3,13 +3,13 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping default-access="field"
                    default-cascade="save-update">
-    <class name="ar.edu.unq.desapp.grupoA.models.UserModel">
+    <class name="ar.edu.unq.desapp.grupoA.models.Vehicle">
         <id column="ID" name="id">
             <generator class="native" />
         </id>
-        <property name="fullName" />
-        <property name="email" />
-        <property name="points"/>
+        <property name="brand" />
+        <property name="capacity" />
+        <property name="driver"/>
 
     </class>
 </hibernate-mapping>
