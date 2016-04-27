@@ -108,7 +108,7 @@
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
 
-	<bean id="persistence.vehicleRepository" class="ar.edu.unq.desapp.grupoA.repositories.VechicleRepository" >
+	<bean id="persistence.vehicleRepository" class="ar.edu.unq.desapp.grupoA.repositories.VehicleRepository" >
 		<property name="sessionFactory" ref="persistence.sessionFactory"/>
 	</bean>
 	
