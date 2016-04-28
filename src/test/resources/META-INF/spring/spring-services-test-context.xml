@@ -8,5 +8,6 @@
 
 	<bean id="services.loginTest" class="ar.edu.unq.desapp.grupoA.services.LoginTest">
 		<property name="login" ref="services.login" />
+		<property name="repository" ref="persistence.userRepository" />
 	</bean>
 </beans>

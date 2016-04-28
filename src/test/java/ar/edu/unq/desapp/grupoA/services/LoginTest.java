@@ -1,6 +1,7 @@
 package ar.edu.unq.desapp.grupoA.services;
 
 import ar.edu.unq.desapp.grupoA.models.UserModel;
+import ar.edu.unq.desapp.grupoA.repositories.UserModelRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,11 +12,12 @@ public class LoginTest  extends AbstractServiceTest{
 
     @Autowired
     private Login login;
+    @Autowired
+    private UserModelRepository repository;
     private UserModel user;
 
     @Before
     public void setUp() {
-        this.login = new Login();
         this.user = login.signUp("Foo Bar", "foobar@sample.com");
     }
 
@@ -43,11 +45,25 @@ public class LoginTest  extends AbstractServiceTest{
         Assert.assertEquals(this.user.getExchanges().size(), 0);
     }
 
+    @Test
+    public void hasOneMoreUserInRepository() {
+        Assert.assertEquals(1, this.repository.count());
+    }
+
+
     public void setLogin(Login login) {
         this.login = login;
     }
 
     public Login getLogin() {
         return login;
+    }
+
+    public void setRepository(UserModelRepository repository) {
+        this.repository = repository;
+    }
+
+    public UserModelRepository getRepository() {
+        return repository;
     }
 }

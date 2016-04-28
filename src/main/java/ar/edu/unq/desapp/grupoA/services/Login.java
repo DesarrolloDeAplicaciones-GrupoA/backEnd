@@ -8,8 +8,9 @@ public class Login {
     private UserModelRepository repository;
 
     public UserModel signUp(String fullName, String email) {
-
-        return new UserModel(fullName, email);
+        UserModel user = new UserModel(fullName, email);
+        this.repository.save(user);
+        return user;
     }
 
     public void setRepository(UserModelRepository repository) {
