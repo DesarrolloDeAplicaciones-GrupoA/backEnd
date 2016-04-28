@@ -1,11 +1,23 @@
 package ar.edu.unq.desapp.grupoA.services;
 
 import ar.edu.unq.desapp.grupoA.models.UserModel;
+import ar.edu.unq.desapp.grupoA.repositories.UserModelRepository;
 
 public class Login {
 
-    public UserModel signUp(String fullName, String email) {
+    private UserModelRepository repository;
 
-        return new UserModel(fullName, email);
+    public UserModel signUp(String fullName, String email) {
+        UserModel user = new UserModel(fullName, email);
+        this.repository.save(user);
+        return user;
+    }
+
+    public void setRepository(UserModelRepository repository) {
+        this.repository = repository;
+    }
+
+    public UserModelRepository getRepository() {
+        return repository;
     }
 }
