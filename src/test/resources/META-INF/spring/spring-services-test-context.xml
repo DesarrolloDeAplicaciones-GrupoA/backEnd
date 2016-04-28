@@ -10,4 +10,10 @@
 		<property name="login" ref="services.login" />
 		<property name="repository" ref="persistence.userRepository" />
 	</bean>
+
+	<bean id="services.VehicleAddingTest" class="ar.edu.unq.desapp.grupoA.services.VehicleAddingTest">
+		<property name="vehicleAdding" ref="services.vehicleAdding" />
+		<property name="userModelRepository" ref="persistence.userRepository" />
+		<property name="vehicleRepository" ref="persistence.vehicleRepository" />
+	</bean>
 </beans>
