@@ -15,17 +15,21 @@ public class LoginTest  extends AbstractServiceTest{
     @Autowired
     private UserModelRepository repository;
     private UserModel user;
+    private String userFullName;
+    private String userEmail;
 
     @Before
     public void setUp() {
-        this.user = login.signUp("Foo Bar", "foobar@sample.com");
+        this.userFullName = "Foo Bar";
+        this.userEmail = "foobar@sample.com";
+        this.user = login.signUp(this.userFullName, this.userEmail);
     }
 
     @Test
     public void loginUserWithoutCar() {
 
-        Assert.assertEquals(user.getFullName(), "Foo Bar");
-        Assert.assertEquals(user.getEmail(), "foobar@sample.com");
+        Assert.assertEquals(user.getFullName(), this.userFullName);
+        Assert.assertEquals(user.getEmail(), this.userEmail);
     }
 
     @Test
@@ -48,6 +52,12 @@ public class LoginTest  extends AbstractServiceTest{
     @Test
     public void hasOneMoreUserInRepository() {
         Assert.assertEquals(1, this.repository.count());
+    }
+
+    @Test
+    public void newUserHasAnId() {
+        UserModel user = this.repository.findById(this.user.getId());
+        Assert.assertNotNull(user);
     }
 
 
