@@ -1,6 +1,7 @@
 package ar.edu.unq.desapp.grupoA.repositories.utils;
 
 
+import org.hibernate.criterion.Projections;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import java.io.Serializable;
@@ -21,10 +22,7 @@ public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport impleme
     @Override
     @SuppressWarnings("unchecked")
     public int count() {
-        List<Long> list = (List<Long>) this.getHibernateTemplate().find("select count(*) from " + this.persistentClass.getName() + " o");
-        Long count = list.get(0);
-        return count.intValue();
-
+        return ((Long) this.getSession().createCriteria(this.persistentClass.getName()).setProjection(Projections.rowCount()).uniqueResult()).intValue();
     }
 
     @Override

@@ -6,8 +6,10 @@ import org.joda.time.Interval;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Travel  extends Entity {
-        private String nameTravel; //un nombre guia para identificar y luego listar los viajes
+public class Travel extends Entity {
+
+    private static final long serialVersionUID = -3495963290665047361L;
+    private String nameTravel; //un nombre guia para identificar y luego listar los viajes
     private Route route;
     private int fuelCost;
     private int tollCost; //Costo Del Peaje
@@ -33,7 +35,11 @@ public class Travel  extends Entity {
         this.applicationRequests.add(request);
     }
 
-    public int getFuelCost() { return fuelCost;  }
+    public int getFuelCost() {
+        return fuelCost;
+    }
 
-    public int getTollCost() { return tollCost;  }
+    public int getTollCost() {
+        return tollCost;
+    }
 }

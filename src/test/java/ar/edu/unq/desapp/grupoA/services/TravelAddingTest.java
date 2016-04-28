@@ -1,10 +1,12 @@
 package ar.edu.unq.desapp.grupoA.services;
 
 import ar.edu.unq.desapp.grupoA.models.Route;
+import ar.edu.unq.desapp.grupoA.models.Travel;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.repositories.TravelRepository;
 import ar.edu.unq.desapp.grupoA.repositories.UserModelRepository;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.RouteTestFactory;
+import ar.edu.unq.desapp.grupoA.testUtis.factories.StringUtils;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.UserModelTestFactory;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeConstants;
@@ -26,10 +28,11 @@ public class TravelAddingTest extends AbstractServiceTest{
     private UserModelRepository userModelRepository;
     @Autowired
     private TravelRepository travelRepository;
+    private String travelName;
 
     @Before
     public void setUp() {
-        this.user = new UserModelTestFactory().getUser();
+        this.user = this.getUser();
         this.userModelRepository.save(this.user);
         Interval rangeHoures = new Interval(new DateTime(2000, 1, 1, 9, 0), new DateTime(2000, 1, 1, 14, 0));
         List<Integer> frequency = new ArrayList<Integer>();
@@ -37,7 +40,8 @@ public class TravelAddingTest extends AbstractServiceTest{
         frequency.add(DateTimeConstants.WEDNESDAY);
         frequency.add(DateTimeConstants.FRIDAY);
         Route route = new RouteTestFactory().fromConstitucionToCorrientes();
-        this.travelAdding.createTravel(user, "Viaje Trabajo", 50, 20, route, rangeHoures, frequency);
+        this.travelName = StringUtils.getName();
+        this.travelAdding.createTravel(user, this.travelName, 50, 20, route, rangeHoures, frequency);
 
     }
 
@@ -48,9 +52,15 @@ public class TravelAddingTest extends AbstractServiceTest{
 
     @Test
     public void testValuesTravel() {
-        Assert.assertEquals(this.user.getTravels().get(0).getFuelCost(), 50);
-        Assert.assertEquals(this.user.getTravels().get(0).getTollCost(), 20);
-        Assert.assertEquals(this.user.getTravels().get(0).getNameTravel(), "Viaje Trabajo");
+        Travel travel = this.user.getTravels().iterator().next();
+        Assert.assertEquals(travel.getFuelCost(), 50);
+        Assert.assertEquals(travel.getTollCost(), 20);
+        Assert.assertEquals(travel.getNameTravel(), this.travelName);
+    }
+
+    @Test
+    public void hasOneMoreTravel() {
+        Assert.assertEquals(1, this.travelRepository.count());
     }
 
     private UserModel getUser() {

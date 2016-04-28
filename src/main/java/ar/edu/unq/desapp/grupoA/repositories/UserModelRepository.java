@@ -15,7 +15,7 @@ import java.util.List;
 
 public class UserModelRepository extends HibernateGenericDAO<UserModel> implements GenericRepository<UserModel> {
 
-    private static final long serialVersionUID = -4036535812105672110L;
+    private static final long serialVersionUID = -4036535812105672112L;
 
     @Override
     protected Class<UserModel> getDomainClass() {

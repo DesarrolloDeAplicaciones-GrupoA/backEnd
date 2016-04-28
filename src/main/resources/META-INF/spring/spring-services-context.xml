@@ -19,5 +19,9 @@
 		<property name="repository" ref="persistence.vehicleRepository" />
 	</bean>
 
+	<bean id="services.travelAdding" class="ar.edu.unq.desapp.grupoA.services.TravelAdding">
+		<property name="repository" ref="persistence.travelRepository" />
+	</bean>
+
 
 </beans>

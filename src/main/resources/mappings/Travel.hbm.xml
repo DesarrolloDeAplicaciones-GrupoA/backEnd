@@ -10,7 +10,5 @@
         <property name="nameTravel" />
         <property name="fuelCost" type="java.lang.Integer" />
         <property name="tollCost" type="java.lang.Integer"/>
-        <property name="rangeHours" type="org.joda.time.Interval"/>
-
     </class>
 </hibernate-mapping>

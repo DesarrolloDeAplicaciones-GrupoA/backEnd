@@ -4,7 +4,9 @@ import ar.edu.unq.desapp.grupoA.models.utils.Entity;
 import ar.edu.unq.desapp.grupoA.services.scoring.ScoringModel;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -19,7 +21,7 @@ public class UserModel extends Entity implements ScoringModel {
     private List<Score> accompanistScores;
     private int points;
     private List<Exchange> exchanges;
-    private List<Travel> travels;
+    private Set<Travel> travels;
     private List<ApplicationRequest> requestedApplications;
     private List<Message> messagesSend;
     private List<Message> messagesReceived;
@@ -37,7 +39,7 @@ public class UserModel extends Entity implements ScoringModel {
         this.accompanistScores = new ArrayList<>();
         this.driverScores = new ArrayList<>();
         this.exchanges = new ArrayList<>();
-        this.travels = new ArrayList<>();
+        this.travels = new HashSet<>();
         this.points = 0;
         this.requestedApplications = new ArrayList<>();
         this.accompanistScores = new ArrayList<>();
@@ -77,7 +79,7 @@ public class UserModel extends Entity implements ScoringModel {
         this.travels.add(travel);
     }
 
-    public List<Travel> getTravels() {
+    public Set<Travel> getTravels() {
         return travels;
     }
 
