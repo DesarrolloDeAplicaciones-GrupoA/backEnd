@@ -9,7 +9,8 @@
         </id>
         <property name="fullName" />
         <property name="email" />
-        <property name="points"/>
+        <property name="points" type="java.lang.Integer"/>
+        <one-to-one name="vehicle"/>
 
     </class>
 </hibernate-mapping>

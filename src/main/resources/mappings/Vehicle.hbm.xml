@@ -9,7 +9,6 @@
         </id>
         <property name="brand" />
         <property name="capacity" />
-        <property name="driver"/>
 
     </class>
 </hibernate-mapping>

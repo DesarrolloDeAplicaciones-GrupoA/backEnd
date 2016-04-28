@@ -42,6 +42,11 @@ public class VehicleAddingTest extends AbstractServiceTest {
         Assert.assertEquals(this.user.getVehicle().getDriver(), user);
     }
 
+    @Test
+    public void hasOneMoreVehicle() {
+        Assert.assertEquals(1, this.vehicleRepository.count());
+    }
+
     private UserModel getUser() {
         return new UserModelTestFactory().getUser();
     }
