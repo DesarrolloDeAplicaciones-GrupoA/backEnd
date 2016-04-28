@@ -1,12 +1,13 @@
 package ar.edu.unq.desapp.grupoA.models;
 
+import ar.edu.unq.desapp.grupoA.models.utils.Entity;
 import org.joda.time.Interval;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Travel {
-    private String nameTravel; //un nombre guia para identificar y luego listar los viajes
+public class Travel  extends Entity {
+        private String nameTravel; //un nombre guia para identificar y luego listar los viajes
     private Route route;
     private int fuelCost;
     private int tollCost; //Costo Del Peaje

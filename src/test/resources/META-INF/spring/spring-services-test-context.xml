@@ -16,4 +16,10 @@
 		<property name="userModelRepository" ref="persistence.userRepository" />
 		<property name="vehicleRepository" ref="persistence.vehicleRepository" />
 	</bean>
+
+    <bean id="services.TravelAddingTest" class="ar.edu.unq.desapp.grupoA.services.TravelAddingTest">
+        <property name="travelAdding" ref="services.travelAdding" />
+        <property name="userModelRepository" ref="persistence.userRepository" />
+        <property name="travelRepository" ref="persistence.travelRepository" />
+    </bean>
 </beans>
