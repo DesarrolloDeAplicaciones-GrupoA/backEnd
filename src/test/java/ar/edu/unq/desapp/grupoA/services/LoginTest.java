@@ -4,11 +4,12 @@ import ar.edu.unq.desapp.grupoA.models.UserModel;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
-/**
- * Created by DamianRafael on 29/3/2016.
- */
-public class LoginTest {
+
+public class LoginTest  extends AbstractServiceTest{
+
+    @Autowired
     private Login login;
     private UserModel user;
 
@@ -42,4 +43,11 @@ public class LoginTest {
         Assert.assertEquals(this.user.getExchanges().size(), 0);
     }
 
+    public void setLogin(Login login) {
+        this.login = login;
+    }
+
+    public Login getLogin() {
+        return login;
+    }
 }

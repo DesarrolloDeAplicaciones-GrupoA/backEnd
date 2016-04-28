@@ -9,7 +9,6 @@
 	<!-- beans de spring -->
 	<bean id="services.general" class="ar.edu.unq.desapp.grupoA.services.utils.GeneralService">
 		<property name="userModelService" ref="services.userModel" />
-		<property name="vehicleService" ref="services.vehicle" />
 	</bean>
 
 	<bean id="services.userModel" class="ar.edu.unq.desapp.grupoA.services.utils.UserModelService">
@@ -18,6 +17,10 @@
 
 	<bean id="services.vehicle" class="ar.edu.unq.desapp.grupoA.services.utils.VehicleService">
 		<property name="repository" ref="persistence.vehicleRepository" />
+	</bean>
+
+	<bean id="services.login" class="ar.edu.unq.desapp.grupoA.services.Login">
+		<property name="repository" ref="persistence.userRepository" />
 	</bean>
 
 
