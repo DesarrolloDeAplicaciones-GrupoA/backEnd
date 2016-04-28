@@ -17,19 +17,6 @@ public class UserModelRepository extends HibernateGenericDAO<UserModel> implemen
 
     private static final long serialVersionUID = -4036535812105672110L;
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    public List<UserModel> filterPeople(final String pattern) {
-        return (List<UserModel>) this.getHibernateTemplate().execute(new HibernateCallback() {
-            @Override
-            public List<UserModel> doInHibernate(final Session session) throws HibernateException, SQLException {
-                Criteria criteria = session.createCriteria(UserModel.class);
-                criteria.add(Restrictions.like("fullName", "%" + pattern + "%"));
-                return criteria.list();
-            }
-
-        });
-    }
-
     @Override
     protected Class<UserModel> getDomainClass() {
         return UserModel.class;
