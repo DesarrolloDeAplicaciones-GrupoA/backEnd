@@ -20,13 +20,14 @@ public class VehicleAddingTest extends AbstractServiceTest {
     private UserModelRepository userModelRepository;
     @Autowired
     private VehicleRepository vehicleRepository;
+    @Autowired
+    private UserModelTestFactory userModelTestFactory;
+
     private String vehicleName;
 
     @Before
     public void setUp() {
-        UserModel tempUser = this.getUser();
-        this.userModelRepository.save(tempUser);
-        this.user = this.userModelRepository.findByExample(tempUser).get(0);
+        this.user = this.getUser();
         this.vehicleName = StringUtils.getName();
         this.vehicleAdding.createVehicle(this.user, this.vehicleName, 4);
     }
@@ -56,7 +57,7 @@ public class VehicleAddingTest extends AbstractServiceTest {
     }
 
     private UserModel getUser() {
-        return new UserModelTestFactory().getUser();
+        return this.userModelTestFactory.getUser();
     }
 
     public void setVehicleRepository(VehicleRepository vehicleRepository) {

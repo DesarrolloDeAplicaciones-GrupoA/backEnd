@@ -14,7 +14,7 @@ public class VehicleScoreServiceTest extends BaseScoreServiceTest<Vehicle> {
     protected UserModel driver;
 
     public void setUp() {
-        this.driver = new UserModelTestFactory().getUser();
+        this.driver = this.userModelTestFactory.getUser();
         super.setUp();
     }
 

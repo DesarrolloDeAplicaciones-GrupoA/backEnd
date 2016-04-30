@@ -4,21 +4,25 @@ import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.UserModelTestFactory;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class SendMessageServiceTest {
+public class SendMessageServiceTest extends AbstractServiceTest{
     private UserModel sender;
     private UserModel receiver;
-    private SendMessageService service;
+
+    @Autowired
+    private SendMessageService sendMessageService;
+    @Autowired
+    private UserModelTestFactory userModelTestFactory;
 
     @Before
     public void setUp() {
-        this.sender = new UserModelTestFactory().getUser();
-        this.receiver = new UserModelTestFactory().getUser();
-        this.service = new SendMessageService();
-        service.sendMessage(sender, receiver, "Este un mensaje de prueba", true);
+        this.sender = this.userModelTestFactory.getUser();
+        this.receiver = this.userModelTestFactory.getUser();
+        sendMessageService.sendMessage(sender, receiver, "Este un mensaje de prueba", true);
     }
 
     @Test
@@ -34,4 +38,11 @@ public class SendMessageServiceTest {
         assertTrue(this.sender.getMessagesSend().get(0).isPublic());
     }
 
+    public SendMessageService getSendMessageService() {
+        return sendMessageService;
+    }
+
+    public void setSendMessageService(SendMessageService sendMessageService) {
+        this.sendMessageService = sendMessageService;
+    }
 }

@@ -4,21 +4,27 @@ import ar.edu.unq.desapp.grupoA.exceptions.InsufficientPointsException;
 import ar.edu.unq.desapp.grupoA.factories.ProductFactoryAndRepositorie;
 import ar.edu.unq.desapp.grupoA.models.Product;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
+import ar.edu.unq.desapp.grupoA.services.AbstractServiceTest;
 import ar.edu.unq.desapp.grupoA.services.ExchangeProductService;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.Assert.assertEquals;
 
-public class ExchangeProductServiceTest {
+public class ExchangeProductServiceTest extends AbstractServiceTest{
 
     public UserModel user;
     public Product product;
     public ExchangeProductService service;
 
+    @Autowired
+    protected UserModelTestFactory userModelTestFactory;
+
+
     @Before
     public void setUp() {
-        this.user = new UserModelTestFactory().getUser();
+        this.user = this.userModelTestFactory.getUser();
         this.product = new ProductFactoryAndRepositorie().getFuelVoucher100();
         this.service = new ExchangeProductService();
     }

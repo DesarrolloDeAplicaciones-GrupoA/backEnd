@@ -17,7 +17,7 @@ public class AccompanistScoreServiceTest extends BaseScoreServiceTest<UserModel>
 
     @Override
     protected void createScoringModel() {
-        this.scoringModel = new UserModelTestFactory().getUser();
+        this.scoringModel = this.userModelTestFactory.getUser();
     }
 
     @Override

@@ -28,13 +28,13 @@ public class TravelAddingTest extends AbstractServiceTest{
     private UserModelRepository userModelRepository;
     @Autowired
     private TravelRepository travelRepository;
+    @Autowired
+    private UserModelTestFactory userModelTestFactory;
     private String travelName;
 
     @Before
     public void setUp() {
-        UserModel tempUser = this.getUserModel();
-        this.userModelRepository.save(tempUser);
-        this.userModel = this.userModelRepository.findById(tempUser.getId());
+        this.userModel = this.getUserModel();
         Interval rangeHoures = new Interval(new DateTime(2000, 1, 1, 9, 0), new DateTime(2000, 1, 1, 14, 0));
         List<Integer> frequency = new ArrayList<Integer>();
         frequency.add(DateTimeConstants.MONDAY);
@@ -67,7 +67,7 @@ public class TravelAddingTest extends AbstractServiceTest{
     }
 
     private UserModel getUserModel() {
-        return new UserModelTestFactory().getUser();
+        return this.userModelTestFactory.getUser();
     }
 
     public void setTravelAdding(TravelAdding travelAdding) {

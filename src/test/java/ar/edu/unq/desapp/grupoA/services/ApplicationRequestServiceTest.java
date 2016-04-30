@@ -11,22 +11,26 @@ import ar.edu.unq.desapp.grupoA.testUtis.factories.UserModelTestFactory;
 import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 
-public class ApplicationRequestServiceTest {
+public class ApplicationRequestServiceTest extends AbstractServiceTest{
 
     public UserModel requester;
     public Travel travel;
     public ApplicationRequestService service;
     public ApplicationRequest request;
 
+    @Autowired
+    private UserModelTestFactory userModelTestFactory;
+
     @Before
     public void setUp() {
-        this.requester = new UserModelTestFactory().getUser();
+        this.requester = this.userModelTestFactory.getUser();
         this.travel = new TravelTestFactory().getTravelTest();
         this.service = new ApplicationRequestService();
         DateTime datetime = DateTime.now();
