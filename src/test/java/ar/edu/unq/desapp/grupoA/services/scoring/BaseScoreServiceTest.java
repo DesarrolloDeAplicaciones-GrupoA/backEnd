@@ -7,6 +7,7 @@ import ar.edu.unq.desapp.grupoA.testUtis.factories.TravelTestFactory;
 import junit.framework.TestCase;
 
 import java.util.List;
+import java.util.Set;
 
 public abstract class BaseScoreServiceTest<T extends ScoringModel> extends TestCase {
 
@@ -65,5 +66,5 @@ public abstract class BaseScoreServiceTest<T extends ScoringModel> extends TestC
 
     protected abstract void createService();
 
-    protected abstract List<Score> getScoringModelScores();
+    protected abstract Set<Score> getScoringModelScores();
 }

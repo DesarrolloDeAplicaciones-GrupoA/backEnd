@@ -1,7 +1,9 @@
 package ar.edu.unq.desapp.grupoA.repositories.utils;
 
 
+import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import java.io.Serializable;
@@ -17,7 +19,15 @@ public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport impleme
 
     private static final long serialVersionUID = 5058950102420892922L;
 
+    @Autowired
+    public void provideSessionFactory(SessionFactory sessionFactory) {
+        setSessionFactory(sessionFactory);
+    }
+
     protected Class<T> persistentClass = this.getDomainClass();
+
+    protected HibernateGenericDAO() {
+    }
 
     @Override
     @SuppressWarnings("unchecked")

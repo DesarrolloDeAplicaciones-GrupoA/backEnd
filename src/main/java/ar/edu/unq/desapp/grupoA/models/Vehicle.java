@@ -1,29 +1,54 @@
 package ar.edu.unq.desapp.grupoA.models;
 
-import ar.edu.unq.desapp.grupoA.models.utils.Entity;
 import ar.edu.unq.desapp.grupoA.services.scoring.ScoringModel;
 
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
-public class Vehicle extends Entity implements ScoringModel {
+@Entity
+@Table(name = "Vehicle")
+public class Vehicle implements ScoringModel {
 
     private static final long serialVersionUID = -2295963290665047369L;
 
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(final int id) {
+        this.id = id;
+    }
+
+    @Id()
+    @GeneratedValue()
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "brand")
     private String brand;
+    @Column(name = "capacity")
     private int capacity;
-    private List<Score> scores;
+    @OneToOne(mappedBy = "vehicle")
     private UserModel driver;
 
-    public Vehicle(){super();}
+    @OneToMany(mappedBy = "vehicle")
+    private Set<Score> scores;
+
+    public Vehicle() {
+        super();
+    }
 
     public Vehicle(String brand, int capacity, UserModel driver) {
         super();
         this.brand = brand;
         this.capacity = capacity;
-        this.scores = new ArrayList<>();
+        this.scores = new HashSet<>();
         this.driver = driver;
     }
 
@@ -35,7 +60,7 @@ public class Vehicle extends Entity implements ScoringModel {
         return capacity;
     }
 
-    public List<Score> getScores() {
+    public Set<Score> getScores() {
         return scores;
     }
 

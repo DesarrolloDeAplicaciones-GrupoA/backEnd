@@ -21,7 +21,7 @@ import java.util.List;
 
 public class TravelAddingTest extends AbstractServiceTest{
 
-    private UserModel user;
+    private UserModel userModel;
     @Autowired
     private TravelAdding travelAdding;
     @Autowired
@@ -32,8 +32,9 @@ public class TravelAddingTest extends AbstractServiceTest{
 
     @Before
     public void setUp() {
-        this.user = this.getUser();
-        this.userModelRepository.save(this.user);
+        UserModel tempUser = this.getUserModel();
+        this.userModelRepository.save(tempUser);
+        this.userModel = this.userModelRepository.findById(tempUser.getId());
         Interval rangeHoures = new Interval(new DateTime(2000, 1, 1, 9, 0), new DateTime(2000, 1, 1, 14, 0));
         List<Integer> frequency = new ArrayList<Integer>();
         frequency.add(DateTimeConstants.MONDAY);
@@ -41,18 +42,20 @@ public class TravelAddingTest extends AbstractServiceTest{
         frequency.add(DateTimeConstants.FRIDAY);
         Route route = new RouteTestFactory().fromConstitucionToCorrientes();
         this.travelName = StringUtils.getName();
-        this.travelAdding.createTravel(user, this.travelName, 50, 20, route, rangeHoures, frequency);
+        this.travelAdding.createTravel(userModel, this.travelName, 50, 20, route, rangeHoures, frequency);
 
     }
 
     @Test
     public void addingTravelToUserTest() {
-        Assert.assertEquals(this.user.getTravels().size(), 1);
+        Assert.assertEquals(this.userModel.getTravels().size(), 1);
     }
 
     @Test
     public void testValuesTravel() {
-        Travel travel = this.user.getTravels().iterator().next();
+        Travel travel = this.userModel
+                .getTravels()
+                .iterator().next();
         Assert.assertEquals(travel.getFuelCost(), 50);
         Assert.assertEquals(travel.getTollCost(), 20);
         Assert.assertEquals(travel.getNameTravel(), this.travelName);
@@ -63,7 +66,7 @@ public class TravelAddingTest extends AbstractServiceTest{
         Assert.assertEquals(1, this.travelRepository.count());
     }
 
-    private UserModel getUser() {
+    private UserModel getUserModel() {
         return new UserModelTestFactory().getUser();
     }
 

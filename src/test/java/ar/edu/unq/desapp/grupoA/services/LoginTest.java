@@ -8,12 +8,12 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
-public class LoginTest  extends AbstractServiceTest{
+public class LoginTest  extends AbstractServiceTest {
 
     @Autowired
-    private Login login;
+    private Login loginService;
     @Autowired
-    private UserModelRepository repository;
+    private UserModelRepository userModelRepository;
     private UserModel user;
     private String userFullName;
     private String userEmail;
@@ -22,7 +22,7 @@ public class LoginTest  extends AbstractServiceTest{
     public void setUp() {
         this.userFullName = "Foo Bar";
         this.userEmail = "foobar@sample.com";
-        this.user = login.signUp(this.userFullName, this.userEmail);
+        this.user = loginService.signUp(this.userFullName, this.userEmail);
     }
 
     @Test
@@ -51,29 +51,29 @@ public class LoginTest  extends AbstractServiceTest{
 
     @Test
     public void hasOneMoreUserInRepository() {
-        Assert.assertEquals(1, this.repository.count());
+        Assert.assertEquals(1, this.userModelRepository.count());
     }
 
     @Test
     public void newUserHasAnId() {
-        UserModel user = this.repository.findById(this.user.getId());
+        UserModel user = this.userModelRepository.findById(this.user.getId());
         Assert.assertNotNull(user);
     }
 
 
-    public void setLogin(Login login) {
-        this.login = login;
+    public void setLoginService(Login loginService) {
+        this.loginService = loginService;
     }
 
-    public Login getLogin() {
-        return login;
+    public Login getLoginService() {
+        return loginService;
     }
 
     public void setRepository(UserModelRepository repository) {
-        this.repository = repository;
+        this.userModelRepository = repository;
     }
 
     public UserModelRepository getRepository() {
-        return repository;
+        return userModelRepository;
     }
 }

@@ -7,6 +7,7 @@ import ar.edu.unq.desapp.grupoA.testUtis.factories.UserModelTestFactory;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.VehicleTestFactory;
 
 import java.util.List;
+import java.util.Set;
 
 public class VehicleScoreServiceTest extends BaseScoreServiceTest<Vehicle> {
 
@@ -33,7 +34,7 @@ public class VehicleScoreServiceTest extends BaseScoreServiceTest<Vehicle> {
     }
 
     @Override
-    protected List<Score> getScoringModelScores() {
+    protected Set<Score> getScoringModelScores() {
         return this.scoringModel.getScores();
     }
 }

@@ -24,10 +24,11 @@ public class VehicleAddingTest extends AbstractServiceTest {
 
     @Before
     public void setUp() {
-        this.user = this.getUser();
-        this.userModelRepository.save(this.user);
+        UserModel tempUser = this.getUser();
+        this.userModelRepository.save(tempUser);
+        this.user = this.userModelRepository.findByExample(tempUser).get(0);
         this.vehicleName = StringUtils.getName();
-        this.vehicleAdding.createVehicle(user, this.vehicleName, 4);
+        this.vehicleAdding.createVehicle(this.user, this.vehicleName, 4);
     }
 
     @Test

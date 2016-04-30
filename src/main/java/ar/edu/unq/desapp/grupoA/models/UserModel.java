@@ -1,8 +1,8 @@
 package ar.edu.unq.desapp.grupoA.models;
 
-import ar.edu.unq.desapp.grupoA.models.utils.Entity;
 import ar.edu.unq.desapp.grupoA.services.scoring.ScoringModel;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -10,20 +10,50 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 
-public class UserModel extends Entity implements ScoringModel {
-    
+@Entity
+@Table(name = "UserModel")
+public class UserModel implements ScoringModel {
+
     private static final long serialVersionUID = -3495963290665047369L;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(final int id) {
+        this.id = id;
+    }
+
+    @Id()
+    @GeneratedValue()
+    @Column(name = "USER_ID")
+    private int id;
+
+    @Column(name = "full_name")
     private String fullName;
+    @Column(name = "email")
     private String email;
-    private Vehicle vehicle;
-    private List<Score> driverScores;
-    private List<Score> accompanistScores;
+    @Column(name = "points")
     private int points;
-    private List<Exchange> exchanges;
+
+    @OneToOne(cascade = CascadeType.ALL, targetEntity = Vehicle.class)
+    @JoinColumn(name = "vehicle_fk")
+    private Vehicle vehicle;
+
+    @OneToMany(mappedBy = "userModel")
     private Set<Travel> travels;
+
+    @Transient
+    private Set<Score> driverScores;
+    @Transient
+    private Set<Score> accompanistScores;
+    @Transient
+    private List<Exchange> exchanges;
+    @Transient
     private List<ApplicationRequest> requestedApplications;
+    @Transient
     private List<Message> messagesSend;
+    @Transient
     private List<Message> messagesReceived;
 
 
@@ -36,13 +66,13 @@ public class UserModel extends Entity implements ScoringModel {
         super();
         this.fullName = fullName;
         this.email = email;
-        this.accompanistScores = new ArrayList<>();
-        this.driverScores = new ArrayList<>();
+        this.accompanistScores = new HashSet<>();
+        this.driverScores = new HashSet<>();
         this.exchanges = new ArrayList<>();
         this.travels = new HashSet<>();
         this.points = 0;
         this.requestedApplications = new ArrayList<>();
-        this.accompanistScores = new ArrayList<>();
+        this.accompanistScores = new HashSet<>();
         this.messagesSend = new ArrayList<>();
         this.messagesReceived = new ArrayList<>();
     }
@@ -55,11 +85,11 @@ public class UserModel extends Entity implements ScoringModel {
         return email;
     }
 
-    public List<Score> getDriverScores() {
+    public Set<Score> getDriverScores() {
         return driverScores;
     }
 
-    public List<Score> getAccompanistScores() {
+    public Set<Score> getAccompanistScores() {
         return accompanistScores;
     }
 
