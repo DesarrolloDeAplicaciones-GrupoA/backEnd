@@ -16,12 +16,4 @@ public class VehicleAdding {
         Vehicle vehicle = new Vehicle(brand, capacity, user);
         user.setVehicle(vehicle);
     }
-
-    public void setRepository(VehicleRepository repository) {
-        this.repository = repository;
-    }
-
-    public VehicleRepository getRepository() {
-        return repository;
-    }
 }
