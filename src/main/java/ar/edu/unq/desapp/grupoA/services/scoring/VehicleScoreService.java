@@ -4,7 +4,9 @@ package ar.edu.unq.desapp.grupoA.services.scoring;
 import ar.edu.unq.desapp.grupoA.models.Score;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.models.Vehicle;
+import org.springframework.stereotype.Service;
 
+@Service("vehicleScoreService")
 public class VehicleScoreService extends BaseScoreService<Vehicle> {
 
     @Override

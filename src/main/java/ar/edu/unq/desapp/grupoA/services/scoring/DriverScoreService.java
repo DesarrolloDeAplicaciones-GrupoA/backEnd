@@ -2,7 +2,9 @@ package ar.edu.unq.desapp.grupoA.services.scoring;
 
 import ar.edu.unq.desapp.grupoA.models.Score;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
+import org.springframework.stereotype.Service;
 
+@Service("driverScoreService")
 public class DriverScoreService extends BaseScoreService<UserModel> {
 
     @Override

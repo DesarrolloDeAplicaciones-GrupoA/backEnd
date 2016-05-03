@@ -3,7 +3,9 @@ package ar.edu.unq.desapp.grupoA.services.scoring;
 
 import ar.edu.unq.desapp.grupoA.models.Score;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
+import org.springframework.stereotype.Service;
 
+@Service("accompanistScoreService")
 public class AccompanistScoreService extends BaseScoreService<UserModel> {
 
     @Override

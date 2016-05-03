@@ -25,6 +25,8 @@ public class Score {
     private Travel travel;
     @ManyToOne()
     private Vehicle vehicle;
+    @ManyToOne()
+    private UserModel userModel;
 
     private boolean isGood;
     private boolean applied;
