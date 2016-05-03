@@ -1,8 +1,20 @@
 package ar.edu.unq.desapp.grupoA.models.utils;
 
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Point")
 public class Point {
+
+    @Id()
+    @GeneratedValue()
+    @Column(name = "POINT_ID")
+    private int id;
+
+    @Column(name = "latitude")
     private double latitude;
+    @Column(name = "longitude")
     private double longitude;
 
     public Point(double latitude, double longitude) {
