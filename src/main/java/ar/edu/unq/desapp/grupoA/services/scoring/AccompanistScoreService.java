@@ -26,5 +26,6 @@ public class AccompanistScoreService extends BaseScoreService<UserModel> {
     @Override
     protected void addScore(UserModel accompanist, Score score) {
         accompanist.addAccompanistScore(score);
+        score.setAccompanist(accompanist);
     }
 }

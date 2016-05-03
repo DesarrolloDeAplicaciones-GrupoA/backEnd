@@ -19,9 +19,6 @@ public class DriverScoreServiceTest extends BaseScoreServiceTest<UserModel> {
     private UserModel scoringModel;
 
     @Autowired
-    protected UserModelRepository userModelRepository;
-
-    @Autowired
     private DriverScoreService driverScoreService;
 
     @Override
@@ -31,7 +28,7 @@ public class DriverScoreServiceTest extends BaseScoreServiceTest<UserModel> {
 
     @Override
     protected void createScoringModel() {
-        this.scoringModel = this.userModelTestFactory.getUser();
+        this.scoringModel = this.getUser();
     }
 
     @Override
@@ -39,14 +36,11 @@ public class DriverScoreServiceTest extends BaseScoreServiceTest<UserModel> {
         return this.getScoringModel().getDriverScores();
     }
 
-
     @Test
-    public void hasOneMoreDriverScore() {
-        UserModel user = this.userModelRepository.findById(this.scoringModel.getId());
-        assertEquals(0, user.getDriverScores().size());
+    public void hasOneMoreDriverScoreInRepository() {
+        assertEquals(0, this.scoreRepository.count());
         getService().createScore(this.getScoringModel(), travel, true);
-        user = this.userModelRepository.findById(this.scoringModel.getId());
-        assertEquals(1, user.getDriverScores().size());
+        assertEquals(1, this.scoreRepository.count());
     }
 
     public UserModel getScoringModel() {

@@ -4,8 +4,13 @@ package ar.edu.unq.desapp.grupoA.services.scoring;
 import ar.edu.unq.desapp.grupoA.models.Score;
 import ar.edu.unq.desapp.grupoA.models.Travel;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
+import ar.edu.unq.desapp.grupoA.repositories.ScoreRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class BaseScoreService<T extends ScoringModel> {
+
+    @Autowired
+    private ScoreRepository scoreRepository;
 
     public Score createScore(T scoring, Travel travel, boolean isGood) {
         Score score = this.getScore(travel, isGood);
@@ -22,6 +27,7 @@ public abstract class BaseScoreService<T extends ScoringModel> {
             this.applyBadScore(scoring, score);
             this.markBadScoresAsApplied(scoring);
         }
+        this.scoreRepository.save(score);
     }
 
     private void markScoreAsApplied(Score score) {

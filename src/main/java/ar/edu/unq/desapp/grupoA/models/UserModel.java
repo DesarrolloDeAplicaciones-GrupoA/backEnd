@@ -43,11 +43,13 @@ public class UserModel implements ScoringModel {
     @OneToMany(mappedBy = "userModel")
     private Set<Travel> travels;
 
-    @OneToMany()
+    @OneToMany(mappedBy = "driver")
     private Set<Score> driverScores;
 
-    @Transient
+    @OneToMany(mappedBy = "accompanist")
     private Set<Score> accompanistScores;
+
+
     @Transient
     private List<Exchange> exchanges;
     @Transient

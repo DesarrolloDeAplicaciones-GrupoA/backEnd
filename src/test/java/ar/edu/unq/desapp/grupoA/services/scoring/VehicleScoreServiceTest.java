@@ -5,22 +5,23 @@ import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.models.Vehicle;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.UserModelTestFactory;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.VehicleTestFactory;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Set;
 
+import static org.junit.Assert.assertEquals;
+
 public class VehicleScoreServiceTest extends BaseScoreServiceTest<Vehicle> {
 
     protected UserModel driver;
+    @Autowired
+    private VehicleTestFactory vehicleTestFactory;
+
     private Vehicle scoringModel;
     @Autowired
     private VehicleScoreService vehicleScoreService;
-
-    public void setUp() {
-        this.driver = this.userModelTestFactory.getUser();
-        super.setUp();
-    }
 
     @Override
     protected int getUserPoints() {
@@ -34,7 +35,7 @@ public class VehicleScoreServiceTest extends BaseScoreServiceTest<Vehicle> {
 
     @Override
     protected void createScoringModel() {
-        this.scoringModel = new VehicleTestFactory().getVehicle(this.driver);
+        this.scoringModel = vehicleTestFactory.getVehicle(this.getUser());
     }
 
     @Override
@@ -45,5 +46,13 @@ public class VehicleScoreServiceTest extends BaseScoreServiceTest<Vehicle> {
     @Override
     protected BaseScoreService<Vehicle> getService() {
         return this.vehicleScoreService;
+    }
+
+
+    @Test
+    public void hasOneMoreDriverScoreInRepository() {
+        assertEquals(0, this.scoreRepository.count());
+        getService().createScore(this.getScoringModel(), travel, true);
+        assertEquals(1, this.scoreRepository.count());
     }
 }

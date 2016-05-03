@@ -23,10 +23,12 @@ public class Score {
 
     @ManyToOne()
     private Travel travel;
-    @ManyToOne()
+    @ManyToOne(optional = true)
     private Vehicle vehicle;
-    @ManyToOne()
-    private UserModel userModel;
+    @ManyToOne(optional = true)
+    private UserModel accompanist;
+    @ManyToOne(optional = true)
+    private UserModel driver;
 
     private boolean isGood;
     private boolean applied;
@@ -47,5 +49,13 @@ public class Score {
 
     public void applied() {
         this.applied = true;
+    }
+
+    public void setDriver(UserModel driver) {
+        this.driver = driver;
+    }
+
+    public void setAccompanist(UserModel accompanist) {
+        this.accompanist = accompanist;
     }
 }

@@ -23,7 +23,8 @@ public class DriverScoreService extends BaseScoreService<UserModel> {
     }
 
     @Override
-    protected void addScore(UserModel drive, Score score) {
-        drive.addDriverScore(score);
+    protected void addScore(UserModel driver, Score score) {
+        driver.addDriverScore(score);
+        score.setDriver(driver);
     }
 }
