@@ -24,14 +24,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
             </props>
         </property>
 
-        <property name="annotatedClasses">
-            <list>
-                <value>ar.edu.unq.desapp.grupoA.models.UserModel</value>
-                <value>ar.edu.unq.desapp.grupoA.models.Vehicle</value>
-                <value>ar.edu.unq.desapp.grupoA.models.Travel</value>
-                <value>ar.edu.unq.desapp.grupoA.models.Score</value>
-            </list>
-        </property>
+        <property name="packagesToScan" value="ar.edu.unq.desapp.grupoA.models"/>
 
     </bean>
 
