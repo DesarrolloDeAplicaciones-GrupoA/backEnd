@@ -13,6 +13,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.sql.Date;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -33,7 +35,7 @@ public class ApplicationRequestServiceTest extends AbstractServiceTest{
         this.requester = this.userModelTestFactory.getUser();
         this.travel = new TravelTestFactory().getTravelTest();
         this.service = new ApplicationRequestService();
-        DateTime datetime = DateTime.now();
+        Date datetime = new Date(1000);
         Point upPoint = mock(Point.class);
         Point downPoint = mock(Point.class);
         request = this.service.createApplicationRequest(requester, travel, datetime, upPoint, downPoint);

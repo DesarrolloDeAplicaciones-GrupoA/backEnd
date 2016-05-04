@@ -5,13 +5,9 @@ import ar.edu.unq.desapp.grupoA.exceptions.InvalidTransitionException;
 import javax.persistence.*;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "RejectedApplication")
-public class RejectedApplication implements ApplicationRequestState {
-
-    @Id()
-    @GeneratedValue()
-    @Column(name = "ROUTE_ID")
-    private int id;
+public class RejectedApplication extends ApplicationRequestState {
 
     @Override
     public boolean isPending() {
