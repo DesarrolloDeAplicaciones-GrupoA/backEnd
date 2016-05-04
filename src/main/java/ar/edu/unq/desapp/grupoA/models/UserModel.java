@@ -49,9 +49,8 @@ public class UserModel implements ScoringModel {
     @OneToMany(mappedBy = "accompanist")
     private Set<Score> accompanistScores;
 
-
-    @Transient
-    private List<Exchange> exchanges;
+    @OneToMany(mappedBy = "userModel")
+    private Set<Exchange> exchanges;
     @Transient
     private List<ApplicationRequest> requestedApplications;
     @Transient
@@ -71,7 +70,7 @@ public class UserModel implements ScoringModel {
         this.email = email;
         this.accompanistScores = new HashSet<>();
         this.driverScores = new HashSet<>();
-        this.exchanges = new ArrayList<>();
+        this.exchanges = new HashSet<>();
         this.travels = new HashSet<>();
         this.points = 0;
         this.requestedApplications = new ArrayList<>();
@@ -116,7 +115,7 @@ public class UserModel implements ScoringModel {
         return travels;
     }
 
-    public List<Exchange> getExchanges() {
+    public Set<Exchange> getExchanges() {
         return exchanges;
     }
 
