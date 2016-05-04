@@ -1,19 +1,29 @@
 package ar.edu.unq.desapp.grupoA.models;
 
+import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Loiacono.P671 on 27/03/2016.
  */
+@Entity
+@Table(name = "Ranking")
 public class Ranking {
 
-    private List<UserModel> usuariosEficientes;
+    @Id()
+    @GeneratedValue()
+    @Column(name = "ROUTE_ID")
+    private int id;
 
-    public Ranking(List<UserModel> userModelList) {
+    @OneToMany
+    private Set<UserModel> usuariosEficientes;
+
+    public Ranking(Set<UserModel> userModelList) {
         this.usuariosEficientes = userModelList;
     }
 
-    public List<UserModel> getUsuariosEficientes() {
+    public Set<UserModel> getUsuariosEficientes() {
         return usuariosEficientes;
     }
 
