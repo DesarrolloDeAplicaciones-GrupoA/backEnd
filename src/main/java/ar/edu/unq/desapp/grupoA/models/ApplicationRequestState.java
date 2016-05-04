@@ -1,15 +1,25 @@
 package ar.edu.unq.desapp.grupoA.models;
 
-public interface ApplicationRequestState {
-    public boolean isPending();
 
-    public boolean isApproved();
+import javax.persistence.*;
 
-    public boolean isReject();
+@Entity
+@Table(name = "RejectedApplication")
+public abstract class ApplicationRequestState {
+    @Id()
+    @GeneratedValue()
+    @Column(name = "ROUTE_ID")
+    private int id;
 
-    public void approve();
+    public abstract boolean isPending();
 
-    public void reject();
+    public abstract boolean isApproved();
+
+    public abstract boolean isReject();
+
+    public abstract void approve();
+
+    public abstract void reject();
 
 
 }

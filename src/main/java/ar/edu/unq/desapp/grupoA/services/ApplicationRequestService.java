@@ -6,10 +6,12 @@ import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.models.utils.Point;
 import org.joda.time.DateTime;
 
+import java.sql.Date;
+
 public class ApplicationRequestService {
 
 
-    public ApplicationRequest createApplicationRequest(UserModel user, Travel travel, DateTime dateTime, Point upPoint, Point downpoint) {
+    public ApplicationRequest createApplicationRequest(UserModel user, Travel travel, Date dateTime, Point upPoint, Point downpoint) {
 
         ApplicationRequest request = new ApplicationRequest(user, travel, dateTime, upPoint, downpoint);
         user.addRequestedApplications(request);

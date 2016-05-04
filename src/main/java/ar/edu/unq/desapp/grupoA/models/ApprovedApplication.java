@@ -2,10 +2,16 @@ package ar.edu.unq.desapp.grupoA.models;
 
 import ar.edu.unq.desapp.grupoA.exceptions.InvalidTransitionException;
 
+import javax.persistence.*;
+
 /**
  * Created by Loiacono.P671 on 09/04/2016.
  */
-public class ApprovedApplication implements ApplicationRequestState {
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Table(name = "ApprovedApplication")
+public class ApprovedApplication extends ApplicationRequestState {
+
     @Override
     public boolean isPending() {
         return false;

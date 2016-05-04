@@ -1,9 +1,16 @@
 package ar.edu.unq.desapp.grupoA.models;
 
+import javax.persistence.*;
+
 /**
  * Created by Loiacono.P671 on 09/04/2016.
  */
-public class PendingApplication implements ApplicationRequestState {
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Table(name = "PendingApplication")
+public class PendingApplication extends ApplicationRequestState {
+
+    @ManyToOne
     private ApplicationRequest applicationRequest;
 
     public PendingApplication(ApplicationRequest applicationRequest) {
