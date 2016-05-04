@@ -1,10 +1,26 @@
 package ar.edu.unq.desapp.grupoA.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Message")
 public class Message {
 
+    @Id()
+    @GeneratedValue()
+    @Column(name = "MESSAGE_ID")
+    private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "receiver")
     private UserModel receiver;
+    @ManyToOne
+    @JoinColumn(name = "sender")
     private UserModel sender;
+
+    @Column(name = "message_text")
     private String messageText;
+    @Column(name = "is_public")
     private boolean isPublic;
 
     public Message(UserModel receiver, UserModel sender, String messageText, boolean isPublic) {

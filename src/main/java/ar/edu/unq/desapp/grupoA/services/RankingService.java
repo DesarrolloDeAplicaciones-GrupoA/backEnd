@@ -4,13 +4,14 @@ import ar.edu.unq.desapp.grupoA.models.Ranking;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
 
 import java.util.List;
+import java.util.Set;
 
 public class RankingService {
 
 
-    public Ranking createRanking(List<UserModel> userModelList) {
+    public Ranking createRanking(Set<UserModel> userModelSet) {
 
-        return new Ranking(userModelList);
+        return new Ranking(userModelSet);
 
     }
 
@@ -21,7 +22,7 @@ public class RankingService {
         ranking.rankearATodos();
     }
 
-    public List<UserModel> getUsuariosEficiente(Ranking ranking) {
+    public Set<UserModel> getUsuariosEficiente(Ranking ranking) {
         return ranking.getUsuariosEficientes();
     }
 }

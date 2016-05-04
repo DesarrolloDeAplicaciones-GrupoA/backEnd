@@ -8,7 +8,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 
 public class RankingServiceTest {
@@ -18,19 +20,19 @@ public class RankingServiceTest {
 
     @Before
     public void setUp() {
-        ArrayList<UserModel> userList = new ArrayList<>();
-        userList.add(new UserModel("foo bar", "fooba@@@"));
-        userList.add(new UserModel("foo bar12", "fooba@@"));
-        userList.add(new UserModel("foo bar13", "fooba@"));
+        HashSet<UserModel> userSet = new HashSet<>();
+        userSet.add(new UserModel("foo bar", "fooba@@@"));
+        userSet.add(new UserModel("foo bar12", "fooba@@"));
+        userSet.add(new UserModel("foo bar13", "fooba@"));
         rankingService = new RankingService();
-        ranking = rankingService.createRanking(userList);
+        ranking = rankingService.createRanking(userSet);
 
     }
 
     @Test
     public void sumarPuntosALos20MejoresRankeados() {
         rankingService.rankearATodos(ranking);
-        List<UserModel> usuarios = rankingService.getUsuariosEficiente(ranking);
+        Set<UserModel> usuarios = rankingService.getUsuariosEficiente(ranking);
         Stream<Integer> integerStream = usuarios.stream().map((usuario -> usuario.getPoints()));
         integerStream.forEach(point -> Assert.assertEquals(point.intValue(), 5000));
     }

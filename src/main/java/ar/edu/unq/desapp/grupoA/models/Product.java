@@ -17,7 +17,6 @@ public class Product {
 
     @Transient
     private ImageIcon photo;
-
     @Column(name = "stock")
     private int stock;
 

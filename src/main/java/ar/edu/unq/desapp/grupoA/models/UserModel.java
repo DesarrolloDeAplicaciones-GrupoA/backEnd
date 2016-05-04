@@ -53,10 +53,10 @@ public class UserModel implements ScoringModel {
     private Set<Exchange> exchanges;
     @Transient
     private List<ApplicationRequest> requestedApplications;
-    @Transient
-    private List<Message> messagesSend;
-    @Transient
-    private List<Message> messagesReceived;
+    @OneToMany
+    private Set<Message> messagesSend;
+    @OneToMany
+    private Set<Message> messagesReceived;
 
 
     public UserModel() {
@@ -75,8 +75,8 @@ public class UserModel implements ScoringModel {
         this.points = 0;
         this.requestedApplications = new ArrayList<>();
         this.accompanistScores = new HashSet<>();
-        this.messagesSend = new ArrayList<>();
-        this.messagesReceived = new ArrayList<>();
+        this.messagesSend = new HashSet<>();
+        this.messagesReceived = new HashSet<>();
     }
 
     public String getFullName() {
@@ -139,11 +139,11 @@ public class UserModel implements ScoringModel {
         this.messagesReceived.add(messageObjet);
     }
 
-    public List<Message> getMessagesSend() {
+    public Set<Message> getMessagesSend() {
         return messagesSend;
     }
 
-    public List<Message> getMessagesReceived() {
+    public Set<Message> getMessagesReceived() {
         return messagesReceived;
     }
 

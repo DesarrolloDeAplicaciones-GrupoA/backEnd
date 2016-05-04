@@ -29,13 +29,13 @@ public class SendMessageServiceTest extends AbstractServiceTest{
     public void testSendAReceiveMessage() {
         assertEquals(this.sender.getMessagesSend().size(), 1);
         assertEquals(this.receiver.getMessagesReceived().size(), 1);
-        assertEquals(this.receiver.getMessagesReceived().get(0), this.sender.getMessagesSend().get(0));
+        assertEquals(this.receiver.getMessagesReceived().iterator().next(), this.sender.getMessagesSend().iterator().next());
     }
 
     @Test
     public void testMessageContent() {
-        assertEquals(this.sender.getMessagesSend().get(0).getMessageTest(), "Este un mensaje de prueba");
-        assertTrue(this.sender.getMessagesSend().get(0).isPublic());
+        assertEquals(this.sender.getMessagesSend().iterator().next().getMessageTest(), "Este un mensaje de prueba");
+        assertTrue(this.sender.getMessagesSend().iterator().next().isPublic());
     }
 
     public SendMessageService getSendMessageService() {
