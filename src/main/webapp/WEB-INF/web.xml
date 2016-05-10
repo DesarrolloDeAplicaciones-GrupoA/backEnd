@@ -11,7 +11,8 @@
         <param-value>
             classpath*:config/BeanLocations.xml,
             classpath*:database/DataSource.xml,
-            classpath*:database/Hibernate.xml
+            classpath*:database/Hibernate.xml,
+            /WEB-INF/webApplicationContext.xml
         </param-value>
     </context-param>
 
@@ -22,16 +23,16 @@
     </listener>
 
 
-    <!--<servlet>-->
-        <!--<servlet-name>CXFServlet</servlet-name>-->
-        <!--<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>-->
-        <!--<load-on-startup>1</load-on-startup>-->
-    <!--</servlet>-->
+    <servlet>
+        <servlet-name>CXFServlet</servlet-name>
+        <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
 
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>CXFServlet</servlet-name>-->
-        <!--<url-pattern>/rest/*</url-pattern>-->
-    <!--</servlet-mapping>-->
+    <servlet-mapping>
+        <servlet-name>CXFServlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
 
 </web-app>
