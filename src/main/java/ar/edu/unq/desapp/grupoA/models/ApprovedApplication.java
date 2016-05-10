@@ -4,9 +4,6 @@ import ar.edu.unq.desapp.grupoA.exceptions.InvalidTransitionException;
 
 import javax.persistence.*;
 
-/**
- * Created by Loiacono.P671 on 09/04/2016.
- */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "ApprovedApplication")

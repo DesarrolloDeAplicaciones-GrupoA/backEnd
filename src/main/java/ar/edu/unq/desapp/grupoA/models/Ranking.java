@@ -4,9 +4,6 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by Loiacono.P671 on 27/03/2016.
- */
 @Entity
 @Table(name = "Ranking")
 public class Ranking {
