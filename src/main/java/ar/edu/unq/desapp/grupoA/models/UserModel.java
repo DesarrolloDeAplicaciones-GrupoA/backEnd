@@ -53,9 +53,9 @@ public class UserModel implements ScoringModel {
     private Set<Exchange> exchanges;
     @Transient
     private List<ApplicationRequest> requestedApplications;
-    @OneToMany
+    @OneToMany(mappedBy = "sender")
     private Set<Message> messagesSend;
-    @OneToMany
+    @OneToMany(mappedBy = "receiver")
     private Set<Message> messagesReceived;
 
 

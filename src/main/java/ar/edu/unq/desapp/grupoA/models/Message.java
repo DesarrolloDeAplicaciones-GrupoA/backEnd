@@ -12,10 +12,10 @@ public class Message {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "receiver")
+    @JoinColumn(name = "USER_ID")
     private UserModel receiver;
     @ManyToOne
-    @JoinColumn(name = "sender")
+  //  @JoinColumn(name = "USER_ID")
     private UserModel sender;
 
     @Column(name = "message_text")
