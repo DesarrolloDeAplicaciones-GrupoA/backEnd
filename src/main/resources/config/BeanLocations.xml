@@ -14,8 +14,6 @@
     <tx:annotation-driven transaction-manager="persistence.transactionManager"	proxy-target-class="true" />
 
     <!-- Database Configuration -->
-    <import resource="../database/DataSource.xml"/>
-    <import resource="../database/Hibernate.xml"/>
 
     <!-- Auto scan the components -->
     <context:component-scan base-package="ar.edu.unq.desapp.grupoA"/>
