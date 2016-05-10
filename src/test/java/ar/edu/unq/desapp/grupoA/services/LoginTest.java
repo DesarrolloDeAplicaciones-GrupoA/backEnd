@@ -2,13 +2,14 @@ package ar.edu.unq.desapp.grupoA.services;
 
 import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.repositories.UserModelRepository;
+import ar.edu.unq.desapp.grupoA.testUtis.factories.StringUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
-public class LoginTest  extends AbstractServiceTest {
+public class LoginTest extends AbstractServiceTest {
 
     @Autowired
     private Login loginService;
@@ -20,8 +21,8 @@ public class LoginTest  extends AbstractServiceTest {
 
     @Before
     public void setUp() {
-        this.userFullName = "Foo Bar";
-        this.userEmail = "foobar@sample.com";
+        this.userFullName = StringUtils.getName();
+        this.userEmail = StringUtils.getEmail();
         this.user = loginService.signUp(this.userFullName, this.userEmail);
     }
 
