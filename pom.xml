@@ -9,14 +9,12 @@
     <url>http://maven.apache.org</url>
 
 
-
-
     <properties>
-        <jetty.version>9.3.9.M1</jetty.version>
+        <jetty.version>9.2.10.v20150310</jetty.version>
         <spring.version>3.2.16.RELEASE</spring.version>
         <spring.security.version>3.2.9.RELEASE</spring.security.version>
         <hibernate.version>3.6.7.Final</hibernate.version>
-        <cxf.version>2.4.1</cxf.version>
+        <cxf.version>2.7.18</cxf.version>
         <jackson.version>1.8.2</jackson.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -34,6 +32,18 @@
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-http</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-io</artifactId>
             <version>${jetty.version}</version>
         </dependency>
 
@@ -58,6 +68,18 @@
         </dependency>
 
         <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-security</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlet</artifactId>
             <version>${jetty.version}</version>
@@ -68,8 +90,11 @@
             <artifactId>jetty-xml</artifactId>
             <version>${jetty.version}</version>
         </dependency>
-
-
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
 
 
         <!--<dependency>-->
@@ -86,7 +111,6 @@
         <!--</dependency>-->
 
 
-
         <!--<dependency>-->
         <!--<groupId>org.mortbay.jetty</groupId>-->
         <!--<artifactId>jetty-management</artifactId>-->
@@ -100,7 +124,6 @@
         <!--<version>9.3.8.v2016031</version>-->
         <!--<scope>provided</scope>-->
         <!--</dependency>-->
-
 
 
         <dependency>
@@ -321,12 +344,6 @@
             <artifactId>cxf-bundle-jaxrs</artifactId>
             <!-- 2.3.5 or 2.4.1 -->
             <version>${cxf.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.eclipse.jetty</groupId>
-                    <artifactId>jetty-server</artifactId>
-                </exclusion>
-            </exclusions>
 
 
         </dependency>

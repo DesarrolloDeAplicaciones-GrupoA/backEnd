@@ -24,25 +24,20 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
     <!-- =========Servicios  ========= -->
     <!-- =========================== -->
 
-    <!--<jaxrs:server id="login">-->
-        <!--<jaxrs:serviceBeans>-->
-            <!--<ref bean="loginController"/>-->
-        <!--</jaxrs:serviceBeans>-->
-        <!--<jaxrs:extensionMappings>-->
-            <!--<entry key="json" value="application/json"/>-->
-            <!--<entry key="xml" value="application/xml"/>-->
-        <!--</jaxrs:extensionMappings>-->
-        <!--<jaxrs:providers>-->
-            <!--<ref bean="jaxbProvider"/>-->
-            <!--<ref bean="jacksonProvider"/>-->
-        <!--</jaxrs:providers>-->
-        <!--<jaxrs:features>-->
-            <!--<cxf:logging/>-->
-        <!--</jaxrs:features>-->
-    <!--</jaxrs:server>-->
-<!---->
-    <bean id="loginController" class="ar.edu.unq.desapp.grupoA.controllers.LoginController">
-        <property name="loginService" ref="loginService"/>
-    </bean>
+    <jaxrs:server id="customerService" address="/">
+        <jaxrs:serviceBeans>
+            <ref bean="loginController" />
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <ref bean="jaxbProvider"/>
+            <ref bean="jacksonProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
 
+    <cxf:bus>
+        <cxf:features>
+            <cxf:logging/>
+        </cxf:features>
+    </cxf:bus>
+    
 </beans>

@@ -3,6 +3,7 @@ package ar.edu.unq.desapp.grupoA.models;
 import ar.edu.unq.desapp.grupoA.services.scoring.ScoringModel;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "UserModel")
+@XmlRootElement(name = "userModel")
 public class UserModel implements ScoringModel {
 
     private static final long serialVersionUID = -3495963290665047369L;
