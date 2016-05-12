@@ -1,0 +1,10 @@
+2016-05-11 23:51:43,763 WARN  org.apache.cxf.bus.spring.OldSpringSupport (OldSpringSupport.java:55) - Import of META-INF/cxf/cxf-extension-soap.xml has been deprecated and is unnecessary.
+2016-05-11 23:51:44,179 WARN  org.hibernate.cfg.AnnotationBinder (AnnotationBinder.java:602) - Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: ar.edu.unq.desapp.grupoA.models.RejectedApplication
+2016-05-11 23:51:44,189 WARN  org.hibernate.cfg.AnnotationBinder (AnnotationBinder.java:602) - Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: ar.edu.unq.desapp.grupoA.models.ApprovedApplication
+2016-05-11 23:51:44,213 WARN  org.hibernate.cfg.AnnotationBinder (AnnotationBinder.java:602) - Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: ar.edu.unq.desapp.grupoA.models.PendingApplication
+2016-05-11 23:51:44,241 WARN  org.hibernate.cfg.Environment (Environment.java:592) - Property [hibernate.cglib.use_reflection_optimizer] has been renamed to [hibernate.bytecode.use_reflection_optimizer]; update your properties appropriately
+2016-05-11 23:58:46,828 WARN  org.apache.cxf.bus.spring.OldSpringSupport (OldSpringSupport.java:55) - Import of META-INF/cxf/cxf-extension-soap.xml has been deprecated and is unnecessary.
+2016-05-11 23:58:47,143 WARN  org.hibernate.cfg.AnnotationBinder (AnnotationBinder.java:602) - Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: ar.edu.unq.desapp.grupoA.models.RejectedApplication
+2016-05-11 23:58:47,160 WARN  org.hibernate.cfg.AnnotationBinder (AnnotationBinder.java:602) - Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: ar.edu.unq.desapp.grupoA.models.ApprovedApplication
+2016-05-11 23:58:47,184 WARN  org.hibernate.cfg.AnnotationBinder (AnnotationBinder.java:602) - Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: ar.edu.unq.desapp.grupoA.models.PendingApplication
+2016-05-11 23:58:47,203 WARN  org.hibernate.cfg.Environment (Environment.java:592) - Property [hibernate.cglib.use_reflection_optimizer] has been renamed to [hibernate.bytecode.use_reflection_optimizer]; update your properties appropriately

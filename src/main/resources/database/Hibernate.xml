@@ -18,7 +18,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
                 <prop key="hibernate.archive.autodetection">
                     class
                 </prop>
-                <prop key="hibernate.cglib.use_reflection_optimizer">true</prop>
+                <prop key="hibernate.bytecode.use_reflection_optimizer">true</prop>
                 <prop key="hibernate.connection.autocommit">false</prop>
                 <prop key="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory</prop>
             </props>
