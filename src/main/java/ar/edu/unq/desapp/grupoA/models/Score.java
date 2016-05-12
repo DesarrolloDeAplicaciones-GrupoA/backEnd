@@ -6,16 +6,6 @@ import javax.persistence.*;
 @Table(name = "Score")
 public class Score {
 
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(final int id) {
-        this.id = id;
-    }
-
     @Id
     @GeneratedValue
     @Column(name = "id")
@@ -37,6 +27,14 @@ public class Score {
         this.travel = travel;
         this.isGood = isGood;
         this.applied = false;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(final int id) {
+        this.id = id;
     }
 
     public boolean isGood() {

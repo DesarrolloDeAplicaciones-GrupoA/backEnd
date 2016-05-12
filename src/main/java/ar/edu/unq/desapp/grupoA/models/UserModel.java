@@ -18,14 +18,6 @@ public class UserModel implements ScoringModel {
 
     private static final long serialVersionUID = -3495963290665047369L;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(final int id) {
-        this.id = id;
-    }
-
     @Id()
     @GeneratedValue()
     @Column(name = "USER_ID")
@@ -60,12 +52,6 @@ public class UserModel implements ScoringModel {
     @OneToMany(mappedBy = "receiver")
     private Set<Message> messagesReceived;
 
-
-    public UserModel() {
-        super();
-    }
-
-
     public UserModel(String fullName, String email) {
         super();
         this.fullName = fullName;
@@ -80,6 +66,16 @@ public class UserModel implements ScoringModel {
         this.messagesSend = new HashSet<>();
         this.messagesReceived = new HashSet<>();
     }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(final int id) {
+        this.id = id;
+    }
+
 
     public String getFullName() {
         return fullName;

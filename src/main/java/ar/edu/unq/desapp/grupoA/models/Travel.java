@@ -13,20 +13,10 @@ public class Travel {
 
     private static final long serialVersionUID = -3495963290665047361L;
 
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(final int id) {
-        this.id = id;
-    }
-
     @Id()
     @GeneratedValue()
     @Column(name = "TRAVEL_ID")
     private int id;
-
 
     @Column(name = "name_travel")
     private String nameTravel; //un nombre guia para identificar y luego listar los viajes
@@ -49,8 +39,6 @@ public class Travel {
     @Transient
     private List<ApplicationRequest> applicationRequests;
 
-    public Travel(){}
-
     public Travel(String nameTravel, int fuel, int toll, Route route, Interval rangeHours, List<Integer> frequency) {
         super();
         this.nameTravel = nameTravel;
@@ -60,6 +48,14 @@ public class Travel {
         this.rangeHours = rangeHours;
         this.frequency = frequency;
         this.applicationRequests = new ArrayList<>();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(final int id) {
+        this.id = id;
     }
 
     public String getNameTravel() {

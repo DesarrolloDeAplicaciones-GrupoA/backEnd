@@ -3,7 +3,6 @@ package ar.edu.unq.desapp.grupoA.models;
 import ar.edu.unq.desapp.grupoA.services.scoring.ScoringModel;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,16 +14,6 @@ import java.util.stream.Collectors;
 public class Vehicle implements ScoringModel {
 
     private static final long serialVersionUID = -2295963290665047369L;
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(final int id) {
-        this.id = id;
-    }
-
     @Id()
     @GeneratedValue()
     @Column(name = "id")
@@ -40,10 +29,6 @@ public class Vehicle implements ScoringModel {
     @OneToMany(mappedBy = "vehicle")
     private Set<Score> scores;
 
-    public Vehicle() {
-        super();
-    }
-
     public Vehicle(String brand, int capacity, UserModel driver) {
         super();
         this.brand = brand;
@@ -51,6 +36,15 @@ public class Vehicle implements ScoringModel {
         this.scores = new HashSet<>();
         this.driver = driver;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(final int id) {
+        this.id = id;
+    }
+
 
     public String getBrand() {
         return brand;

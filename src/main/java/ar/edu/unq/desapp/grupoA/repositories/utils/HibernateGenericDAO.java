@@ -19,12 +19,12 @@ public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport impleme
 
     private static final long serialVersionUID = 5058950102420892922L;
 
+    protected Class<T> persistentClass = this.getDomainClass();
+
     @Autowired
     public void provideSessionFactory(SessionFactory sessionFactory) {
         setSessionFactory(sessionFactory);
     }
-
-    protected Class<T> persistentClass = this.getDomainClass();
 
     protected HibernateGenericDAO() {
     }
