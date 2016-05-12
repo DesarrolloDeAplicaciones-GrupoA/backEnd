@@ -2,3 +2,10 @@
 2016-05-12 00:00:38,000 WARN  org.hibernate.cfg.AnnotationBinder (AnnotationBinder.java:602) - Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: ar.edu.unq.desapp.grupoA.models.RejectedApplication
 2016-05-12 00:00:38,010 WARN  org.hibernate.cfg.AnnotationBinder (AnnotationBinder.java:602) - Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: ar.edu.unq.desapp.grupoA.models.ApprovedApplication
 2016-05-12 00:00:38,016 WARN  org.hibernate.cfg.AnnotationBinder (AnnotationBinder.java:602) - Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: ar.edu.unq.desapp.grupoA.models.PendingApplication
+2016-05-12 00:01:30,000 WARN  org.apache.cxf.bus.spring.OldSpringSupport (OldSpringSupport.java:55) - Import of META-INF/cxf/cxf-extension-soap.xml has been deprecated and is unnecessary.
+2016-05-12 00:01:30,396 WARN  org.hibernate.cfg.AnnotationBinder (AnnotationBinder.java:602) - Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: ar.edu.unq.desapp.grupoA.models.RejectedApplication
+2016-05-12 00:01:30,413 WARN  org.hibernate.cfg.AnnotationBinder (AnnotationBinder.java:602) - Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: ar.edu.unq.desapp.grupoA.models.ApprovedApplication
+2016-05-12 00:01:30,432 WARN  org.hibernate.cfg.AnnotationBinder (AnnotationBinder.java:602) - Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: ar.edu.unq.desapp.grupoA.models.PendingApplication
+2016-05-12 00:02:02,884 WARN  org.hibernate.cfg.AnnotationBinder (AnnotationBinder.java:602) - Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: ar.edu.unq.desapp.grupoA.models.RejectedApplication
+2016-05-12 00:02:02,903 WARN  org.hibernate.cfg.AnnotationBinder (AnnotationBinder.java:602) - Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: ar.edu.unq.desapp.grupoA.models.ApprovedApplication
+2016-05-12 00:02:02,911 WARN  org.hibernate.cfg.AnnotationBinder (AnnotationBinder.java:602) - Illegal use of @Table in a subclass of a SINGLE_TABLE hierarchy: ar.edu.unq.desapp.grupoA.models.PendingApplication
