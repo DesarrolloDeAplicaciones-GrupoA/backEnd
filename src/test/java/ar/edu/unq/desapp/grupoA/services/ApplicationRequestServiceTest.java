@@ -125,7 +125,7 @@ public class ApplicationRequestServiceTest extends AbstractServiceTest {
 
     @Test
     public void hasOneMoreAppRequest() {
-        Assert.assertEquals(1, this.applicationRequestRepository.count());
+        assertEquals(1, this.applicationRequestRepository.count());
     }
 
 }

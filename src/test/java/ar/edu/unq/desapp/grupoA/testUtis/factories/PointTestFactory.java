@@ -2,8 +2,6 @@ package ar.edu.unq.desapp.grupoA.testUtis.factories;
 
 import ar.edu.unq.desapp.grupoA.models.utils.Point;
 import ar.edu.unq.desapp.grupoA.models.utils.PointFactory;
-import ar.edu.unq.desapp.grupoA.repositories.PointRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component("pointTestFactory")
