@@ -4,7 +4,6 @@ import ar.edu.unq.desapp.grupoA.models.Route;
 import ar.edu.unq.desapp.grupoA.models.Travel;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.repositories.TravelRepository;
-import ar.edu.unq.desapp.grupoA.repositories.UserModelRepository;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.Interval;

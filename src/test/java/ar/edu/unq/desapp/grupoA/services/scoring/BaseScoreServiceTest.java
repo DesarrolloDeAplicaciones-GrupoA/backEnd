@@ -11,7 +11,6 @@ import ar.edu.unq.desapp.grupoA.testUtis.factories.UserModelTestFactory;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.TransactionException;
 
 import java.util.Set;
 

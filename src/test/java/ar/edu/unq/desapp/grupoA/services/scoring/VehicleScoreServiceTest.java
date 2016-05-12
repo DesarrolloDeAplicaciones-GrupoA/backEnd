@@ -3,12 +3,10 @@ package ar.edu.unq.desapp.grupoA.services.scoring;
 import ar.edu.unq.desapp.grupoA.models.Score;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.models.Vehicle;
-import ar.edu.unq.desapp.grupoA.testUtis.factories.UserModelTestFactory;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.VehicleTestFactory;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;

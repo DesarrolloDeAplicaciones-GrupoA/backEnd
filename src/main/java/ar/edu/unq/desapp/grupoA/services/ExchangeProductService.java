@@ -6,7 +6,6 @@ import ar.edu.unq.desapp.grupoA.models.Exchange;
 import ar.edu.unq.desapp.grupoA.models.Product;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.repositories.ExchangeProductRepository;
-import ar.edu.unq.desapp.grupoA.repositories.TravelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

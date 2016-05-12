@@ -1,6 +1,5 @@
 package ar.edu.unq.desapp.grupoA.repositories;
 
-import ar.edu.unq.desapp.grupoA.models.Product;
 import ar.edu.unq.desapp.grupoA.models.Ranking;
 import ar.edu.unq.desapp.grupoA.repositories.utils.GenericRepository;
 import ar.edu.unq.desapp.grupoA.repositories.utils.HibernateGenericDAO;

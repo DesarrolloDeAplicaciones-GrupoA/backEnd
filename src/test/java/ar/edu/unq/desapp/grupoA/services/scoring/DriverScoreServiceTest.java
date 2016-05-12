@@ -2,17 +2,12 @@ package ar.edu.unq.desapp.grupoA.services.scoring;
 
 import ar.edu.unq.desapp.grupoA.models.Score;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
-import ar.edu.unq.desapp.grupoA.repositories.UserModelRepository;
-import ar.edu.unq.desapp.grupoA.testUtis.factories.UserModelTestFactory;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.jws.soap.SOAPBinding;
-import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class DriverScoreServiceTest extends BaseScoreServiceTest<UserModel> {
 
