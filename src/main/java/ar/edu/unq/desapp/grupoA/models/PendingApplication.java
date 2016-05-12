@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@Table(name = "PendingApplication")
 public class PendingApplication extends ApplicationRequestState {
 
     @ManyToOne

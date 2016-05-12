@@ -6,7 +6,6 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@Table(name = "RejectedApplication")
 public class RejectedApplication extends ApplicationRequestState {
 
     @Override
