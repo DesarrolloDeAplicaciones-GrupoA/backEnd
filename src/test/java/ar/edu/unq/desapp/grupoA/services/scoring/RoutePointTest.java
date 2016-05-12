@@ -2,18 +2,25 @@ package ar.edu.unq.desapp.grupoA.services.scoring;
 
 import ar.edu.unq.desapp.grupoA.models.Route;
 import ar.edu.unq.desapp.grupoA.models.utils.Point;
+import ar.edu.unq.desapp.grupoA.models.utils.PointFactory;
+import ar.edu.unq.desapp.grupoA.repositories.PointRepository;
+import ar.edu.unq.desapp.grupoA.repositories.RouteRepository;
+import ar.edu.unq.desapp.grupoA.services.AbstractServiceTest;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.RouteTestFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
-public class RoutePointTest {
+public class RoutePointTest extends AbstractServiceTest{
 
     Route route;
+    @Autowired
+    private RouteTestFactory routeTestFactory;
 
     @Before
     public void setUp(){
-        route = new RouteTestFactory().fromConstitucionToCorrientes();
+        this.route = this.routeTestFactory.fromConstitucionToCorrientes();
     }
 
     @Test

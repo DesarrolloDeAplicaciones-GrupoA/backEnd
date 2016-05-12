@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class PendingApplication extends ApplicationRequestState {
 
-    @ManyToOne
+    @OneToOne(targetEntity = ApplicationRequest.class)
     private ApplicationRequest applicationRequest;
 
     public PendingApplication(ApplicationRequest applicationRequest) {

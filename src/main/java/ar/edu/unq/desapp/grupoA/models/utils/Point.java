@@ -35,4 +35,8 @@ public class Point {
         Point p = (Point) obj;
         return (p.getLatitude()  == this.latitude) && p.getLongitude() == this.getLongitude();
     }
+
+    public int getId() {
+        return id;
+    }
 }

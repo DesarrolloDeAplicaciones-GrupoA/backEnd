@@ -20,6 +20,9 @@ public class TravelTestFactory {
     private Travel travel;
 
     @Autowired
+    private RouteTestFactory routeTestFactory;
+
+    @Autowired
     private TravelRepository travelRepository;
 
     public Travel getTravelTest() {
@@ -28,7 +31,7 @@ public class TravelTestFactory {
         frequency.add(DateTimeConstants.MONDAY);
         frequency.add(DateTimeConstants.WEDNESDAY);
         frequency.add(DateTimeConstants.FRIDAY);
-        Route route = new RouteTestFactory().fromConstitucionToCorrientes();
+        Route route = this.routeTestFactory.fromConstitucionToCorrientes();
         return (new Travel("Viaje Trabajo", 50, 20, route, rangeHoures, frequency));
     }
 

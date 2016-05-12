@@ -4,11 +4,11 @@ package ar.edu.unq.desapp.grupoA.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "RejectedApplication")
+@Table(name = "ApplicationRequestState")
 public abstract class ApplicationRequestState {
     @Id()
     @GeneratedValue()
-    @Column(name = "ROUTE_ID")
+    @Column(name = "APPLICATION_REQUEST_STATE_ID")
     private int id;
 
     public abstract boolean isPending();

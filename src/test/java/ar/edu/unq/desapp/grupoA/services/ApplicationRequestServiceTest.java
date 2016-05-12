@@ -6,25 +6,32 @@ import ar.edu.unq.desapp.grupoA.models.ApplicationRequest;
 import ar.edu.unq.desapp.grupoA.models.Travel;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.models.utils.Point;
+import ar.edu.unq.desapp.grupoA.repositories.ApplicationRequestRepository;
+import ar.edu.unq.desapp.grupoA.testUtis.factories.PointTestFactory;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.TravelTestFactory;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.UserModelTestFactory;
-import org.joda.time.DateTime;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Date;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
+import static org.junit.Assert.*;
 
-public class ApplicationRequestServiceTest extends AbstractServiceTest{
+public class ApplicationRequestServiceTest extends AbstractServiceTest {
 
     public UserModel requester;
+    public UserModel owner;
     public Travel travel;
+    @Autowired
+    private PointTestFactory pointTestFactory;
+    @Autowired
+    private ApplicationRequestRepository applicationRequestRepository;
+    @Autowired
     public ApplicationRequestService service;
+    @Autowired
+    private TravelTestFactory travelTestFactory;
     public ApplicationRequest request;
 
     @Autowired
@@ -33,11 +40,11 @@ public class ApplicationRequestServiceTest extends AbstractServiceTest{
     @Before
     public void setUp() {
         this.requester = this.userModelTestFactory.getUser();
-        this.travel = new TravelTestFactory().getTravelTest();
-        this.service = new ApplicationRequestService();
+        this.owner = this.userModelTestFactory.getUser();
+        this.travel = this.travelTestFactory.getTravel(this.owner);
         Date datetime = new Date(1000);
-        Point upPoint = mock(Point.class);
-        Point downPoint = mock(Point.class);
+        Point upPoint = this.pointTestFactory.getPointOne();
+        Point downPoint = this.pointTestFactory.getPointTwo();
         request = this.service.createApplicationRequest(requester, travel, datetime, upPoint, downPoint);
     }
 
@@ -114,6 +121,11 @@ public class ApplicationRequestServiceTest extends AbstractServiceTest{
             assertEquals(ite.getMessage(), "Already rejected");
             throw ite;
         }
+    }
+
+    @Test
+    public void hasOneMoreAppRequest() {
+        Assert.assertEquals(1, this.applicationRequestRepository.count());
     }
 
 }

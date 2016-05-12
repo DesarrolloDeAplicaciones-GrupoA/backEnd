@@ -30,6 +30,8 @@ public class TravelAddingTest extends AbstractServiceTest{
     private TravelRepository travelRepository;
     @Autowired
     private UserModelTestFactory userModelTestFactory;
+    @Autowired
+    private RouteTestFactory routeTestFactory;
     private String travelName;
 
     @Before
@@ -40,7 +42,7 @@ public class TravelAddingTest extends AbstractServiceTest{
         frequency.add(DateTimeConstants.MONDAY);
         frequency.add(DateTimeConstants.WEDNESDAY);
         frequency.add(DateTimeConstants.FRIDAY);
-        Route route = new RouteTestFactory().fromConstitucionToCorrientes();
+        Route route = this.routeTestFactory.fromConstitucionToCorrientes();
         this.travelName = StringUtils.getName();
         this.travelAdding.createTravel(userModel, this.travelName, 50, 20, route, rangeHoures, frequency);
 

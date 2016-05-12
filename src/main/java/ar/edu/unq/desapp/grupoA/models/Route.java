@@ -30,4 +30,8 @@ public class Route {
     public Point getStart() {
         return start;
     }
+
+    public int getId() {
+        return id;
+    }
 }

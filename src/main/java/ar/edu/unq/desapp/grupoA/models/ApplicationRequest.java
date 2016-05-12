@@ -25,7 +25,7 @@ public class ApplicationRequest {
     private Travel travel;
     @ManyToOne
     private Point downPoint;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private ApplicationRequestState state;
 
     public ApplicationRequest(UserModel requester, Travel travel, Date dateTime, Point upPoint, Point downpoint) {
@@ -37,6 +37,9 @@ public class ApplicationRequest {
         this.state = new PendingApplication(this);
     }
 
+    public ApplicationRequestState getState() {
+        return this.state;
+    }
 
     public UserModel getRequester() {
         return requester;
