@@ -1,7 +1,6 @@
 package ar.edu.unq.desapp.grupoA.models;
 
 import ar.edu.unq.desapp.grupoA.models.utils.Point;
-import org.joda.time.DateTime;
 
 import javax.persistence.*;
 import java.sql.Date;

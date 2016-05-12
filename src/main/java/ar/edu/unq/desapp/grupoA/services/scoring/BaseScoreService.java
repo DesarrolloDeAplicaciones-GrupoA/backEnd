@@ -24,7 +24,7 @@ public abstract class BaseScoreService<T extends ScoringModel> {
             this.applyGoodScore(scoring, score);
             this.markScoreAsApplied(score);
         } else if (this.badScoresCount(scoring) == 2) {
-            this.applyBadScore(scoring, score);
+            this.applyBadScore(scoring);
             this.markBadScoresAsApplied(scoring);
         }
         this.scoreRepository.save(score);
@@ -36,7 +36,7 @@ public abstract class BaseScoreService<T extends ScoringModel> {
 
     protected abstract void markBadScoresAsApplied(T scoring);
 
-    private void applyBadScore(T scoring, Score score) {
+    private void applyBadScore(T scoring) {
         UserModel user = this.getUserModel(scoring);
         user.removePoints(1000);
     }
