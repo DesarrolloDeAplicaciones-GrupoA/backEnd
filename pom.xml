@@ -358,42 +358,6 @@
             <version>2.2.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.click.doubleclick</groupId>
-            <artifactId>inject</artifactId>
-            <version>1.0</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.click</groupId>
-                    <artifactId>click</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.click.doubleclick</groupId>
-            <artifactId>injectspring</artifactId>
-            <version>1.0</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.click</groupId>
-                    <artifactId>click</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-beans</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-context</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-core</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
         <!-- /Apache Click -->
 
         <!-- urlrewritefilter para url restful -->
