@@ -13,4 +13,7 @@ public class StringUtils {
         return RandomStringUtils.randomAlphabetic(10);
     }
 
+    public static String getRandomString() {
+        return RandomStringUtils.randomAlphanumeric(10);
+    }
 }

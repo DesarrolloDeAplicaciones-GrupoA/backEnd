@@ -37,7 +37,7 @@ public class RankingServiceTest extends AbstractServiceTest {
     public void sumarPuntosALos20MejoresRankeados() {
         this.rankingService.rankearATodos(this.ranking);
         Set<UserModel> usuarios = this.rankingService.getUsuariosEficiente(this.ranking);
-        Stream<Integer> integerStream = usuarios.stream().map((usuario -> usuario.getPoints()));
+        Stream<Integer> integerStream = usuarios.stream().map((UserModel::getPoints));
         integerStream.forEach(point -> Assert.assertEquals(point.intValue(), 5000));
     }
 

@@ -1,6 +1,7 @@
 package ar.edu.unq.desapp.grupoA.services;
 
 import ar.edu.unq.desapp.grupoA.models.UserModel;
+import ar.edu.unq.desapp.grupoA.testUtis.factories.StringUtils;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.UserModelTestFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,12 +18,14 @@ public class SendMessageServiceTest extends AbstractServiceTest{
     private SendMessageService sendMessageService;
     @Autowired
     private UserModelTestFactory userModelTestFactory;
+    private String message;
 
     @Before
     public void setUp() {
         this.sender = this.userModelTestFactory.getUser();
         this.receiver = this.userModelTestFactory.getUser();
-        sendMessageService.sendMessage(sender, receiver, "Este un mensaje de prueba", true);
+        this.message = StringUtils.getRandomString();
+        sendMessageService.sendMessage(sender, receiver, this.message, true);
     }
 
     @Test
@@ -34,7 +37,7 @@ public class SendMessageServiceTest extends AbstractServiceTest{
 
     @Test
     public void testMessageContent() {
-        assertEquals(this.sender.getMessagesSend().iterator().next().getMessageTest(), "Este un mensaje de prueba");
+        assertEquals(this.message, this.sender.getMessagesSend().iterator().next().getMessageTest());
         assertTrue(this.sender.getMessagesSend().iterator().next().isPublic());
     }
 
