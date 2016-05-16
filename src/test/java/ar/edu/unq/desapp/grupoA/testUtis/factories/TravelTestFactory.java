@@ -16,11 +16,8 @@ import java.util.List;
 @Component("travelTestFactory")
 public class TravelTestFactory {
 
-    private Travel travel;
-
     @Autowired
     private RouteTestFactory routeTestFactory;
-
     @Autowired
     private TravelRepository travelRepository;
 

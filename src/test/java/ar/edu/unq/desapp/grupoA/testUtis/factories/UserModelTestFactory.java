@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
 @Component("userModelTestFactory")
 public class UserModelTestFactory {
 
-    private UserModel user;
-
     @Autowired
     private UserModelRepository userModelRepository;
 

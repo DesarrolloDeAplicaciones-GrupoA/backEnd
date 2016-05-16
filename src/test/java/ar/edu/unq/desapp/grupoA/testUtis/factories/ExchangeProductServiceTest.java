@@ -16,11 +16,11 @@ import static org.junit.Assert.assertEquals;
 
 public class ExchangeProductServiceTest extends AbstractServiceTest{
 
-    public UserModel user;
-    public Product product;
+    private UserModel user;
+    private Product product;
+
     @Autowired
     public ExchangeProductService service;
-
     @Autowired
     protected UserModelTestFactory userModelTestFactory;
     @Autowired
@@ -34,7 +34,6 @@ public class ExchangeProductServiceTest extends AbstractServiceTest{
         this.user = this.userModelTestFactory.getUser();
         this.product = new ProductFactoryAndRepositorie().getFuelVoucher100();
         this.productRepository.save(product);
-       // this.service = new ExchangeProductService();
     }
 
     @Test

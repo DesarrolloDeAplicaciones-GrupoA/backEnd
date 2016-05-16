@@ -11,7 +11,6 @@ import ar.edu.unq.desapp.grupoA.testUtis.factories.UserModelTestFactory;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.Interval;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +18,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 public class TravelAddingTest extends AbstractServiceTest{
 
     private UserModel userModel;
+    private String travelName;
+
     @Autowired
     private TravelAdding travelAdding;
     @Autowired
@@ -32,7 +35,6 @@ public class TravelAddingTest extends AbstractServiceTest{
     private UserModelTestFactory userModelTestFactory;
     @Autowired
     private RouteTestFactory routeTestFactory;
-    private String travelName;
 
     @Before
     public void setUp() {
@@ -50,7 +52,7 @@ public class TravelAddingTest extends AbstractServiceTest{
 
     @Test
     public void addingTravelToUserTest() {
-        Assert.assertEquals(this.userModel.getTravels().size(), 1);
+        assertEquals(this.userModel.getTravels().size(), 1);
     }
 
     @Test
@@ -58,14 +60,14 @@ public class TravelAddingTest extends AbstractServiceTest{
         Travel travel = this.userModel
                 .getTravels()
                 .iterator().next();
-        Assert.assertEquals(travel.getFuelCost(), 50);
-        Assert.assertEquals(travel.getTollCost(), 20);
-        Assert.assertEquals(travel.getNameTravel(), this.travelName);
+        assertEquals(travel.getFuelCost(), 50);
+        assertEquals(travel.getTollCost(), 20);
+        assertEquals(travel.getNameTravel(), this.travelName);
     }
 
     @Test
     public void hasOneMoreTravel() {
-        Assert.assertEquals(1, this.travelRepository.count());
+        assertEquals(1, this.travelRepository.count());
     }
 
     private UserModel getUserModel() {

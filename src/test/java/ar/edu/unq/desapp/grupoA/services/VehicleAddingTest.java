@@ -5,14 +5,16 @@ import ar.edu.unq.desapp.grupoA.repositories.UserModelRepository;
 import ar.edu.unq.desapp.grupoA.repositories.VehicleRepository;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.StringUtils;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.UserModelTestFactory;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import static junit.framework.TestCase.assertNotNull;
+import static org.junit.Assert.assertEquals;
+
 public class VehicleAddingTest extends AbstractServiceTest {
 
-
+    private String vehicleName;
     private UserModel user;
     @Autowired
     private VehicleAdding vehicleAdding;
@@ -23,8 +25,6 @@ public class VehicleAddingTest extends AbstractServiceTest {
     @Autowired
     private UserModelTestFactory userModelTestFactory;
 
-    private String vehicleName;
-
     @Before
     public void setUp() {
         this.user = this.getUser();
@@ -34,26 +34,26 @@ public class VehicleAddingTest extends AbstractServiceTest {
 
     @Test
     public void addingVehicleToUserTest() {
-        Assert.assertEquals(this.user.getVehicle().getBrand(), this.vehicleName);
-        Assert.assertEquals(this.user.getVehicle().getCapacity(), 4);
-        Assert.assertEquals(this.user.getVehicle().getScores().size(), 0);
+        assertEquals(this.user.getVehicle().getBrand(), this.vehicleName);
+        assertEquals(this.user.getVehicle().getCapacity(), 4);
+        assertEquals(this.user.getVehicle().getScores().size(), 0);
     }
 
     @Test
     public void vehicleHasADriver() {
-        Assert.assertEquals(this.user.getVehicle().getDriver(), user);
+        assertEquals(this.user.getVehicle().getDriver(), user);
     }
 
     @Test
     public void hasOneMoreVehicle() {
-        Assert.assertEquals(1, this.vehicleRepository.count());
+        assertEquals(1, this.vehicleRepository.count());
     }
 
     @Test
     public void useHasHisVehicle() {
 
         UserModel user = this.userModelRepository.findById(this.user.getId());
-        Assert.assertNotNull(user.getVehicle());
+        assertNotNull(user.getVehicle());
     }
 
     private UserModel getUser() {

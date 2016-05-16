@@ -10,7 +10,6 @@ import ar.edu.unq.desapp.grupoA.repositories.ApplicationRequestRepository;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.PointTestFactory;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.TravelTestFactory;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.UserModelTestFactory;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +23,8 @@ public class ApplicationRequestServiceTest extends AbstractServiceTest {
     public UserModel requester;
     public UserModel owner;
     public Travel travel;
+    public ApplicationRequest request;
+
     @Autowired
     private PointTestFactory pointTestFactory;
     @Autowired
@@ -32,8 +33,6 @@ public class ApplicationRequestServiceTest extends AbstractServiceTest {
     public ApplicationRequestService service;
     @Autowired
     private TravelTestFactory travelTestFactory;
-    public ApplicationRequest request;
-
     @Autowired
     private UserModelTestFactory userModelTestFactory;
 

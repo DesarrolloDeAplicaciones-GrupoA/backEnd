@@ -1,7 +1,6 @@
 package ar.edu.unq.desapp.grupoA.services.scoring;
 
 import ar.edu.unq.desapp.grupoA.models.Score;
-import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.models.Vehicle;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.VehicleTestFactory;
 import org.junit.Test;
@@ -13,7 +12,6 @@ import static org.junit.Assert.assertEquals;
 
 public class VehicleScoreServiceTest extends BaseScoreServiceTest<Vehicle> {
 
-    protected UserModel driver;
     @Autowired
     private VehicleTestFactory vehicleTestFactory;
 

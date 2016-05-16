@@ -8,16 +8,20 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import static org.junit.Assert.assertEquals;
+
 
 public class LoginTest extends AbstractServiceTest {
+
+
+    private UserModel user;
+    private String userFullName;
+    private String userEmail;
 
     @Autowired
     private Login loginService;
     @Autowired
     private UserModelRepository userModelRepository;
-    private UserModel user;
-    private String userFullName;
-    private String userEmail;
 
     @Before
     public void setUp() {
@@ -29,30 +33,30 @@ public class LoginTest extends AbstractServiceTest {
     @Test
     public void loginUserWithoutCar() {
 
-        Assert.assertEquals(user.getFullName(), this.userFullName);
-        Assert.assertEquals(user.getEmail(), this.userEmail);
+        assertEquals(user.getFullName(), this.userFullName);
+        assertEquals(user.getEmail(), this.userEmail);
     }
 
     @Test
     public void initialDriverScoreInZero() {
-        Assert.assertEquals(this.user.getDriverScores().size(), 0);
-        Assert.assertEquals(this.user.getAccompanistScores().size(), 0);
-        Assert.assertEquals(this.user.getPoints(), 0);
+        assertEquals(this.user.getDriverScores().size(), 0);
+        assertEquals(this.user.getAccompanistScores().size(), 0);
+        assertEquals(this.user.getPoints(), 0);
     }
 
     @Test
     public void initialDriverWithOutTravel() {
-        Assert.assertEquals(this.user.getTravels().size(), 0);
+        assertEquals(this.user.getTravels().size(), 0);
     }
 
     @Test
     public void initialDriverWithOutExchanges() {
-        Assert.assertEquals(this.user.getExchanges().size(), 0);
+        assertEquals(this.user.getExchanges().size(), 0);
     }
 
     @Test
     public void hasOneMoreUserInRepository() {
-        Assert.assertEquals(1, this.userModelRepository.count());
+        assertEquals(1, this.userModelRepository.count());
     }
 
     @Test

@@ -5,7 +5,6 @@ import ar.edu.unq.desapp.grupoA.models.Ranking;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.repositories.RankingRepository;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.UserModelTestFactory;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,11 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
+import static org.junit.Assert.assertEquals;
+
 public class RankingServiceTest extends AbstractServiceTest {
+
+    private Ranking ranking;
 
     @Autowired
     private RankingService rankingService;
@@ -22,7 +25,6 @@ public class RankingServiceTest extends AbstractServiceTest {
     private UserModelTestFactory userModelTestFactory;
     @Autowired
     private RankingRepository rankingRepository;
-    private Ranking ranking;
 
     @Before
     public void setUp() {
@@ -38,12 +40,12 @@ public class RankingServiceTest extends AbstractServiceTest {
         this.rankingService.rankearATodos(this.ranking);
         Set<UserModel> usuarios = this.rankingService.getUsuariosEficiente(this.ranking);
         Stream<Integer> integerStream = usuarios.stream().map((UserModel::getPoints));
-        integerStream.forEach(point -> Assert.assertEquals(point.intValue(), 5000));
+        integerStream.forEach(point -> assertEquals(point.intValue(), 5000));
     }
 
     @Test
     public void hasOneMoreRanking() {
-        Assert.assertEquals(1, this.rankingRepository.count());
+        assertEquals(1, this.rankingRepository.count());
 
     }
 

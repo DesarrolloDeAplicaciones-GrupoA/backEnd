@@ -14,6 +14,7 @@ import static org.junit.Assert.assertTrue;
 public class SendMessageServiceTest extends AbstractServiceTest{
     private UserModel sender;
     private UserModel receiver;
+    private String message;
 
     @Autowired
     private SendMessageService sendMessageService;
@@ -21,7 +22,6 @@ public class SendMessageServiceTest extends AbstractServiceTest{
     private UserModelTestFactory userModelTestFactory;
     @Autowired
     private MessageRepository messageRepository;
-    private String message;
 
     @Before
     public void setUp() {
