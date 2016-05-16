@@ -1,8 +1,8 @@
 package ar.edu.unq.desapp.grupoA.services;
 
+import ar.edu.unq.desapp.grupoA.factories.StringUtils;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.repositories.UserModelRepository;
-import ar.edu.unq.desapp.grupoA.factories.StringUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,6 +25,8 @@ public class LoginTest extends AbstractServiceTest {
 
     @Before
     public void setUp() {
+        //TODO: Remove this code when @PostConstruct was removed from Login service.
+        this.userModelRepository.deleteAll();
         this.userFullName = StringUtils.getName();
         this.userEmail = StringUtils.getEmail();
         this.user = loginService.signUp(this.userFullName, this.userEmail);
@@ -56,6 +58,7 @@ public class LoginTest extends AbstractServiceTest {
 
     @Test
     public void hasOneMoreUserInRepository() {
+
         assertEquals(1, this.userModelRepository.count());
     }
 

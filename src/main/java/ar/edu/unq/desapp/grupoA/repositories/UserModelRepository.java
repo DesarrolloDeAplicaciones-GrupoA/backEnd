@@ -15,4 +15,8 @@ public class UserModelRepository extends HibernateGenericDAO<UserModel> implemen
     protected Class<UserModel> getDomainClass() {
         return UserModel.class;
     }
+
+    public void deleteAll() {
+        this.getHibernateTemplate().deleteAll(this.getSession().createCriteria(getDomainClass()).list());
+    }
 }
