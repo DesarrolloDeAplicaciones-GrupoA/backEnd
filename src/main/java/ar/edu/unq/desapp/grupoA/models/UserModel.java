@@ -34,23 +34,26 @@ public class UserModel implements ScoringModel {
     @JoinColumn(name = "vehicle_fk")
     private Vehicle vehicle;
 
-    @OneToMany(mappedBy = "userModel")
+    @OneToMany(mappedBy = "userModel", fetch = FetchType.EAGER)
     private Set<Travel> travels;
 
-    @OneToMany(mappedBy = "driver")
+    @OneToMany(mappedBy = "driver", fetch = FetchType.EAGER)
     private Set<Score> driverScores;
 
-    @OneToMany(mappedBy = "accompanist")
+    @OneToMany(mappedBy = "accompanist", fetch = FetchType.EAGER)
     private Set<Score> accompanistScores;
 
-    @OneToMany(mappedBy = "userModel")
+    @OneToMany(mappedBy = "userModel", fetch = FetchType.EAGER)
     private Set<Exchange> exchanges;
     @Transient
     private List<ApplicationRequest> requestedApplications;
-    @OneToMany(mappedBy = "sender")
+    @OneToMany(mappedBy = "sender", fetch = FetchType.EAGER)
     private Set<Message> messagesSend;
-    @OneToMany(mappedBy = "receiver")
+    @OneToMany(mappedBy = "receiver", fetch = FetchType.EAGER)
     private Set<Message> messagesReceived;
+
+
+    public UserModel(){}
 
     public UserModel(String fullName, String email) {
         super();

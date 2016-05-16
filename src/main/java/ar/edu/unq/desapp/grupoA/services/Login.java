@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service("loginService")
 public class Login {
 
-    @Autowired
     private UserModelRepository userModelRepository;
 
     @Transactional
@@ -19,6 +20,12 @@ public class Login {
         return user;
     }
 
+    @Transactional
+    public List<UserModel> findAll() {
+        return this.getRepository().findAll();
+    }
+
+    @Autowired
     public void setRepository(UserModelRepository repository) {
         this.userModelRepository = repository;
     }
