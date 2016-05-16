@@ -1,6 +1,7 @@
 package ar.edu.unq.desapp.grupoA.services;
 
 import ar.edu.unq.desapp.grupoA.models.UserModel;
+import ar.edu.unq.desapp.grupoA.repositories.MessageRepository;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.StringUtils;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.UserModelTestFactory;
 import org.junit.Before;
@@ -18,6 +19,8 @@ public class SendMessageServiceTest extends AbstractServiceTest{
     private SendMessageService sendMessageService;
     @Autowired
     private UserModelTestFactory userModelTestFactory;
+    @Autowired
+    private MessageRepository messageRepository;
     private String message;
 
     @Before
@@ -39,6 +42,11 @@ public class SendMessageServiceTest extends AbstractServiceTest{
     public void testMessageContent() {
         assertEquals(this.message, this.sender.getMessagesSend().iterator().next().getMessageTest());
         assertTrue(this.sender.getMessagesSend().iterator().next().isPublic());
+    }
+
+    @Test
+    public void hasOneMoreMessage() {
+        assertEquals(1, this.messageRepository.count());
     }
 
     public SendMessageService getSendMessageService() {
