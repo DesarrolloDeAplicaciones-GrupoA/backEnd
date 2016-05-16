@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupoA.testUtis.factories;
+package ar.edu.unq.desapp.grupoA.factories;
 
 
 import org.apache.commons.lang3.RandomStringUtils;
