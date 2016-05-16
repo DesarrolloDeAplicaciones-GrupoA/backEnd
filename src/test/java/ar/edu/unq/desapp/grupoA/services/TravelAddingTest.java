@@ -6,7 +6,7 @@ import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.repositories.TravelRepository;
 import ar.edu.unq.desapp.grupoA.repositories.UserModelRepository;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.RouteTestFactory;
-import ar.edu.unq.desapp.grupoA.testUtis.factories.StringUtils;
+import ar.edu.unq.desapp.grupoA.factories.StringUtils;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.UserModelTestFactory;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeConstants;
