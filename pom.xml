@@ -370,6 +370,40 @@
 
         <!-- /urlrewritefilter -->
 
+
+        <!-- ASPECT J (ASPECTOS) -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjtools</artifactId>
+            <version>1.6.6</version>
+        </dependency>
+        <!-- ASPECT J (ASPECTOS) -->
+
+        <!-- /Java AOP Aspects FOR USE ANNOTATIONS-->
+
+        <dependency>
+            <groupId>com.jcabi</groupId>
+            <artifactId>jcabi-aspects</artifactId>
+            <version>0.22.4</version>
+        </dependency>
+
+        <!-- /Java AOP Aspects FOR USE ANNOTATIONS-->
+
+        <!-- Dependencia de hibernate sino rompe con las anotations de aspects-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator-annotation-processor</artifactId>
+            <version>4.1.0.Final</version>
+        </dependency>
+        <!-- Dependencia de hibernate sino rompe con las anotations de aspects-->
+
+
+
     </dependencies>
 
     <reporting>
