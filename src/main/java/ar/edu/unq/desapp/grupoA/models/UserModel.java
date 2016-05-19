@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupoA.models;
 
+import ar.edu.unq.desapp.grupoA.models.oauth.GoogleOauthCredential;
 import ar.edu.unq.desapp.grupoA.services.scoring.ScoringModel;
 
 import javax.persistence.*;
@@ -45,12 +46,14 @@ public class UserModel implements ScoringModel {
 
     @OneToMany(mappedBy = "userModel", fetch = FetchType.EAGER)
     private Set<Exchange> exchanges;
-    @Transient
+    @OneToMany(mappedBy = "requester", fetch = FetchType.EAGER)
     private List<ApplicationRequest> requestedApplications;
     @OneToMany(mappedBy = "sender", fetch = FetchType.EAGER)
     private Set<Message> messagesSend;
     @OneToMany(mappedBy = "receiver", fetch = FetchType.EAGER)
     private Set<Message> messagesReceived;
+    @OneToOne(optional = true, fetch = FetchType.EAGER)
+    private GoogleOauthCredential googleOauthCredential;
 
 
     public UserModel(){}
@@ -174,5 +177,17 @@ public class UserModel implements ScoringModel {
 
     public void addExchange(Exchange exchange) {
         this.exchanges.add(exchange);
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public GoogleOauthCredential getGoogleOauthCredential() {
+        return googleOauthCredential;
+    }
+
+    public void setGoogleOauthCredential(GoogleOauthCredential googleOauthCredential) {
+        this.googleOauthCredential = googleOauthCredential;
     }
 }
