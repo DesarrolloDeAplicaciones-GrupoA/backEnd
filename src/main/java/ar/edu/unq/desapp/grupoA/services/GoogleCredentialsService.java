@@ -1,6 +1,5 @@
 package ar.edu.unq.desapp.grupoA.services;
 
-import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.models.oauth.GoogleOauthCredential;
 import ar.edu.unq.desapp.grupoA.repositories.GoogleOauthCredentialRepository;
 import ar.edu.unq.desapp.grupoA.utils.google.AuthClient;
@@ -14,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.xml.ws.ServiceMode;
 import java.io.IOException;
 
 @Service("googleCredentialsService")
@@ -29,7 +27,7 @@ public class GoogleCredentialsService {
     }
 
     @Transactional
-    public Userinfoplus getUserinfo(Credential credential){
+    public Userinfoplus getUserinfo(Credential credential) {
         try {
             return this.getClientFactory().getDefaultClient(this.getGoogleOauthCredentialRepository()).getUserInfo(credential);
         } catch (NoUserIdException e) {

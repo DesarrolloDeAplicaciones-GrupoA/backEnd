@@ -2,7 +2,10 @@ package ar.edu.unq.desapp.grupoA.controllers;
 
 import ar.edu.unq.desapp.grupoA.controllers.requests.UserAuthorization;
 import ar.edu.unq.desapp.grupoA.controllers.responses.UserTokenResponse;
+import ar.edu.unq.desapp.grupoA.models.UserModel;
+import ar.edu.unq.desapp.grupoA.models.UserToken;
 import ar.edu.unq.desapp.grupoA.models.oauth.GoogleOauthCredential;
+import ar.edu.unq.desapp.grupoA.repositories.UserTokenRepository;
 import ar.edu.unq.desapp.grupoA.services.GoogleCredentialsService;
 import ar.edu.unq.desapp.grupoA.services.Login;
 import com.google.api.client.auth.oauth2.Credential;
@@ -21,6 +24,7 @@ public class OauthGoogleController {
 
     private Login login;
     private GoogleCredentialsService googleCredentialsService;
+    private UserTokenRepository userTokenRepository;
 
     @POST
     @Path("google")
@@ -30,8 +34,9 @@ public class OauthGoogleController {
         Credential credential = this.getGoogleCredentialsService().create(userAuthorization.getAuthorizationCode());
         Userinfoplus userinfoplus = this.getGoogleCredentialsService().getUserinfo(credential);
         GoogleOauthCredential googleOauthCredential = this.getGoogleCredentialsService().get(userinfoplus.getId());
-        this.getLogin().signUpWithCredentials(userinfoplus, googleOauthCredential);
-        return new UserTokenResponse(googleOauthCredential.getGoogleAccessToken());
+        UserModel user = this.getLogin().signUpWithCredentials(userinfoplus, googleOauthCredential);
+        UserToken token = this.getUserTokenRepository().findByUserId(user.getId());
+        return new UserTokenResponse(token.getToken());
     }
 
     public Login getLogin() {
@@ -50,5 +55,14 @@ public class OauthGoogleController {
     @Autowired
     public void setGoogleCredentialsService(GoogleCredentialsService googleCredentialsService) {
         this.googleCredentialsService = googleCredentialsService;
+    }
+
+    public UserTokenRepository getUserTokenRepository() {
+        return userTokenRepository;
+    }
+
+    @Autowired
+    public void setUserTokenRepository(UserTokenRepository userTokenRepository) {
+        this.userTokenRepository = userTokenRepository;
     }
 }
