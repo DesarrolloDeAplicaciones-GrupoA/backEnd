@@ -19,6 +19,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
     <bean id='jacksonProvider' class='org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider'/>
 
 
+    <bean id="cors-filter" class="org.apache.cxf.rs.security.cors.CrossOriginResourceSharingFilter"/>
     <!-- =========================== -->
     <!-- =========Servicios  ========= -->
     <!-- =========================== -->
@@ -26,10 +27,13 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
     <jaxrs:server id="customerService" address="/">
         <jaxrs:serviceBeans>
             <ref bean="loginController" />
+            <ref bean="oauthGoogleController" />
         </jaxrs:serviceBeans>
+
         <jaxrs:providers>
             <ref bean="jaxbProvider"/>
             <ref bean="jacksonProvider"/>
+            <ref bean="cors-filter" />
         </jaxrs:providers>
     </jaxrs:server>
 
@@ -38,5 +42,5 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
             <cxf:logging/>
         </cxf:features>
     </cxf:bus>
-    
+
 </beans>
