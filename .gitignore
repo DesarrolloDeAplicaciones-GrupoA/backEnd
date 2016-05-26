@@ -93,3 +93,5 @@ target/
 *.log
 
 logapp.log*
+
+*.LOG.HTML
