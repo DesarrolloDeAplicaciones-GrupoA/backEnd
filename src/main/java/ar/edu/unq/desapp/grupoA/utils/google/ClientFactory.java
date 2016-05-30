@@ -33,6 +33,9 @@ public class ClientFactory {
     @Value("#{ systemProperties['google.clientSecret'] }")
     private String envClientSecret;
 
+    @Value("#{ systemProperties['google.redirectURI'] }")
+    private String envRedirectURI;
+
     public AuthClient getDefaultClient(GoogleOauthCredentialRepository googleOauthCredentialRepository) {
         try {
             return new AuthToUserClient(this.getCredentials(), this.getScopes(), this.getRedirectURI(), googleOauthCredentialRepository);
@@ -49,7 +52,7 @@ public class ClientFactory {
     }
 
     private String getRedirectURI() {
-        return "http://localhost:9000";
+        return this.envRedirectURI;
     }
 
     private GoogleClientSecrets getCredentials() throws IOException {
