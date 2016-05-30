@@ -20,4 +20,9 @@ public class VehicleAdding {
         repository.save(vehicle);
         return vehicle;
     }
+
+    @Transactional
+    public Vehicle get(Integer id) {
+        return this.repository.findById(id);
+    }
 }

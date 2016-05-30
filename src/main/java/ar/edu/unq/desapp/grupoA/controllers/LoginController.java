@@ -40,7 +40,6 @@ public class LoginController {
     public void loadData() {
         this.getUserFactory().getUser();
         this.getUserFactory().getUser();
-
     }
 
     public UserModelFactory getUserFactory() {

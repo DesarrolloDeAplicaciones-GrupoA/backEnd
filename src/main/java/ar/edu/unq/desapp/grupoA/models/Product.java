@@ -1,10 +1,14 @@
 package ar.edu.unq.desapp.grupoA.models;
 
+import ar.edu.unq.desapp.grupoA.exceptions.StockNullException;
+
 import javax.persistence.*;
 import javax.swing.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "Product")
+@XmlRootElement(name = "product")
 public class Product {
 
     @Id()
@@ -35,5 +39,21 @@ public class Product {
 
     public int getPointCost() {
         return pointCost;
+    }
+
+    public void reduceStock() {
+        if (this.stock != 0) {
+            this.stock--;
+        } else {
+            throw new StockNullException("No more stock for this product.");
+        }
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }

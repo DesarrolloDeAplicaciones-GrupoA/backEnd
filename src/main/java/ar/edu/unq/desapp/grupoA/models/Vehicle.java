@@ -29,6 +29,10 @@ public class Vehicle implements ScoringModel {
     @OneToMany(mappedBy = "vehicle")
     private Set<Score> scores;
 
+    public Vehicle() {
+
+    }
+
     public Vehicle(String brand, int capacity, UserModel driver) {
         super();
         this.brand = brand;
