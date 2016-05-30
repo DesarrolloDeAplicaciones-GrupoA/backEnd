@@ -94,4 +94,4 @@ target/
 
 logapp.log*
 
-*.LOG.HTML
+*.LOG.HTML*
