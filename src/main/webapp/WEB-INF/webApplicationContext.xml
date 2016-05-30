@@ -32,6 +32,7 @@
     <jaxrs:server id="customerService" address="/">
         <jaxrs:serviceBeans>
             <ref bean="loginController" />
+            <ref bean="vehicleController" />
             <ref bean="oauthGoogleController" />
         </jaxrs:serviceBeans>
 
