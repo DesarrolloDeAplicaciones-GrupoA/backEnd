@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupoA.repositories;
 
+import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.models.UserToken;
 import ar.edu.unq.desapp.grupoA.repositories.utils.GenericRepository;
 import ar.edu.unq.desapp.grupoA.repositories.utils.HibernateGenericDAO;
@@ -19,5 +20,12 @@ public class UserTokenRepository extends HibernateGenericDAO<UserToken> implemen
             Criteria cr = this.getSession().createCriteria(this.getDomainClass());
             cr.add(Restrictions.eq("userModel.id", id));
             return (UserToken) cr.uniqueResult();
+    }
+
+    public UserModel findByUserToken(String token) {
+        Criteria cr = this.getSession().createCriteria(this.getDomainClass());
+        cr.add(Restrictions.eq("token", token));
+        UserToken userToken = (UserToken) cr.uniqueResult();
+        return userToken.getUserModel();
     }
 }

@@ -14,9 +14,15 @@ public class VehicleAdding {
     private VehicleRepository repository;
 
     @Transactional
-    public void createVehicle(UserModel user, String brand, int capacity) {
+    public Vehicle createVehicle(UserModel user, String brand, int capacity) {
         Vehicle vehicle = new Vehicle(brand, capacity, user);
         user.setVehicle(vehicle);
         repository.save(vehicle);
+        return vehicle;
+    }
+
+    @Transactional
+    public Vehicle get(Integer id) {
+        return this.repository.findById(id);
     }
 }
