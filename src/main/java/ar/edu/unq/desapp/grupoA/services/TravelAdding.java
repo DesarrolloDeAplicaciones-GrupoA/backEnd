@@ -19,11 +19,12 @@ public class TravelAdding {
     private TravelRepository travelRepository;
 
     @Transactional
-    public void createTravel(UserModel user, String nameTravel, int fuel, int toll, Route route, Interval rangeHours, List<Integer> frequency) {
+    public Travel createTravel(UserModel user, String nameTravel, int fuel, int toll, Route route, Interval rangeHours, List<Integer> frequency) {
         Travel travel = new Travel(nameTravel, fuel, toll, route, rangeHours, frequency);
         travel.setUserModel(user);
         user.addTravel(travel);
         this.travelRepository.save(travel);
+        return travel;
     }
 
     public void setRepository(TravelRepository repository) {
