@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+//@Loggable
 @Service("loginService")
 public class Login {
 
@@ -39,6 +39,7 @@ public class Login {
         return this.getRepository().findAll();
     }
 
+    //@Loggable
     @Autowired
     public void setRepository(UserModelRepository repository) {
         this.userModelRepository = repository;
