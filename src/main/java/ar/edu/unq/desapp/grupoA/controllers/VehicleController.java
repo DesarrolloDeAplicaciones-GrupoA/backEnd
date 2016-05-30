@@ -21,10 +21,19 @@ public class VehicleController {
     @Path("create")
     @Consumes("application/json")
     @Produces("application/json")
-    public VehicleCreationResponse create(@QueryParam("token") String  token, VehicleCreationBody vehicleCreationBody) {
+    public VehicleCreationResponse create(@QueryParam("token") String token, VehicleCreationBody vehicleCreationBody) {
         UserModel user = this.getUserTokenRepository().findByUserToken(token);
         Vehicle vehicle = this.getVehicleAdding().createVehicle(user, vehicleCreationBody.getBrand(), vehicleCreationBody.getCapacity());
         return VehicleCreationResponse.build(vehicle);
+    }
+
+
+    @GET
+    @Path("{id}")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public VehicleCreationResponse create(@QueryParam("token") String token, @PathParam("id") Integer id) {
+        return VehicleCreationResponse.build(this.getVehicleAdding().get(id));
     }
 
 
