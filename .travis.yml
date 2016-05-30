@@ -4,12 +4,17 @@ jdk:
   - oraclejdk8
 install:
   - mvn install -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8
-script: 
+script:
   - mvn test jacoco:report -Dmaven.compiler.target=1.8 -Dmaven.compiler.source=1.8
 after_script:
   - cp target/site/jacoco/jacoco.xml .
   - git clone https://github.com/codacy/codacy-coverage-reporter.git
   - cd codacy-coverage-reporter/
-  - sbt assembly 
+  - sbt assembly
   - cd ..
   - java -cp codacy-coverage-reporter/target/codacy-coverage-reporter-assembly-1.0.5.jar com.codacy.CodacyCoverageReporter -l Java -r jacoco.xml
+deploy:
+  provider: heroku
+  api_key:
+    secure: mo0H2VBqLf+JGwaB1wdyrZujP6tBuQhEJffBj2aG/plbsFxMdpeVTkDP28lzcMoVfhNBMWiM/3ttZs365Wxu238BagR/sfvbq9h51sLM24jwewFYKD41FHVXUwmfSrzUE6gWBDMauVeC7ENm4nyeTW8mx9Gu6NOWkz4y9DnQXVDL1x16bnB6ZlTDKDmdZf6sEOq0MpAcU3lvbWHw85gyNP/nQkPkv8Fh3/rgGmcxzt9xOqiBsj/DIZWh9Skx3ine/0eYKUtZkZs78SqjwIS4zD9lyWvKKaEECv1ywRx2zgH5p05FOyy9062PBBRRQGXQl3FlIOf6tXvPUC7YVNgc/GnkDxZdlueq72v2Z54m+2XMzMI4o//dWTxMWhffXhHAnd3ejYpy9ReqV3LdeKUKAL/RntCU1vS2ggIpnHJvQbGTLMaX6iavCx0DCran+Oco6vAD58nijo7A7jlY+o12PGHWqiw8m6inURrvv9UcRIElil4A0pMJ23RmB0HpjBDhn0u41aB5G3e1mpiHwmNF9oFJU9WjucgqrIO7pWhbQ10ITM30L/xYvKldHaXqsP2du6as3POiDnaUTajqzva29UNsZsXwbkW3yBoltQTfgGQxEUT8nmVxSQRRE2DDi9bNKRWY+LKvREPm9b3a+duJ5L582Wu9j7g5d3pWYTu/6PM=
+  app: subi-que-te-llevo-api
