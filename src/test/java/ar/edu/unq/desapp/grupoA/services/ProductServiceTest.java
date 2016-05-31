@@ -23,7 +23,7 @@ public class ProductServiceTest extends AbstractServiceTest {
 
     @Before
     public void setUp() {
-        this.productFactory.createBasicProducts();
+        // this.productFactory.createBasicProducts();
         this.product = this.productService.createProduct("Prueba", 10, 5000);
     }
 
@@ -44,7 +44,7 @@ public class ProductServiceTest extends AbstractServiceTest {
     @Test
     public void FindProductByName() {
         Product productFinded = this.productService.getProduct("Prueba");
-        assertEquals(product,productFinded);
+        assertEquals(product, productFinded);
     }
 
     @Test

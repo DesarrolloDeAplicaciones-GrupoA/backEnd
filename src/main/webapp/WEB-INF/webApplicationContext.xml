@@ -33,6 +33,7 @@
         <jaxrs:serviceBeans>
             <ref bean="loginController" />
             <ref bean="travelController" />
+            <ref bean="productController" />
             <ref bean="vehicleController" />
             <ref bean="oauthGoogleController" />
         </jaxrs:serviceBeans>

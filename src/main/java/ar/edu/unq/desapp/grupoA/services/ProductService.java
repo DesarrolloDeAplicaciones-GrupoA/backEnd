@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service("productService")
 public class ProductService {
     @Autowired
@@ -20,6 +22,11 @@ public class ProductService {
         Product product = new Product(name, stock, pointCost);
         productRepository.save(product);
         return product;
+    }
+
+    @Transactional
+    public List<Product> findAll() {
+        return this.getProductRepository().findAll();
     }
 
     @Transactional
@@ -39,7 +46,9 @@ public class ProductService {
 
     public Product getProduct(String name) {
         return this.productFactory.getProductByName(name);
-
     }
 
+    public ProductRepository getProductRepository() {
+        return productRepository;
+    }
 }

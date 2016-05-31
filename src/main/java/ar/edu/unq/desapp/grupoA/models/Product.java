@@ -31,6 +31,7 @@ public class Product {
         this.stock = stock;
         this.pointCost = pointCost;
     }
+    public Product(){}
 
     public String getName() {
         return name;

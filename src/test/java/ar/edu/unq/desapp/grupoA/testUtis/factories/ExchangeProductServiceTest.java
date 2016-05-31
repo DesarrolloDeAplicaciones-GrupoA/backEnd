@@ -31,7 +31,7 @@ public class ExchangeProductServiceTest extends AbstractServiceTest {
 
     @Before
     public void setUp() {
-        this.productFactory.createBasicProducts();
+        // this.productFactory.createBasicProducts();
         this.user = this.userModelTestFactory.getUser();
         this.product = this.productFactory.getFuelVoucher100();
     }
@@ -64,7 +64,7 @@ public class ExchangeProductServiceTest extends AbstractServiceTest {
 
         this.service.exchangeProduct(user, this.product);
         assertEquals(1, this.exchangeProductRepository.count());
-        int cantidad = this.productFactory.getFuelVoucher100().getStock() -1 ;
+        int cantidad = this.productFactory.getFuelVoucher100().getStock() - 1;
         assertEquals(49, this.productFactory.getFuelVoucher100().getStock());
 
     }

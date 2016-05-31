@@ -22,7 +22,7 @@ public class ProductFactoryTest extends AbstractServiceTest {
 
     @Before
     public void setUp() {
-        this.productFactory.createBasicProducts();
+        // this.productFactory.createBasicProducts();
         this.product = this.productFactory.getFuelVoucher100();
     }
 
