@@ -34,4 +34,9 @@ public class TravelAdding {
     public TravelRepository getRepository() {
         return travelRepository;
     }
+
+    @Transactional
+    public Travel get(Integer id) {
+        return this.travelRepository.findById(id);
+    }
 }

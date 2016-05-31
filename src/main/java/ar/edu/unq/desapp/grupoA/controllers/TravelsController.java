@@ -32,12 +32,21 @@ public class TravelsController {
     }
 
 
-    public TravelAdding getVehicleAdding() {
+    @GET
+    @Path("{id}")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public TravelCreationResponse create(@QueryParam("token") String token, @PathParam("id") Integer id) {
+        return TravelCreationResponse.build(this.getTravelAdding().get(id));
+    }
+
+
+    public TravelAdding getTravelAdding() {
         return travelAdding;
     }
 
     @Autowired
-    public void setVehicleAdding(TravelAdding travelAdding) {
+    public void setTravelAdding(TravelAdding travelAdding) {
         this.travelAdding = travelAdding;
     }
 
