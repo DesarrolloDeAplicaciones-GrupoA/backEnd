@@ -8,7 +8,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "Product")
-@XmlRootElement(name = "product")
 public class Product {
 
     @Id()
