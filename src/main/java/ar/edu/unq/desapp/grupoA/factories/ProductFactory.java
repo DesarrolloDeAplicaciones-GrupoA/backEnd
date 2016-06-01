@@ -37,4 +37,6 @@ public class ProductFactory {
     }
 
     public Product getProductByName(String name){ return  this.productRepository.findByProductName(name);}
+
+    public Product getProductByID(Integer id){return this.productRepository.findById(id);}
 }

@@ -1,17 +1,17 @@
 package ar.edu.unq.desapp.grupoA.controllers.responses;
 
 
+import ar.edu.unq.desapp.grupoA.controllers.TravelCreationResponse;
 import ar.edu.unq.desapp.grupoA.factories.ProductFactory;
 import ar.edu.unq.desapp.grupoA.models.Product;
+import ar.edu.unq.desapp.grupoA.models.Travel;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.PostConstruct;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import java.util.List;
 
 @Path("products")
@@ -28,6 +28,27 @@ public class ProductController {
         return this.getProductService().findAll();
     }
 
+/*    @POST
+    @Path("create")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public ProductCreationResponse create(@QueryParam("token") String token, ProductCreationBody productBody) {
+        UserModel user = this.getUserTokenRepository().findByUserToken(token);
+        Product product = this.productService.createProduct(productBody.getName(),productBody.getStock(),productBody.getPointCost());
+        return ProductCreationResponse.build(product);
+    }
+    */
+
+    @GET
+    @Path("{id}")
+    //@Consumes("application/json")
+    @Produces("application/json")
+    public Product findProductsByID( @PathParam("id") Integer id) {
+        Product productFound = this.getProductFactory().getProductByID(id);
+        return productFound;
+    }
+
+
     @PostConstruct
     public void loadData() {
         this.getProductFactory().createBasicProducts();
@@ -37,6 +58,7 @@ public class ProductController {
     public void setProductService(ProductService productService) {
         this.productService = productService;
     }
+
     @Autowired
     public void setProductFactory(ProductFactory productFactory) {
         this.productFactory = productFactory;
@@ -49,7 +71,6 @@ public class ProductController {
     public ProductService getProductService() {
         return productService;
     }
-
 
 
 }
