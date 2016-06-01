@@ -9,6 +9,7 @@ import ar.edu.unq.desapp.grupoA.services.VehicleAdding;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import javax.annotation.PostConstruct;
 import javax.ws.rs.*;
 
 @Path("vehicles")
@@ -36,6 +37,10 @@ public class VehicleController {
         return VehicleCreationResponse.build(this.getVehicleAdding().get(id));
     }
 
+    @PostConstruct
+    public void loadData() {
+        this.getVehicleAdding().createExampleVehicle();
+    }
 
     public VehicleAdding getVehicleAdding() {
         return vehicleAdding;

@@ -25,4 +25,12 @@ public class VehicleAdding {
     public Vehicle get(Integer id) {
         return this.repository.findById(id);
     }
+
+    @Transactional
+    public void createExampleVehicle() {
+        Vehicle vehicleOne = new Vehicle("Ford",5,null);
+        Vehicle vehicleTwo = new Vehicle("Fiat",3,null);
+        repository.save(vehicleOne);
+        repository.save(vehicleTwo);
+    }
 }

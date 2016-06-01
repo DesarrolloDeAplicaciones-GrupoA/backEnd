@@ -18,6 +18,7 @@ public class VehicleAddingTest extends AbstractServiceTest {
     private UserModel user;
     @Autowired
     private VehicleAdding vehicleAdding;
+    private int size;
     @Autowired
     private UserModelRepository userModelRepository;
     @Autowired
@@ -29,6 +30,7 @@ public class VehicleAddingTest extends AbstractServiceTest {
     public void setUp() {
         this.user = this.getUser();
         this.vehicleName = StringUtils.getName();
+        this.size=this.vehicleRepository.count();
         this.vehicleAdding.createVehicle(this.user, this.vehicleName, 4);
     }
 
@@ -46,7 +48,7 @@ public class VehicleAddingTest extends AbstractServiceTest {
 
     @Test
     public void hasOneMoreVehicle() {
-        assertEquals(1, this.vehicleRepository.count());
+        assertEquals(this.size+1, this.vehicleRepository.count());
     }
 
     @Test
