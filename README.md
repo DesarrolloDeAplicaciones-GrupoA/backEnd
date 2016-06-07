@@ -64,4 +64,17 @@ Ver [Proyecto frontend](https://github.com/DesarrolloDeAplicaciones-GrupoA/front
     * [ ] Agregar recorrido
 
 ### Sprint 3:
-__TBD__
+### Sprint 2:
+* Core
+    * [ ] Formatear las fechas, $ (moneda) y # (numero) segun locale
+    * [ ] Tablas paginadas
+    * [ ] Responsive web design
+    * [x] Crear un test de arquitectura
+    * [ ] Error handler desde servicios. Loguar en Error.log las excepciones no manejadas de los servicios
+          Utilizar log4j para loguearlo a un archivo separado.
+    * [x] Autenticar la aplicacion con Googl
+* Funcionalidad
+    * [ ] Buscar usuarios que realice recorridos similares.
+    * [ ] Aceptar solicitud de viaje
+    * [ ] Calificar a un compañero de viaje
+    * [ ] Enviar un mensaje de manera publica y privada
