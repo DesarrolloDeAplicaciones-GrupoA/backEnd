@@ -49,17 +49,19 @@ Ver [Proyecto frontend](https://github.com/DesarrolloDeAplicaciones-GrupoA/front
 
 ### Sprint 2:
 * Core
-    * [ ] Deploy/Run por consola
-    * [ ] Estado del Build en verde
+    * [x] Deploy/Run por consola
+    * [x] Estado del Build en verde
     * [x] Utiliza HSQLDB
     * [ ] Datos "fake" para probar la aplicación
-    * [ ] Auditoria de servicios. Loguear <timestamp,user,operación/metodo, parámetros> de los servicios publicados con Spring en un archivo AUDIT.LOG
-    * [ ] Posibilidad de elegir lenguaje =I18n- US_ES
+    * [x] Auditoria de servicios. Loguear <timestamp,user,operación/metodo, parámetros> de los servicios publicados con Spring en un archivo AUDIT.LOG
+    * [x] Posibilidad de elegir lenguaje =I18n- US_ES
 * Funcionalidad
     * [x] Home
     * [ ] Solicitar subirse a un recorrido
     * [ ] Gaming: ABM de Productos
-    * [ ] Registrar usuarios en la red (vehiculo, recorrido, dias y horarios del recorrido, etc.)
+    * [x] Registrar usuarios en la red
+    * [x] Agregar vehiculo
+    * [ ] Agregar recorrido
 
 ### Sprint 3:
 __TBD__
