@@ -27,7 +27,7 @@ public class TravelsController {
     @Produces("application/json")
     public TravelCreationResponse create(@QueryParam("token") String  token, TravelCreationBody travelBody) {
         UserModel user = this.getUserTokenRepository().findByUserToken(token);
-        Travel travel = this.travelAdding.createTravel(user, travelBody.getNameTravel(), travelBody.getFuel(), travelBody.getToll(), travelBody.getRoute(), travelBody.getRangeHours(), travelBody.getFrequency());
+        Travel travel = this.travelAdding.createTravel(user, travelBody.getNameTravel(), travelBody.getFuel(), travelBody.getToll(), travelBody.getRouteFromString(),travelBody.getRangeHoursFromString(), travelBody.getFrequencyFromString());
         return TravelCreationResponse.build(travel);
     }
 

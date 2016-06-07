@@ -8,6 +8,8 @@ import javax.persistence.*;
 @Table(name = "Route")
 public class Route {
 
+    public Route(){}
+
     @Id()
     @GeneratedValue()
     @Column(name = "ROUTE_ID")
