@@ -37,7 +37,16 @@ public class ProductController {
         Product product = this.productService.createProduct(productBody.getName(),productBody.getStock(),productBody.getPointCost());
         return ProductCreationResponse.build(product);
     }
-    */
+*/
+     @POST
+    @Path("create")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public Product create(Product productBody) {
+      //  UserModel user = this.getUserTokenRepository().findByUserToken(token);
+        Product product = this.productService.createProduct(productBody.getName(),productBody.getStock(),productBody.getPointCost());
+        return (product);
+    }
 
     @GET
     @Path("{id}")
@@ -47,7 +56,6 @@ public class ProductController {
         Product productFound = this.getProductFactory().getProductByID(id);
         return productFound;
     }
-
 
     @PostConstruct
     public void loadData() {
@@ -71,6 +79,5 @@ public class ProductController {
     public ProductService getProductService() {
         return productService;
     }
-
 
 }
