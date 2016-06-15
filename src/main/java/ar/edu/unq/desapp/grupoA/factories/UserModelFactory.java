@@ -11,4 +11,7 @@ public class UserModelFactory extends BaseUserModelFactory{
     public UserModel getUser() {
         return super.getUser();
     }
+
+    @Transactional
+    public UserModel getUserAdmin(){return super.getUserAdmin();}
 }

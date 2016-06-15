@@ -1,15 +1,10 @@
 package ar.edu.unq.desapp.grupoA.controllers;
 
 import ar.edu.unq.desapp.grupoA.controllers.requests.TravelCreationBody;
-import ar.edu.unq.desapp.grupoA.controllers.requests.VehicleCreationBody;
-import ar.edu.unq.desapp.grupoA.controllers.responses.VehicleCreationResponse;
 import ar.edu.unq.desapp.grupoA.models.Travel;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
-import ar.edu.unq.desapp.grupoA.models.Vehicle;
 import ar.edu.unq.desapp.grupoA.repositories.UserTokenRepository;
 import ar.edu.unq.desapp.grupoA.services.TravelAdding;
-import ar.edu.unq.desapp.grupoA.services.VehicleAdding;
-import org.joda.time.Interval;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -25,9 +20,9 @@ public class TravelsController {
     @Path("create")
     @Consumes("application/json")
     @Produces("application/json")
-    public TravelCreationResponse create(@QueryParam("token") String  token, TravelCreationBody travelBody) {
+    public TravelCreationResponse create(@QueryParam("token") String token, TravelCreationBody travelBody) {
         UserModel user = this.getUserTokenRepository().findByUserToken(token);
-        Travel travel = this.travelAdding.createTravel(user, travelBody.getNameTravel(), travelBody.getFuel(), travelBody.getToll(), travelBody.getRouteFromString(),travelBody.getRangeHoursFromString(), travelBody.getFrequencyFromString());
+        Travel travel = this.travelAdding.createTravel(user, travelBody.getNameTravel(), travelBody.getFuel(), travelBody.getToll(), travelBody.getRouteFromString(), travelBody.getRangeHoursFromString(), travelBody.getFrequencyFromString());
         return TravelCreationResponse.build(travel);
     }
 

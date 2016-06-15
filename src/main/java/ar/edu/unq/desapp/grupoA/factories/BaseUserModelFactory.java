@@ -13,6 +13,12 @@ public class BaseUserModelFactory {
         this.getUserModelRepository().save(user);
         return this.getUserModelRepository().findById(user.getId());
     }
+    public UserModel getUserAdmin() {
+        UserModel user = new UserModel("Administrator","admin@noreply.com");
+        this.getUserModelRepository().save(user);
+        return this.getUserModelRepository().findById(user.getId());
+    }
+
 
     public UserModelRepository getUserModelRepository() {
         return userModelRepository;
