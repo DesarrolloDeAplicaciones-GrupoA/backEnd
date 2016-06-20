@@ -5,15 +5,16 @@ import ar.edu.unq.desapp.grupoA.controllers.requests.MessageCreationBody;
 import ar.edu.unq.desapp.grupoA.controllers.responses.MessageCreationResponse;
 import ar.edu.unq.desapp.grupoA.models.Message;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
+import ar.edu.unq.desapp.grupoA.repositories.UserTokenRepository;
 import ar.edu.unq.desapp.grupoA.services.SendMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import ar.edu.unq.desapp.grupoA.repositories.UserTokenRepository;
 
 import javax.annotation.PostConstruct;
 import javax.ws.rs.*;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+
 
 @Path("message")
 @Controller("messageController")
@@ -25,8 +26,12 @@ public class MessageController {
     @GET
     @Path("allpublic")
     @Produces("application/json")
-    public List<Message> getAll() {
-        return this.getSendMessageService().findPublicMessage();
+    public List<MessageCreationResponse> getAll() {
+        List<MessageCreationResponse> result = new ArrayList<MessageCreationResponse>();
+        for (Message msj: this.getSendMessageService().findPublicMessage()){
+            result.add(MessageCreationResponse.build(msj));
+        }
+        return result;
     }
 
     @POST
@@ -67,6 +72,7 @@ public class MessageController {
     public void setUserTokenRepository(UserTokenRepository userTokenRepository) {
         this.userTokenRepository = userTokenRepository;
     }
+
     public UserTokenRepository getUserTokenRepository() {
         return userTokenRepository;
     }

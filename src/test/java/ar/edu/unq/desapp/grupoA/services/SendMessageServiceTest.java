@@ -40,7 +40,7 @@ public class SendMessageServiceTest extends AbstractServiceTest{
 
     @Test
     public void testMessageContent() {
-        assertEquals(this.message, this.sender.getMessagesSend().iterator().next().getMessageTest());
+        assertEquals(this.message, this.sender.getMessagesSend().iterator().next().getMessageText());
         assertTrue(this.sender.getMessagesSend().iterator().next().isPublic());
     }
 

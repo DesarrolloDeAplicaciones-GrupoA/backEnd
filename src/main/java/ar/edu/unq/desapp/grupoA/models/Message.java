@@ -1,5 +1,10 @@
 package ar.edu.unq.desapp.grupoA.models;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonIgnoreType;
+
 import javax.persistence.*;
 
 @Entity
@@ -29,11 +34,6 @@ public class Message {
         this.isPublic = isPublic;
     }
     public Message(){}
-
-    public String getMessageTest() {
-        return messageText;
-    }
-
 
     public boolean isPublic() {
         return isPublic;

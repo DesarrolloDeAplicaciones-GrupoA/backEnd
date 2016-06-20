@@ -20,7 +20,46 @@ public class MessageCreationResponse {
     }
 
     public static MessageCreationResponse build(Message message) {
-        return new MessageCreationResponse(message.getReceiver(), message.getSender(), message.getMessageTest(), message.isPublic(), message.getId());
+        return new MessageCreationResponse(message.getReceiver(), message.getSender(), message.getMessageText(), message.isPublic(), message.getId());
     }
 
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public String getMessageText() {
+        return messageText;
+    }
+
+    public void setMessageText(String messageText) {
+        this.messageText = messageText;
+    }
+
+    public boolean isPublic() {
+        return isPublic;
+    }
+
+    public void setIsPublic(boolean isPublic) {
+        this.isPublic = isPublic;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }
