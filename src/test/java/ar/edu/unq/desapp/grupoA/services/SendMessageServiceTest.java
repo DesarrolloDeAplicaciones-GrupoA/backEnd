@@ -15,7 +15,7 @@ public class SendMessageServiceTest extends AbstractServiceTest{
     private UserModel sender;
     private UserModel receiver;
     private String message;
-
+    private int cantidadInicial;
     @Autowired
     private SendMessageService sendMessageService;
     @Autowired
@@ -28,6 +28,7 @@ public class SendMessageServiceTest extends AbstractServiceTest{
         this.sender = this.userModelTestFactory.getUser();
         this.receiver = this.userModelTestFactory.getUser();
         this.message = StringUtils.getRandomString();
+        this.cantidadInicial = this.messageRepository.count();
         sendMessageService.sendMessage(sender, receiver, this.message, true);
     }
 
@@ -46,7 +47,7 @@ public class SendMessageServiceTest extends AbstractServiceTest{
 
     @Test
     public void hasOneMoreMessage() {
-        assertEquals(1, this.messageRepository.count());
+        assertEquals(this.cantidadInicial+1,this.messageRepository.count());
     }
 
     public SendMessageService getSendMessageService() {

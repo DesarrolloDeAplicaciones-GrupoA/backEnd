@@ -56,7 +56,7 @@ public class MessageController {
 
     @PostConstruct
     public void loadData() {
-        this.getSendMessageService().createPublicDefaultMessage();
+        this.getSendMessageService().createDefaultsMessage();
     }
 
     @Autowired

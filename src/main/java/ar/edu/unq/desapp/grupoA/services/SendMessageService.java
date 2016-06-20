@@ -32,7 +32,7 @@ public class SendMessageService {
         return messageObjet;
     }
     @Transactional
-    public void createPublicDefaultMessage() {
+    public void createDefaultsMessage() {
         Message defaultMessage = new Message(userFactory.getUserAdmin(),userFactory.getUser(),"Welcome to SubiQueTeLlevo",true);
         this.messageRepository.save(defaultMessage);
     }
