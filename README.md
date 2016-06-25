@@ -58,13 +58,12 @@ Ver [Proyecto frontend](https://github.com/DesarrolloDeAplicaciones-GrupoA/front
 * Funcionalidad
     * [x] Home
     * [ ] Solicitar subirse a un recorrido
-    * [ ] Gaming: ABM de Productos
+    * [x] Gaming: ABM de Productos
     * [x] Registrar usuarios en la red
     * [x] Agregar vehiculo
     * [ ] Agregar recorrido
 
 ### Sprint 3:
-### Sprint 2:
 * Core
     * [ ] Formatear las fechas, $ (moneda) y # (numero) segun locale
     * [ ] Tablas paginadas

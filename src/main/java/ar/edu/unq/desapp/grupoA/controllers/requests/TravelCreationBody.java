@@ -16,8 +16,23 @@ public class TravelCreationBody {
     int fuel;
     int toll;
     String route;
-    String rangeHours;
+    String inicio;
+    String fin;
     String frequency;
+
+    public List<Integer> getFrequencyFromString() {
+        List<Integer> frequency = new ArrayList<>();
+        frequency.add(1);
+        return frequency;
+    }
+
+    public Route getRouteFromString() {
+        return new Route();
+    }
+
+    public Interval getRangeHours() {
+        return new Interval(10000,1000);
+    }
 
     public String getNameTravel() {
         return nameTravel;
@@ -47,37 +62,33 @@ public class TravelCreationBody {
         return route;
     }
 
-    public Route getRouteFromString() {
-        return new Route();
-    }
-
     public void setRoute(String route) {
         this.route = route;
     }
 
-    public String getRangeHours() {
-        return rangeHours;
+    public String getInicio() {
+        return inicio;
     }
 
-    public Interval getRangeHoursFromString() {
-        return new Interval(new DateTime(2000, 1, 1, 9, 0), new DateTime(2000, 1, 1, 14, 0));
+    public void setInicio(String inicio) {
+        this.inicio = inicio;
     }
 
-    public void setRangeHours(String rangeHours) {
-        this.rangeHours = rangeHours;
+    public String getFin() {
+        return fin;
+    }
+
+    public void setFin(String fin) {
+        this.fin = fin;
     }
 
     public String getFrequency() {
         return frequency;
     }
 
-    public List<Integer> getFrequencyFromString() {
-        List<Integer> frequency = new ArrayList<>();
-        frequency.add(1);
-        return frequency;
-    }
-
     public void setFrequency(String frequency) {
         this.frequency = frequency;
     }
+
+
 }

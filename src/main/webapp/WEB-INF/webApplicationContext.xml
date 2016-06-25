@@ -39,6 +39,7 @@
             <ref bean="oauthGoogleController" />
         </jaxrs:serviceBeans>
 
+
         <jaxrs:providers>
             <ref bean="jaxbProvider"/>
             <ref bean="jacksonProvider"/>
@@ -54,6 +55,7 @@
 
     <!-- ========= Aspectos - Log4J Login  ========= -->
     <aop:aspectj-autoproxy />
+
 
     <bean id="loggerAspect" class="ar.edu.unq.desapp.grupoA.aspects.LoggerAspect"/>
 
