@@ -1,7 +1,32 @@
 package ar.edu.unq.desapp.grupoA.controllers.requests;
 
-/**
- * Created by Loiacono.P671 on 24/06/2016.
- */
 public class UserBody {
+
+    private int id;
+    private String fullName;
+    private String email;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

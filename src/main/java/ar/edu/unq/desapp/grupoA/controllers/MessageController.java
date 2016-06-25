@@ -28,7 +28,7 @@ public class MessageController {
     @Produces("application/json")
     public List<MessageCreationResponse> getAll() {
         List<MessageCreationResponse> result = new ArrayList<MessageCreationResponse>();
-        for (Message msj: this.getSendMessageService().findPublicMessage()){
+        for (Message msj : this.getSendMessageService().findPublicMessage()) {
             result.add(MessageCreationResponse.build(msj));
         }
         return result;
