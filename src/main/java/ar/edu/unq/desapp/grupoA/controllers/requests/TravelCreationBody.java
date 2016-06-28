@@ -31,7 +31,7 @@ public class TravelCreationBody {
     }
 
     public Interval getRangeHours() {
-        return new Interval(10000,1000);
+        return new Interval(100,1000000);
     }
 
     public String getNameTravel() {
