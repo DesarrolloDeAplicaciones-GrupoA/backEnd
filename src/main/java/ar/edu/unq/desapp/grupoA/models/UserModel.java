@@ -46,12 +46,16 @@ public class UserModel implements ScoringModel {
 
     @OneToMany(mappedBy = "userModel", fetch = FetchType.EAGER)
     private Set<Exchange> exchanges;
+
     @OneToMany(mappedBy = "requester", fetch = FetchType.EAGER)
     private List<ApplicationRequest> requestedApplications;
+
     @OneToMany(mappedBy = "sender", fetch = FetchType.EAGER)
     private Set<Message> messagesSend;
+
     @OneToMany(mappedBy = "receiver", fetch = FetchType.EAGER)
     private Set<Message> messagesReceived;
+
     @OneToOne(optional = true, fetch = FetchType.EAGER)
     private GoogleOauthCredential googleOauthCredential;
 

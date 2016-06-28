@@ -17,7 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
@@ -44,7 +46,7 @@ public class TravelAddingTest extends AbstractServiceTest{
 
         Time from = new Time(rangeHoures.getStartMillis());
         Time to = new Time(rangeHoures.getEndMillis());
-        List<Integer> frequency = new ArrayList<Integer>();
+        List<Integer> frequency = new ArrayList<>();
         frequency.add(DateTimeConstants.MONDAY);
         frequency.add(DateTimeConstants.WEDNESDAY);
         frequency.add(DateTimeConstants.FRIDAY);

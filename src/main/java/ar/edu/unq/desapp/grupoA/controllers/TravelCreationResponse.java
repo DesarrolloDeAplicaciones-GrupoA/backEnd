@@ -4,6 +4,7 @@ import ar.edu.unq.desapp.grupoA.models.Route;
 import ar.edu.unq.desapp.grupoA.models.Travel;
 
 import java.util.List;
+import java.util.Set;
 
 public class TravelCreationResponse {
     String nameTravel;
@@ -13,21 +14,7 @@ public class TravelCreationResponse {
     long inicio;
     long fin;
 
-    public long getInicio() {
-        return inicio;
-    }
 
-    public void setInicio(long inicio) {
-        this.inicio = inicio;
-    }
-
-    public long getFin() {
-        return fin;
-    }
-
-    public void setFin(long fin) {
-        this.fin = fin;
-    }
 
     List<Integer> frequency;
     private Integer id;
@@ -78,6 +65,22 @@ public class TravelCreationResponse {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public long getInicio() {
+        return inicio;
+    }
+
+    public void setInicio(long inicio) {
+        this.inicio = inicio;
+    }
+
+    public long getFin() {
+        return fin;
+    }
+
+    public void setFin(long fin) {
+        this.fin = fin;
     }
 
     public TravelCreationResponse(String nameTravel, int fuel, int toll, Route route, long inicio, long fin, List<Integer> frequency, Integer id) {
