@@ -35,15 +35,13 @@ public class Travel {
     @OneToMany(mappedBy = "travel")
     private Set<Score> scores;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Route route;
     @Column(name = "range_form")
     private Time rangeFrom; //Rango horario, se tendra que definir como maximo un rango de 2 hs/
     @Column(name = "range_to")
     private Time rangeTo; //Rango horario, se tendra que definir como maximo un rango de 2 hs/
-    @ElementCollection
-    @CollectionTable(name="frequencies", joinColumns=@JoinColumn(name="travel_id"))
-    @Column(name="frequency")
+    @Transient
     private List<Integer> frequency; //Frecuencia realizacion del recorrido Ej: Mon - Wed - Fri, Lista de Dias
     @OneToMany(mappedBy = "travel")
     private Set<ApplicationRequest> applicationRequests;
