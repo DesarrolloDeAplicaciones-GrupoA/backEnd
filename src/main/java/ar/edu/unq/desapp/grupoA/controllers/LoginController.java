@@ -1,8 +1,8 @@
 package ar.edu.unq.desapp.grupoA.controllers;
 
-import ar.edu.unq.desapp.grupoA.factories.UserModelFactory;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.services.Login;
+import ar.edu.unq.desapp.grupoA.utils.google.fakes.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -17,7 +17,7 @@ import java.util.List;
 public class LoginController {
 
     private Login login;
-    private UserModelFactory userFactory;
+    private Faker faker;
 
     @GET
     @Path("all")
@@ -38,18 +38,16 @@ public class LoginController {
 
     @PostConstruct
     public void loadData() {
-        this.getUserFactory().getUser();
-        this.getUserFactory().getUser();
+        this.getFaker().getUser();
     }
 
-    public UserModelFactory getUserFactory() {
-        return userFactory;
+
+    public Faker getFaker() {
+        return faker;
     }
 
     @Autowired
-    public void setUserFactory(UserModelFactory userFactory) {
-        this.userFactory = userFactory;
+    public void setFaker(Faker faker) {
+        this.faker = faker;
     }
-
-
 }
