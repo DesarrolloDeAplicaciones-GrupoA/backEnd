@@ -5,6 +5,7 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.Interval;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +17,8 @@ public class TravelCreationBody {
     int fuel;
     int toll;
     String route;
-    String inicio;
-    String fin;
+    long inicio;
+    long fin;
     String frequency;
 
     public List<Integer> getFrequencyFromString() {
@@ -31,7 +32,7 @@ public class TravelCreationBody {
     }
 
     public Interval getRangeHours() {
-        return new Interval(10000,1000);
+        return new Interval(inicio,fin);
     }
 
     public String getNameTravel() {
@@ -66,19 +67,19 @@ public class TravelCreationBody {
         this.route = route;
     }
 
-    public String getInicio() {
-        return inicio;
+    public Date getInicio() {
+        return new Date(this.inicio);
     }
 
-    public void setInicio(String inicio) {
+    public void setInicio(long inicio) {
         this.inicio = inicio;
     }
 
-    public String getFin() {
-        return fin;
+    public Date getFin() {
+        return new Date(this.fin);
     }
 
-    public void setFin(String fin) {
+    public void setFin(long fin) {
         this.fin = fin;
     }
 
