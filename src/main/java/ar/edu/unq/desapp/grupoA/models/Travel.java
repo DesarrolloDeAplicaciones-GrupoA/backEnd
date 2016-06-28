@@ -6,6 +6,7 @@ import java.sql.Time;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -42,8 +43,8 @@ public class Travel {
     private Time rangeTo; //Rango horario, se tendra que definir como maximo un rango de 2 hs/
     @Transient
     private List<Integer> frequency; //Frecuencia realizacion del recorrido Ej: Mon - Wed - Fri, Lista de Dias
-    @Transient
-    private List<ApplicationRequest> applicationRequests;
+    @OneToMany(mappedBy = "travel")
+    private Set<ApplicationRequest> applicationRequests;
 
 
     public List<Integer> getFrequency() {
@@ -71,7 +72,7 @@ public class Travel {
         this.rangeFrom = rangeFrom;
         this.rangeTo = rangeTo;
         this.frequency = frequency;
-        this.applicationRequests = new ArrayList<>();
+        this.applicationRequests = new HashSet<>();
     }
 
     public int getId() {
