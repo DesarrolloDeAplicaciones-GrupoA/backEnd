@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import javax.ws.rs.*;
+import java.sql.Time;
 
 @Path("travels")
 @Controller("travelController")
@@ -25,9 +26,11 @@ public class TravelsController {
     @Path("create")
     @Consumes("application/json")
     @Produces("application/json")
-    public TravelCreationResponse create(@QueryParam("token") String  token, TravelCreationBody travelBody) {
+    public TravelCreationResponse create(@QueryParam("token") String token, TravelCreationBody travelBody) {
         UserModel user = this.getUserTokenRepository().findByUserToken(token);
-        Travel travel = this.travelAdding.createTravel(user, travelBody.getNameTravel(), travelBody.getFuel(), travelBody.getToll(), travelBody.getRouteFromString(),travelBody.getRangeHours(), travelBody.getFrequencyFromString());
+        Time from = new Time(travelBody.getRangeHours().getStartMillis());
+        Time to = new Time(travelBody.getRangeHours().getEndMillis());
+        Travel travel = this.travelAdding.createTravel(user, travelBody.getNameTravel(), travelBody.getFuel(), travelBody.getToll(), travelBody.getRouteFromString(), from, to, travelBody.getFrequencyFromString());
         return TravelCreationResponse.build(travel);
     }
 
