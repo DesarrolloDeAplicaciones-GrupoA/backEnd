@@ -41,7 +41,9 @@ public class Travel {
     private Time rangeFrom; //Rango horario, se tendra que definir como maximo un rango de 2 hs/
     @Column(name = "range_to")
     private Time rangeTo; //Rango horario, se tendra que definir como maximo un rango de 2 hs/
-    @Transient
+    @ElementCollection
+    @CollectionTable(name="frequencies", joinColumns=@JoinColumn(name="travel_id"))
+    @Column(name="frequency")
     private List<Integer> frequency; //Frecuencia realizacion del recorrido Ej: Mon - Wed - Fri, Lista de Dias
     @OneToMany(mappedBy = "travel")
     private Set<ApplicationRequest> applicationRequests;
