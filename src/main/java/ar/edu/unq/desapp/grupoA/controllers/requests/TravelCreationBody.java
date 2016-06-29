@@ -1,15 +1,10 @@
 package ar.edu.unq.desapp.grupoA.controllers.requests;
 
 import ar.edu.unq.desapp.grupoA.models.Route;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeConstants;
 import org.joda.time.Interval;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by damian on 30/05/16.
@@ -21,20 +16,24 @@ public class TravelCreationBody {
     String route;
     long inicio;
     long fin;
-    String frequency;
+    List<Integer> frequency;
 
-    public List<Integer> getFrequencyFromString() {
-        List<Integer> frequency = new ArrayList<>();
-        frequency.add(1);
+
+    public List<Integer> getFrequency() {
         return frequency;
     }
+
+    public void setFrequency(List<Integer> frequency) {
+        this.frequency = frequency;
+    }
+
 
     public Route getRouteFromString() {
         return new Route();
     }
 
     public Interval getRangeHours() {
-        return new Interval(inicio,fin);
+        return new Interval(inicio, fin);
     }
 
     public String getNameTravel() {
@@ -83,14 +82,6 @@ public class TravelCreationBody {
 
     public void setFin(long fin) {
         this.fin = fin;
-    }
-
-    public String getFrequency() {
-        return frequency;
-    }
-
-    public void setFrequency(String frequency) {
-        this.frequency = frequency;
     }
 
 

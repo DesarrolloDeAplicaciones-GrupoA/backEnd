@@ -33,7 +33,7 @@ public class TravelTestFactory {
         frequency.add(DateTimeConstants.WEDNESDAY);
         frequency.add(DateTimeConstants.FRIDAY);
         Route route = this.routeTestFactory.fromConstitucionToCorrientes();
-        return (new Travel("Viaje Trabajo", 50, 20, route, from, to));
+        return (new Travel("Viaje Trabajo", 50, 20, route, from, to,frequency));
     }
 
     public Travel getTravel(UserModel userModel) {

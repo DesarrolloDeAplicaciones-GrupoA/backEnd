@@ -73,7 +73,7 @@ public class Travel {
         this.route = route;
     }
 
-    public Travel(String nameTravel, int fuel, int toll, Route route, Time rangeFrom, Time rangeTo) {
+    public Travel(String nameTravel, int fuel, int toll, Route route, Time rangeFrom, Time rangeTo, List<Integer> frequency) {
         super();
         this.nameTravel = nameTravel;
         this.route = route;
@@ -81,7 +81,7 @@ public class Travel {
         this.tollCost = toll;
         this.rangeFrom = rangeFrom;
         this.rangeTo = rangeTo;
-        this.frequency = new ArrayList<>();
+        this.frequency = frequency;
         this.applicationRequests = new HashSet<>();
     }
 

@@ -23,7 +23,7 @@ public class TravelAdding {
 
     @Transactional
     public Travel createTravel(UserModel user, String nameTravel, int fuel, int toll, Route route, Time rangeFrom, Time rangeTo, List<Integer> frequency) {
-        Travel travel = new Travel(nameTravel, fuel, toll, route, rangeFrom, rangeTo);
+        Travel travel = new Travel(nameTravel, fuel, toll, route, rangeFrom, rangeTo, frequency);
         travel.setUserModel(user);
         user.addTravel(travel);
         this.travelRepository.save(travel);

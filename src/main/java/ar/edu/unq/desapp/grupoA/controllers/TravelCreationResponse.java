@@ -13,9 +13,6 @@ public class TravelCreationResponse {
     Route route;
     long inicio;
     long fin;
-
-
-
     List<Integer> frequency;
     private Integer id;
 
