@@ -7,8 +7,16 @@ public class MessageCreationBody {
     private UserModel receiver;
     private UserModel sender;
     private String messageText;
+    private String subject;
     private boolean isPublic;
 
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
 
     public String getMessageText() {
         return messageText;

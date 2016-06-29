@@ -1,9 +1,10 @@
 package ar.edu.unq.desapp.grupoA.services;
 
+import ar.edu.unq.desapp.grupoA.factories.StringUtils;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.repositories.MessageRepository;
-import ar.edu.unq.desapp.grupoA.factories.StringUtils;
 import ar.edu.unq.desapp.grupoA.testUtis.factories.UserModelTestFactory;
+import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class SendMessageServiceTest extends AbstractServiceTest{
+public class SendMessageServiceTest extends AbstractServiceTest {
     private UserModel sender;
     private UserModel receiver;
     private String message;
+    private String subject;
     private int cantidadInicial;
     @Autowired
     private SendMessageService sendMessageService;
@@ -28,8 +30,9 @@ public class SendMessageServiceTest extends AbstractServiceTest{
         this.sender = this.userModelTestFactory.getUser();
         this.receiver = this.userModelTestFactory.getUser();
         this.message = StringUtils.getRandomString();
+        this.subject = "Subject";
         this.cantidadInicial = this.messageRepository.count();
-        sendMessageService.sendMessage(sender, receiver, this.message, true);
+        sendMessageService.sendMessage(sender, receiver, subject, this.message, true);
     }
 
     @Test
@@ -47,7 +50,7 @@ public class SendMessageServiceTest extends AbstractServiceTest{
 
     @Test
     public void hasOneMoreMessage() {
-        assertEquals(this.cantidadInicial+1,this.messageRepository.count());
+        assertEquals(this.cantidadInicial + 1, this.messageRepository.count());
     }
 
     public SendMessageService getSendMessageService() {

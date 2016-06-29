@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Path("message")
+@Path("messages")
 @Controller("messageController")
 public class MessageController {
 
@@ -24,7 +24,7 @@ public class MessageController {
     private SendMessageService sendMessageService;
 
     @GET
-    @Path("allpublic")
+    @Path("inbox")
     @Produces("application/json")
     public List<MessageCreationResponse> getAll() {
         List<MessageCreationResponse> result = new ArrayList<MessageCreationResponse>();
@@ -35,12 +35,12 @@ public class MessageController {
     }
 
     @POST
-    @Path("create")
+    @Path("new")
     @Consumes("application/json")
     @Produces("application/json")
     public MessageCreationResponse create(@QueryParam("token") String token, MessageCreationBody messageBody) {
         UserModel user = this.getUserTokenRepository().findByUserToken(token);
-        Message message = this.sendMessageService.sendMessage(messageBody.getSender(), messageBody.getReceiver(), messageBody.getMessageText(), messageBody.isPublic());
+        Message message = this.sendMessageService.sendMessage(messageBody.getSender(), messageBody.getReceiver(), messageBody.getSubject(), messageBody.getMessageText(), messageBody.isPublic());
         return MessageCreationResponse.build(message);
     }
 

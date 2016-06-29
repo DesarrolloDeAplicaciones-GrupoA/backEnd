@@ -23,9 +23,9 @@ public class SendMessageService {
     private UserModelFactory userFactory;
 
     @Transactional
-    public Message sendMessage(UserModel sender, UserModel receiver, String messageText, boolean isPublic) {
+    public Message sendMessage(UserModel sender, UserModel receiver, String subject, String messageText, boolean isPublic) {
 
-        Message messageObjet = new Message(sender, receiver, messageText, isPublic);
+        Message messageObjet = new Message(sender, receiver,subject, messageText, isPublic);
         sender.addMessageSend(messageObjet);
         receiver.addMessageReceived(messageObjet);
         messageRepository.save(messageObjet);
@@ -33,7 +33,7 @@ public class SendMessageService {
     }
     @Transactional
     public void createDefaultsMessage() {
-        Message defaultMessage = new Message(userFactory.getUserAdmin(),userFactory.getUser(),"Welcome to SubiQueTeLlevo",true);
+        Message defaultMessage = new Message(userFactory.getUserAdmin(),userFactory.getUser(),"Welcome","Welcome to SubiQueTeLlevo",true);
         this.messageRepository.save(defaultMessage);
     }
     public Set<Message> findMessagesReceived(UserModel receiver){
