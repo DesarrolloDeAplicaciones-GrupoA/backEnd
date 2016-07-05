@@ -27,6 +27,7 @@ public class TravelAddingTest extends AbstractServiceTest{
 
     private UserModel userModel;
     private String travelName;
+    private int countBefore;
 
     @Autowired
     private TravelAdding travelAdding;
@@ -52,6 +53,7 @@ public class TravelAddingTest extends AbstractServiceTest{
         frequency.add(DateTimeConstants.FRIDAY);
         Route route = this.routeTestFactory.fromConstitucionToCorrientes();
         this.travelName = StringUtils.getName();
+        this.countBefore = this.travelRepository.count();
         this.travelAdding.createTravel(userModel, this.travelName, 50, 20, route, from, to, frequency);
 
     }
@@ -73,7 +75,7 @@ public class TravelAddingTest extends AbstractServiceTest{
 
     @Test
     public void hasOneMoreTravel() {
-        assertEquals(1, this.travelRepository.count());
+        assertEquals(this.countBefore + 1, this.travelRepository.count());
     }
 
     private UserModel getUserModel() {

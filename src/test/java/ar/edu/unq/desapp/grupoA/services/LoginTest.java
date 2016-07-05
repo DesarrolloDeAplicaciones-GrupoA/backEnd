@@ -18,17 +18,17 @@ public class LoginTest extends AbstractServiceTest {
     private String userFullName;
     private String userEmail;
 
-    @Autowired
     private Login loginService;
-    @Autowired
+
     private UserModelRepository userModelRepository;
+    private int countBefore;
 
     @Before
     public void setUp() {
         //TODO: Remove this code when @PostConstruct was removed from Login service.
-        this.userModelRepository.deleteAll();
         this.userFullName = StringUtils.getName();
         this.userEmail = StringUtils.getEmail();
+        this.countBefore = this.userModelRepository.count();
         this.user = loginService.signUp(this.userFullName, this.userEmail);
     }
 
@@ -59,7 +59,7 @@ public class LoginTest extends AbstractServiceTest {
     @Test
     public void hasOneMoreUserInRepository() {
 
-        assertEquals(1, this.userModelRepository.count());
+        assertEquals(this.countBefore + 1, this.userModelRepository.count());
     }
 
     @Test
@@ -69,6 +69,7 @@ public class LoginTest extends AbstractServiceTest {
     }
 
 
+    @Autowired
     public void setLoginService(Login loginService) {
         this.loginService = loginService;
     }
@@ -77,6 +78,7 @@ public class LoginTest extends AbstractServiceTest {
         return loginService;
     }
 
+    @Autowired
     public void setRepository(UserModelRepository repository) {
         this.userModelRepository = repository;
     }

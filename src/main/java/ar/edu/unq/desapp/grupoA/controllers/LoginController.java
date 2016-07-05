@@ -38,7 +38,7 @@ public class LoginController {
 
     @PostConstruct
     public void loadData() {
-        this.getFaker().getUser();
+        this.getFaker().createData();
     }
 
 
