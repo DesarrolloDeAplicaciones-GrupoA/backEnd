@@ -37,9 +37,9 @@ public class TravelsController {
 
     @GET
     @Path("{id}")
-    @Consumes("application/json")
+//    @Consumes("application/json")
     @Produces("application/json")
-    public TravelCreationResponse create(@QueryParam("token") String token, @PathParam("id") Integer id) {
+    public TravelCreationResponse create(@PathParam("id") Integer id) {
         return TravelCreationResponse.build(this.getTravelAdding().get(id));
     }
 

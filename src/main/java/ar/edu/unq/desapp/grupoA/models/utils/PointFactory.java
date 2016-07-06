@@ -13,7 +13,7 @@ public class PointFactory {
     private PointRepository pointRepository;
 
     public PointFactory(PointRepository pointRepository) {
-        this.setPointRepository(pointRepository);
+        this.pointRepository = pointRepository;
     }
 
     public PointFactory() {

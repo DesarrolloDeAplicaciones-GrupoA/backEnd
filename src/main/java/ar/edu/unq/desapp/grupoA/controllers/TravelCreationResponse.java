@@ -3,6 +3,7 @@ package ar.edu.unq.desapp.grupoA.controllers;
 import ar.edu.unq.desapp.grupoA.models.Route;
 import ar.edu.unq.desapp.grupoA.models.Travel;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -13,7 +14,7 @@ public class TravelCreationResponse {
     Route route;
     long inicio;
     long fin;
-    List<Integer> frequency;
+    List<Integer> frequency = new ArrayList<>();
     private Integer id;
 
     public String getNameTravel() {
@@ -87,7 +88,7 @@ public class TravelCreationResponse {
         this.route = route;
         this.inicio = inicio;
         this.fin = fin;
-        this.frequency = frequency;
+        //this.frequency = frequency;
         this.id = id;
     }
 
