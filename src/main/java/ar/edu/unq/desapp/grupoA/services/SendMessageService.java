@@ -45,7 +45,8 @@ public class SendMessageService {
     public List<Message> findPublicMessage(){
         return this.messageRepository.findPublicMessage();
     }
-    public Message getProductByID(Integer id){
+
+    public Message getMessageByID(Integer id){
             return this.messageRepository.findById(id);}
 
 }

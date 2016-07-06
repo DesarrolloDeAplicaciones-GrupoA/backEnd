@@ -49,7 +49,7 @@ public class MessageController {
     //@Consumes("application/json")
     @Produces("application/json")
     public MessageCreationResponse findProductsByID(@PathParam("id") Integer id) {
-        Message messageFound = this.getSendMessageService().getProductByID(id);
+        Message messageFound = this.getSendMessageService().getMessageByID(id);
         return MessageCreationResponse.build(messageFound);
     }
 

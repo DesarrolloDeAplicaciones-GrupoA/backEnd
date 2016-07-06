@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import javax.annotation.PostConstruct;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +38,14 @@ public class LoginController {
             result.add(UserResponde.build(user));
         }
         return result;
+    }
+
+    @GET
+    @Path("{id}")
+    @Produces("application/json")
+    public UserResponde findUserByID(@PathParam("id") Integer id) {
+        UserModel userModel = this.getLogin().geUserByID(id);
+        return UserResponde.build(userModel);
     }
 
     @GET
