@@ -53,7 +53,6 @@ public class Travel {
     @Column(name = "frequency")*/
     @PersistenceContext(type = PersistenceContextType.EXTENDED)
     @ElementCollection
-    @Column(name = "frequency")
     private List<Integer> frequency; //Frecuencia realizacion del recorrido Ej: Mon - Wed - Fri, Lista de Dias
 
     @OneToMany(mappedBy = "travel")
