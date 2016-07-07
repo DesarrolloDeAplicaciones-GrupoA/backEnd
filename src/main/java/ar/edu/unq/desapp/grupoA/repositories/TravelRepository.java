@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 @Repository("travelRepository")
 public class TravelRepository extends HibernateGenericDAO<Travel> implements GenericRepository<Travel> {
 
+    public TravelRepository(){}
+
     private static final long serialVersionUID = -4036535812105672220L;
 
     @Override

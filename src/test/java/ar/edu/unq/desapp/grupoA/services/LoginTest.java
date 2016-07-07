@@ -17,9 +17,11 @@ public class LoginTest extends AbstractServiceTest {
     private UserModel user;
     private String userFullName;
     private String userEmail;
-    private int countBefore;
-        private Login loginService;
+
+    private Login loginService;
+
     private UserModelRepository userModelRepository;
+    private int countBefore;
 
     @Before
     public void setUp() {
@@ -28,6 +30,7 @@ public class LoginTest extends AbstractServiceTest {
         this.countBefore = this.userModelRepository.count();
         this.userFullName = StringUtils.getName();
         this.userEmail = StringUtils.getEmail();
+        this.countBefore = this.userModelRepository.count();
         this.user = loginService.signUp(this.userFullName, this.userEmail);
     }
 
@@ -57,6 +60,7 @@ public class LoginTest extends AbstractServiceTest {
 
     @Test
     public void hasOneMoreUserInRepository() {
+
         assertEquals(this.countBefore + 1, this.userModelRepository.count());
     }
 
@@ -66,6 +70,7 @@ public class LoginTest extends AbstractServiceTest {
         Assert.assertNotNull(user);
     }
 
+
     @Autowired
     public void setLoginService(Login loginService) {
         this.loginService = loginService;
@@ -74,6 +79,7 @@ public class LoginTest extends AbstractServiceTest {
     public Login getLoginService() {
         return loginService;
     }
+
     @Autowired
     public void setRepository(UserModelRepository repository) {
         this.userModelRepository = repository;

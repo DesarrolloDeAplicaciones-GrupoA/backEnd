@@ -15,8 +15,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,6 +27,7 @@ public class TravelAddingTest extends AbstractServiceTest{
 
     private UserModel userModel;
     private String travelName;
+    private int countBefore;
 
     @Autowired
     private TravelAdding travelAdding;
@@ -40,13 +44,17 @@ public class TravelAddingTest extends AbstractServiceTest{
     public void setUp() {
         this.userModel = this.getUserModel();
         Interval rangeHoures = new Interval(new DateTime(2000, 1, 1, 9, 0), new DateTime(2000, 1, 1, 14, 0));
-        List<Integer> frequency = new ArrayList<Integer>();
+
+        Time from = new Time(rangeHoures.getStartMillis());
+        Time to = new Time(rangeHoures.getEndMillis());
+        List<Integer> frequency = new ArrayList<>();
         frequency.add(DateTimeConstants.MONDAY);
         frequency.add(DateTimeConstants.WEDNESDAY);
         frequency.add(DateTimeConstants.FRIDAY);
         Route route = this.routeTestFactory.fromConstitucionToCorrientes();
         this.travelName = StringUtils.getName();
-        this.travelAdding.createTravel(userModel, this.travelName, 50, 20, route, rangeHoures, frequency);
+        this.countBefore = this.travelRepository.count();
+        this.travelAdding.createTravel(userModel, this.travelName, 50, 20, route, from, to, frequency);
 
     }
 
@@ -67,7 +75,7 @@ public class TravelAddingTest extends AbstractServiceTest{
 
     @Test
     public void hasOneMoreTravel() {
-        assertEquals(1, this.travelRepository.count());
+        assertEquals(this.countBefore + 1, this.travelRepository.count());
     }
 
     private UserModel getUserModel() {

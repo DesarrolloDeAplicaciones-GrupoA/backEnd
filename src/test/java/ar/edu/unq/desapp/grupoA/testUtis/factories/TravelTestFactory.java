@@ -10,8 +10,11 @@ import org.joda.time.Interval;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Component("travelTestFactory")
 public class TravelTestFactory {
@@ -23,12 +26,14 @@ public class TravelTestFactory {
 
     public Travel getTravelTest() {
         Interval rangeHoures = new Interval(new DateTime(2000, 1, 1, 9, 0), new DateTime(2000, 1, 1, 14, 0));
-        List<Integer> frequency = new ArrayList<Integer>();
+        Time from = new Time(rangeHoures.getStartMillis());
+        Time to = new Time(rangeHoures.getEndMillis());
+        List<Integer> frequency = new ArrayList<>();
         frequency.add(DateTimeConstants.MONDAY);
         frequency.add(DateTimeConstants.WEDNESDAY);
         frequency.add(DateTimeConstants.FRIDAY);
         Route route = this.routeTestFactory.fromConstitucionToCorrientes();
-        return (new Travel("Viaje Trabajo", 50, 20, route, rangeHoures, frequency));
+        return (new Travel("Viaje Trabajo", 50, 20, route, from, to,frequency));
     }
 
     public Travel getTravel(UserModel userModel) {

@@ -1,11 +1,9 @@
 package ar.edu.unq.desapp.grupoA.controllers.requests;
 
 import ar.edu.unq.desapp.grupoA.models.Route;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeConstants;
 import org.joda.time.Interval;
 
-import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -16,22 +14,26 @@ public class TravelCreationBody {
     int fuel;
     int toll;
     String route;
-    String inicio;
-    String fin;
-    String frequency;
+    long inicio;
+    long fin;
+    List<Integer> frequency;
 
-    public List<Integer> getFrequencyFromString() {
-        List<Integer> frequency = new ArrayList<>();
-        frequency.add(1);
+
+    public List<Integer> getFrequency() {
         return frequency;
     }
+
+    public void setFrequency(List<Integer> frequency) {
+        this.frequency = frequency;
+    }
+
 
     public Route getRouteFromString() {
         return new Route();
     }
 
     public Interval getRangeHours() {
-        return new Interval(10000,1000);
+        return new Interval(inicio, fin);
     }
 
     public String getNameTravel() {
@@ -66,28 +68,20 @@ public class TravelCreationBody {
         this.route = route;
     }
 
-    public String getInicio() {
-        return inicio;
+    public Date getInicio() {
+        return new Date(this.inicio);
     }
 
-    public void setInicio(String inicio) {
+    public void setInicio(long inicio) {
         this.inicio = inicio;
     }
 
-    public String getFin() {
-        return fin;
+    public Date getFin() {
+        return new Date(this.fin);
     }
 
-    public void setFin(String fin) {
+    public void setFin(long fin) {
         this.fin = fin;
-    }
-
-    public String getFrequency() {
-        return frequency;
-    }
-
-    public void setFrequency(String frequency) {
-        this.frequency = frequency;
     }
 
 

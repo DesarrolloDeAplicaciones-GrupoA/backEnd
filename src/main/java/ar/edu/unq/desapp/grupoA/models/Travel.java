@@ -2,8 +2,11 @@ package ar.edu.unq.desapp.grupoA.models;
 
 import org.joda.time.Interval;
 
+import java.sql.Time;
+
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -32,22 +35,30 @@ public class Travel {
     @OneToMany(mappedBy = "travel")
     private Set<Score> scores;
 
-    @Transient
+    @ManyToOne(cascade = CascadeType.ALL)
     private Route route;
-    @Transient
-    private Interval rangeHours; //Rango horario, se tendra que definir como maximo un rango de 2 hs/
-    @Transient
+    @Column(name = "range_form")
+    private Time rangeFrom; //Rango horario, se tendra que definir como maximo un rango de 2 hs/
+    @Column(name = "range_to")
+    private Time rangeTo; //Rango horario, se tendra que definir como maximo un rango de 2 hs/
+
+
+    /*@org.hibernate.annotations.CollectionOfElements(
+            targetElement = java.lang.Integer.class, fetch = FetchType.LAZY
+    )
+    @JoinTable(
+            name = "frequency",
+            joinColumns = @JoinColumn(name = "frequency_id")
+    )
+    @Column(name = "frequency")*/
+    @PersistenceContext(type = PersistenceContextType.EXTENDED)
+    @ElementCollection
+    @Column(name = "frequency")
     private List<Integer> frequency; //Frecuencia realizacion del recorrido Ej: Mon - Wed - Fri, Lista de Dias
-    @Transient
-    private List<ApplicationRequest> applicationRequests;
 
-    public Interval getRangeHours() {
-        return rangeHours;
-    }
+    @OneToMany(mappedBy = "travel")
+    private Set<ApplicationRequest> applicationRequests;
 
-    public void setRangeHours(Interval rangeHours) {
-        this.rangeHours = rangeHours;
-    }
 
     public List<Integer> getFrequency() {
         return frequency;
@@ -65,15 +76,16 @@ public class Travel {
         this.route = route;
     }
 
-    public Travel(String nameTravel, int fuel, int toll, Route route, Interval rangeHours, List<Integer> frequency) {
+    public Travel(String nameTravel, int fuel, int toll, Route route, Time rangeFrom, Time rangeTo, List<Integer> frequency) {
         super();
         this.nameTravel = nameTravel;
         this.route = route;
         this.fuelCost = fuel;
         this.tollCost = toll;
-        this.rangeHours = rangeHours;
+        this.rangeFrom = rangeFrom;
+        this.rangeTo = rangeTo;
         this.frequency = frequency;
-        this.applicationRequests = new ArrayList<>();
+        this.applicationRequests = new HashSet<>();
     }
 
     public int getId() {
@@ -114,5 +126,21 @@ public class Travel {
 
     public UserModel getUserModel() {
         return userModel;
+    }
+
+    public Time getRangeFrom() {
+        return rangeFrom;
+    }
+
+    public void setRangeFrom(Time rangeFrom) {
+        this.rangeFrom = rangeFrom;
+    }
+
+    public Time getRangeTo() {
+        return rangeTo;
+    }
+
+    public void setRangeTo(Time rangeTo) {
+        this.rangeTo = rangeTo;
     }
 }

@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "PendingApplication")
+@Table(name = "ApplicationRequest")
 public class ApplicationRequest {
 
     @Id()

@@ -1,23 +1,20 @@
 package ar.edu.unq.desapp.grupoA.controllers;
 
-import ar.edu.unq.desapp.grupoA.controllers.responses.VehicleCreationResponse;
 import ar.edu.unq.desapp.grupoA.models.Route;
 import ar.edu.unq.desapp.grupoA.models.Travel;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-import org.joda.time.Interval;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
-/**
- * Created by damian on 30/05/16.
- */
 public class TravelCreationResponse {
     String nameTravel;
     int fuel;
     int toll;
     Route route;
-    Interval rangeHours;
-    List<Integer> frequency;
+    long inicio;
+    long fin;
+    List<Integer> frequency = new ArrayList<>();
     private Integer id;
 
     public String getNameTravel() {
@@ -52,14 +49,6 @@ public class TravelCreationResponse {
         this.route = route;
     }
 
-    public Interval getRangeHours() {
-        return rangeHours;
-    }
-
-    public void setRangeHours(Interval rangeHours) {
-        this.rangeHours = rangeHours;
-    }
-
     public List<Integer> getFrequency() {
         return frequency;
     }
@@ -76,17 +65,35 @@ public class TravelCreationResponse {
         this.id = id;
     }
 
-    public TravelCreationResponse(String nameTravel, int fuel, int toll, Route route, Interval rangeHours, List<Integer> frequency, Integer id) {
+    public long getInicio() {
+        return inicio;
+    }
+
+    public void setInicio(long inicio) {
+        this.inicio = inicio;
+    }
+
+    public long getFin() {
+        return fin;
+    }
+
+    public void setFin(long fin) {
+        this.fin = fin;
+    }
+
+    public TravelCreationResponse(String nameTravel, int fuel, int toll, Route route, long inicio, long fin, List<Integer> frequency, Integer id) {
         this.nameTravel = nameTravel;
         this.fuel = fuel;
         this.toll = toll;
         this.route = route;
-        this.rangeHours = rangeHours;
-        this.frequency = frequency;
+        this.inicio = inicio;
+        this.fin = fin;
+        //this.frequency = frequency;
         this.id = id;
     }
 
+
     public static TravelCreationResponse build(Travel travel) {
-        return new TravelCreationResponse(travel.getNameTravel(), travel.getFuelCost(), travel.getTollCost(), travel.getRoute(), travel.getRangeHours(), travel.getFrequency(),  travel.getId());
+        return new TravelCreationResponse(travel.getNameTravel(), travel.getFuelCost(), travel.getTollCost(), travel.getRoute(), travel.getRangeFrom().getTime(), travel.getRangeTo().getTime(), travel.getFrequency(), travel.getId());
     }
 }
