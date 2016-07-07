@@ -53,7 +53,6 @@ public class MessageController {
         return MessageCreationResponse.build(messageFound);
     }
 
-
     @PostConstruct
     public void loadData() {
         this.getSendMessageService().createDefaultsMessage();

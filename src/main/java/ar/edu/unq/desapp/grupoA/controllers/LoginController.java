@@ -57,7 +57,6 @@ public class LoginController {
         return cantidad;
     }
 
-
     public Login getLogin() {
         return login;
     }
@@ -66,7 +65,6 @@ public class LoginController {
     public void setLogin(Login login) {
         this.login = login;
     }
-
 
     @PostConstruct
     public void loadData() {
