@@ -19,6 +19,7 @@ public class Message {
     @JoinColumn(name = "USER_ID")
     private UserModel receiver;
     @ManyToOne
+    @JoinColumn(name = "SENDER_ID")
     private UserModel sender;
 
     @Column(name = "message_text")

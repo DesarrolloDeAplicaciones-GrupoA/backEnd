@@ -8,6 +8,7 @@ import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.repositories.UserModelRepository;
 import ar.edu.unq.desapp.grupoA.repositories.UserTokenRepository;
 import ar.edu.unq.desapp.grupoA.services.SendMessageService;
+import org.eclipse.jetty.server.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -28,9 +29,33 @@ public class MessageController {
     @GET
     @Path("inbox")
     @Produces("application/json")
-    public List<MessageCreationResponse> getAll() {
+    public List<MessageCreationResponse> getMyInbox(@QueryParam("token") String token) {
+        UserModel user =this.getUserTokenRepository().findByUserToken(token);
         List<MessageCreationResponse> result = new ArrayList<MessageCreationResponse>();
-        for (Message msj : this.getSendMessageService().findPublicMessage()) {
+        for (Message msj : this.getSendMessageService().findMessagesReceived(user)) {
+            result.add(MessageCreationResponse.build(msj));
+        }
+        return result;
+    }
+
+    @GET
+    @Path("outbox")
+    @Produces("application/json")
+    public List<MessageCreationResponse> getMyOutBoox(@QueryParam("token") String token) {
+        UserModel user =this.getUserTokenRepository().findByUserToken(token);
+        List<MessageCreationResponse> result = new ArrayList<MessageCreationResponse>();
+        for (Message msj : this.getSendMessageService().findMessagesSended(user)) {
+            result.add(MessageCreationResponse.build(msj));
+        }
+        return result;
+    }
+    @GET
+    @Path("publicForUser")
+    @Produces("application/json")
+    public List<MessageCreationResponse> getMyOutBoox(@PathParam("id") Integer id) {
+        UserModel user = this.getUserModelRepository().findById(id);
+        List<MessageCreationResponse> result = new ArrayList<MessageCreationResponse>();
+        for (Message msj : this.getSendMessageService().findMessagesSended(user)) {
             result.add(MessageCreationResponse.build(msj));
         }
         return result;

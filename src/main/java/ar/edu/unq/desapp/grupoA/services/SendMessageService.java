@@ -2,11 +2,8 @@ package ar.edu.unq.desapp.grupoA.services;
 
 import ar.edu.unq.desapp.grupoA.factories.UserModelFactory;
 import ar.edu.unq.desapp.grupoA.models.Message;
-import ar.edu.unq.desapp.grupoA.models.Product;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.repositories.MessageRepository;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,14 +33,14 @@ public class SendMessageService {
         Message defaultMessage = new Message(userFactory.getUserAdmin(),userFactory.getUser(),"Welcome","Welcome to SubiQueTeLlevo",true);
         this.messageRepository.save(defaultMessage);
     }
-    public Set<Message> findMessagesReceived(UserModel receiver){
-        return this.messageRepository.findMessagesReceived(receiver);
+    public List<Message> findMessagesReceived(UserModel receiver){
+        return this.messageRepository.findAllMyMessagesReceived(receiver);
     }
-    public Set<Message> findMessagesSended(UserModel sender){
-        return this.messageRepository.findMessagesSended(sender);
+    public List<Message> findMessagesSended(UserModel sender){
+        return this.messageRepository.findAllMyMessagesSended(sender);
     }
     public List<Message> findPublicMessage(){
-        return this.messageRepository.findPublicMessage();
+        return this.messageRepository.findAllPublicMessage();
     }
 
     public Message getMessageByID(Integer id){
