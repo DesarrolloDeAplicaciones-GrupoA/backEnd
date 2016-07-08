@@ -1,0 +1,13 @@
+[
+  {
+    "title": "foo",
+    "start": {
+      "latitude": -34.731192,
+      "longitude": -58.256765
+    },
+    "end": {
+      "latitude": -34.708636,
+      "longitude": -58.282860
+    }
+  }
+]
