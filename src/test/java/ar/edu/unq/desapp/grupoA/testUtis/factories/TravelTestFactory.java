@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Component("travelTestFactory")
@@ -28,7 +27,7 @@ public class TravelTestFactory {
         Interval rangeHoures = new Interval(new DateTime(2000, 1, 1, 9, 0), new DateTime(2000, 1, 1, 14, 0));
         Time from = new Time(rangeHoures.getStartMillis());
         Time to = new Time(rangeHoures.getEndMillis());
-        List<Integer> frequency = new ArrayList<>();
+        Set<Integer> frequency = new HashSet<>();
         frequency.add(DateTimeConstants.MONDAY);
         frequency.add(DateTimeConstants.WEDNESDAY);
         frequency.add(DateTimeConstants.FRIDAY);

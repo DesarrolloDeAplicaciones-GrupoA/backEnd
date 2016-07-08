@@ -4,7 +4,7 @@ import ar.edu.unq.desapp.grupoA.models.Route;
 import org.joda.time.Interval;
 
 import java.sql.Date;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by damian on 30/05/16.
@@ -16,14 +16,14 @@ public class TravelCreationBody {
     String route;
     long inicio;
     long fin;
-    List<Integer> frequency;
+    Set<Integer> frequency;
 
 
-    public List<Integer> getFrequency() {
+    public Set<Integer> getFrequency() {
         return frequency;
     }
 
-    public void setFrequency(List<Integer> frequency) {
+    public void setFrequency(Set<Integer> frequency) {
         this.frequency = frequency;
     }
 

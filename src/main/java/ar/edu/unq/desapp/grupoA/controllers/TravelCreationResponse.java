@@ -14,7 +14,7 @@ public class TravelCreationResponse {
     Route route;
     long inicio;
     long fin;
-    List<Integer> frequency = new ArrayList<>();
+    Set<Integer> frequency;
     private Integer id;
 
     public String getNameTravel() {
@@ -49,11 +49,11 @@ public class TravelCreationResponse {
         this.route = route;
     }
 
-    public List<Integer> getFrequency() {
+    public Set<Integer> getFrequency() {
         return frequency;
     }
 
-    public void setFrequency(List<Integer> frequency) {
+    public void setFrequency(Set<Integer> frequency) {
         this.frequency = frequency;
     }
 
@@ -81,14 +81,14 @@ public class TravelCreationResponse {
         this.fin = fin;
     }
 
-    public TravelCreationResponse(String nameTravel, int fuel, int toll, Route route, long inicio, long fin, List<Integer> frequency, Integer id) {
+    public TravelCreationResponse(String nameTravel, int fuel, int toll, Route route, long inicio, long fin, Set<Integer> frequency, Integer id) {
         this.nameTravel = nameTravel;
         this.fuel = fuel;
         this.toll = toll;
         this.route = route;
         this.inicio = inicio;
         this.fin = fin;
-        //this.frequency = frequency;
+        this.frequency = frequency;
         this.id = id;
     }
 

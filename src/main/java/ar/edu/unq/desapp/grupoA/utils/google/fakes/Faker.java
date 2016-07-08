@@ -15,7 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Time;
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component("faker")
 public class Faker {
@@ -35,7 +36,11 @@ public class Faker {
         Point to = this.getRouteFactory().getPointFactory().create(-34.708636, -58.282860);
         Route route = this.getRouteFactory().fromTo(from, to);
 
-        List<Integer> freq = Arrays.asList(1, 2, 3, 4);
+        Set<Integer> freq = new HashSet<Integer>();
+        freq.add(1);
+        freq.add(2);
+        freq.add(3);
+        freq.add(4);
 
         Interval rangeHours = new Interval(new DateTime(2000, 1, 1, 9, 0), new DateTime(2000, 1, 1, 14, 0));
 

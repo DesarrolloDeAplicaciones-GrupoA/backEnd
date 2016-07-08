@@ -1,13 +1,9 @@
 package ar.edu.unq.desapp.grupoA.models;
 
-import org.joda.time.Interval;
-
 import java.sql.Time;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -52,19 +48,19 @@ public class Travel {
     )
     @Column(name = "frequency")*/
     @PersistenceContext(type = PersistenceContextType.EXTENDED)
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER, targetClass = java.lang.Integer.class)
     @Column(name = "frequency")
-    private List<Integer> frequency; //Frecuencia realizacion del recorrido Ej: Mon - Wed - Fri, Lista de Dias
+    private Set<Integer> frequency; //Frecuencia realizacion del recorrido Ej: Mon - Wed - Fri, Lista de Dias
 
     @OneToMany(mappedBy = "travel")
     private Set<ApplicationRequest> applicationRequests;
 
 
-    public List<Integer> getFrequency() {
+    public Set<Integer> getFrequency() {
         return frequency;
     }
 
-    public void setFrequency(List<Integer> frequency) {
+    public void setFrequency(Set<Integer> frequency) {
         this.frequency = frequency;
     }
 
@@ -76,7 +72,7 @@ public class Travel {
         this.route = route;
     }
 
-    public Travel(String nameTravel, int fuel, int toll, Route route, Time rangeFrom, Time rangeTo, List<Integer> frequency) {
+    public Travel(String nameTravel, int fuel, int toll, Route route, Time rangeFrom, Time rangeTo, Set<Integer> frequency) {
         super();
         this.nameTravel = nameTravel;
         this.route = route;
