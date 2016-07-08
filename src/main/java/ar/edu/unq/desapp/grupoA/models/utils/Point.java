@@ -17,6 +17,10 @@ public class Point {
     @Column(name = "longitude")
     private double longitude;
 
+    public Point() {
+
+    }
+
     public Point(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
@@ -33,7 +37,7 @@ public class Point {
     @Override
     public boolean equals(Object obj) {
         Point p = (Point) obj;
-        return (p.getLatitude()  == this.latitude) && p.getLongitude() == this.getLongitude();
+        return (p.getLatitude() == this.latitude) && p.getLongitude() == this.getLongitude();
     }
 
     public int getId() {

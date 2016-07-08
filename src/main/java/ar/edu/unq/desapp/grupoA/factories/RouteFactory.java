@@ -7,11 +7,13 @@ import ar.edu.unq.desapp.grupoA.models.utils.PointFactory;
 import ar.edu.unq.desapp.grupoA.repositories.RouteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component("routeFactory")
 public class RouteFactory {
 
-    public RouteFactory(){}
+    public RouteFactory() {
+    }
 
     @Autowired
     private PointFactory pointFactory;
@@ -19,6 +21,7 @@ public class RouteFactory {
     @Autowired
     private RouteRepository routeRepository;
 
+    @Transactional
     public Route fromTo(Point start, Point end) {
         Route route = new Route(start, end);
         this.routeRepository.save(route);

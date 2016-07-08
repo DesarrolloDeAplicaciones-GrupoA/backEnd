@@ -37,6 +37,7 @@
             <ref bean="messageController" />
             <ref bean="vehicleController" />
             <ref bean="oauthGoogleController" />
+            <ref bean="routesController" />
         </jaxrs:serviceBeans>
 
 
