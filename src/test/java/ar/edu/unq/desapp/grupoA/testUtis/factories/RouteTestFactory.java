@@ -12,6 +12,6 @@ public class RouteTestFactory extends RouteFactory {
     public Route fromConstitucionToCorrientes() {
         PointFactory factory = this.getPointFactory();
 
-        return this.fromTo(factory.create(-34.627712, -58.379718), factory.create(-34.603722, -58.382002));
+        return this.fromTo("Constitucion a Corrientes", factory.create(-34.627712, -58.379718), factory.create(-34.603722, -58.382002));
     }
 }

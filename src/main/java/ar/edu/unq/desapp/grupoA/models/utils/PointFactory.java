@@ -28,6 +28,10 @@ public class PointFactory {
         return this.getPointRepository().findById(point.getId());
     }
 
+    public Point createFrom(String latitude, String longitude) {
+        return this.create(Double.parseDouble(latitude), Double.parseDouble(longitude));
+    }
+
     public PointRepository getPointRepository() {
         return pointRepository;
     }

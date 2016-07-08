@@ -2,6 +2,7 @@ package ar.edu.unq.desapp.grupoA.models;
 
 
 import ar.edu.unq.desapp.grupoA.factories.RouteFactory;
+import ar.edu.unq.desapp.grupoA.factories.StringUtils;
 import ar.edu.unq.desapp.grupoA.models.utils.Point;
 import ar.edu.unq.desapp.grupoA.models.utils.PointFactory;
 import ar.edu.unq.desapp.grupoA.services.AbstractServiceTest;
@@ -20,7 +21,7 @@ public class RoutesTest extends AbstractServiceTest{
 
     @Test
     public void aRouteHaveAStartAndEndPoint() {
-        Route route = this.routeFactory.fromTo(this.pointFactory.create(-34.627712, -58.379718), this.pointFactory.create(-34.603722, -58.382002));
+        Route route = this.routeFactory.fromTo(StringUtils.getRandomString(), this.pointFactory.create(-34.627712, -58.379718), this.pointFactory.create(-34.603722, -58.382002));
         assertNotNull(route.getStart());
         assertNotNull(route.getEnd());
     }

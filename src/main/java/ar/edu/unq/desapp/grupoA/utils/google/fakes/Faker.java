@@ -4,7 +4,6 @@ import ar.edu.unq.desapp.grupoA.factories.RouteFactory;
 import ar.edu.unq.desapp.grupoA.factories.UserModelFactory;
 import ar.edu.unq.desapp.grupoA.models.Route;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
-import ar.edu.unq.desapp.grupoA.models.utils.Point;
 import ar.edu.unq.desapp.grupoA.services.TravelAdding;
 import ar.edu.unq.desapp.grupoA.services.VehicleAdding;
 import org.joda.time.DateTime;
@@ -14,8 +13,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Time;
-import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Component("faker")
@@ -25,16 +24,19 @@ public class Faker {
     private VehicleAdding vehicleAdding;
     private TravelAdding travelAdding;
     private RouteFactory routeFactory;
+    private RoutesReader routesReader;
 
     public void createData() {
-        Arrays.asList(this.getUser(), this.getUser(), this.getUser()).forEach(this::setUpUser);
+        List<Route> routes = this.createRoutes();
+        routes.forEach((route) -> setUpUser(getUser(), route));
+    }
+
+    private List<Route> createRoutes() {
+        return this.getRoutesReader().build();
     }
 
     @Transactional
-    private void setUpUser(UserModel userModel) {
-        Point from = this.getRouteFactory().getPointFactory().create(-34.731192, -58.256765);
-        Point to = this.getRouteFactory().getPointFactory().create(-34.708636, -58.282860);
-        Route route = this.getRouteFactory().fromTo(from, to);
+    private void setUpUser(UserModel userModel, Route route) {
 
         Set<Integer> freq = new HashSet<Integer>();
         freq.add(1);
@@ -46,7 +48,7 @@ public class Faker {
 
         Time fromTime = new Time(rangeHours.getStartMillis());
         Time toTime = new Time(rangeHours.getEndMillis());
-        this.getTravelAdding().createTravel(userModel, "Viaje de " + userModel.getFullName(), 200, 200, route, fromTime, toTime, freq);
+        this.getTravelAdding().createTravel(userModel, "Viaje de " + route.getTitle() + " por " + userModel.getFullName(), 200, 200, route, fromTime, toTime, freq);
     }
 
     private UserModel getUser() {
@@ -87,5 +89,14 @@ public class Faker {
     @Autowired
     public void setRouteFactory(RouteFactory routeFactory) {
         this.routeFactory = routeFactory;
+    }
+
+    public RoutesReader getRoutesReader() {
+        return routesReader;
+    }
+
+    @Autowired
+    public void setRoutesReader(RoutesReader routesReader) {
+        this.routesReader = routesReader;
     }
 }
