@@ -6,7 +6,6 @@ import ar.edu.unq.desapp.grupoA.models.Route;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.services.TravelAdding;
 import ar.edu.unq.desapp.grupoA.services.VehicleAdding;
-import ar.edu.unq.desapp.grupoA.utils.google.RandomUtils;
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Time;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,7 +28,7 @@ public class Faker {
 
     public void createData() {
         List<Route> routes = this.createRoutes();
-        Arrays.asList(this.getUser(), this.getUser(), this.getUser()).forEach((userModel) -> setUpUser(userModel, routes));
+        routes.forEach((route) -> setUpUser(getUser(), route));
     }
 
     private List<Route> createRoutes() {
@@ -38,9 +36,8 @@ public class Faker {
     }
 
     @Transactional
-    private void setUpUser(UserModel userModel, List<Route> routes) {
+    private void setUpUser(UserModel userModel, Route route) {
 
-        Route route = new RandomUtils<Route>().getRandom(routes);
         Set<Integer> freq = new HashSet<Integer>();
         freq.add(1);
         freq.add(2);
@@ -51,7 +48,7 @@ public class Faker {
 
         Time fromTime = new Time(rangeHours.getStartMillis());
         Time toTime = new Time(rangeHours.getEndMillis());
-        this.getTravelAdding().createTravel(userModel, "Viaje de " + route.getTitle(), 200, 200, route, fromTime, toTime, freq);
+        this.getTravelAdding().createTravel(userModel, "Viaje de " + route.getTitle() + " por " + userModel.getFullName(), 200, 200, route, fromTime, toTime, freq);
     }
 
     private UserModel getUser() {
