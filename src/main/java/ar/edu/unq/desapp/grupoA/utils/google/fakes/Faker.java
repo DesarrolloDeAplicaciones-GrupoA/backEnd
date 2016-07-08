@@ -51,7 +51,7 @@ public class Faker {
 
         Time fromTime = new Time(rangeHours.getStartMillis());
         Time toTime = new Time(rangeHours.getEndMillis());
-        this.getTravelAdding().createTravel(userModel, "Viaje de " + userModel.getFullName(), 200, 200, route, fromTime, toTime, freq);
+        this.getTravelAdding().createTravel(userModel, "Viaje de " + route.getTitle(), 200, 200, route, fromTime, toTime, freq);
     }
 
     private UserModel getUser() {

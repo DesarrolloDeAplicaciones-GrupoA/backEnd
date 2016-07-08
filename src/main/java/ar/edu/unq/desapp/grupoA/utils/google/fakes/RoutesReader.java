@@ -41,7 +41,7 @@ public class RoutesReader {
             LinkedHashMap end = (LinkedHashMap) object.get("end");
             Point startPoint = this.getPointFactory().create((Double) start.get("latitude"), (Double) start.get("longitude"));
             Point endPoint = this.getPointFactory().create((Double) end.get("latitude"), (Double) end.get("longitude"));
-            routes.add(this.getRouteFactory().fromTo(startPoint, endPoint));
+            routes.add(this.getRouteFactory().fromTo((String) object.get("title"), startPoint, endPoint));
         }
         return routes;
 
