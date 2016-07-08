@@ -1,15 +1,10 @@
 package ar.edu.unq.desapp.grupoA.controllers;
 
 import ar.edu.unq.desapp.grupoA.controllers.requests.TravelCreationBody;
-import ar.edu.unq.desapp.grupoA.controllers.requests.VehicleCreationBody;
-import ar.edu.unq.desapp.grupoA.controllers.responses.VehicleCreationResponse;
 import ar.edu.unq.desapp.grupoA.models.Travel;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
-import ar.edu.unq.desapp.grupoA.models.Vehicle;
 import ar.edu.unq.desapp.grupoA.repositories.UserTokenRepository;
 import ar.edu.unq.desapp.grupoA.services.TravelAdding;
-import ar.edu.unq.desapp.grupoA.services.VehicleAdding;
-import org.joda.time.Interval;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -37,9 +32,9 @@ public class TravelsController {
 
     @GET
     @Path("{id}")
-    @Consumes("application/json")
+//    @Consumes("application/json")
     @Produces("application/json")
-    public TravelCreationResponse create(@QueryParam("token") String token, @PathParam("id") Integer id) {
+    public TravelCreationResponse create(@PathParam("id") Integer id) {
         return TravelCreationResponse.build(this.getTravelAdding().get(id));
     }
 

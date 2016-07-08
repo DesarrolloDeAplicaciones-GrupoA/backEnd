@@ -43,13 +43,16 @@ public class Travel {
     private Time rangeTo; //Rango horario, se tendra que definir como maximo un rango de 2 hs/
 
 
-    @org.hibernate.annotations.CollectionOfElements(
-            targetElement = java.lang.Integer.class
+    /*@org.hibernate.annotations.CollectionOfElements(
+            targetElement = java.lang.Integer.class, fetch = FetchType.LAZY
     )
     @JoinTable(
             name = "frequency",
             joinColumns = @JoinColumn(name = "frequency_id")
     )
+    @Column(name = "frequency")*/
+    @PersistenceContext(type = PersistenceContextType.EXTENDED)
+    @ElementCollection
     @Column(name = "frequency")
     private List<Integer> frequency; //Frecuencia realizacion del recorrido Ej: Mon - Wed - Fri, Lista de Dias
 

@@ -26,6 +26,8 @@ public class LoginTest extends AbstractServiceTest {
     @Before
     public void setUp() {
         //TODO: Remove this code when @PostConstruct was removed from Login service.
+        //this.userModelRepository.deleteAll();
+        this.countBefore = this.userModelRepository.count();
         this.userFullName = StringUtils.getName();
         this.userEmail = StringUtils.getEmail();
         this.countBefore = this.userModelRepository.count();

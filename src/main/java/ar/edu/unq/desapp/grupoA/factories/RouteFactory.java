@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 @Component("routeFactory")
 public class RouteFactory {
 
+    public RouteFactory(){}
+
     @Autowired
     private PointFactory pointFactory;
 

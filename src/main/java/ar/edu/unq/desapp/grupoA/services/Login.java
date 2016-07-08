@@ -57,4 +57,8 @@ public class Login {
     public void setUserTokenService(UserTokenService userTokenService) {
         this.userTokenService = userTokenService;
     }
+
+    public UserModel geUserByID(Integer id){
+        return this.userModelRepository.findById(id);}
+
 }
