@@ -3,16 +3,14 @@ package ar.edu.unq.desapp.grupoA.controllers;
 import ar.edu.unq.desapp.grupoA.controllers.responses.UserResponde;
 import ar.edu.unq.desapp.grupoA.factories.UserModelFactory;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
+import ar.edu.unq.desapp.grupoA.repositories.UserTokenRepository;
 import ar.edu.unq.desapp.grupoA.services.Login;
 import ar.edu.unq.desapp.grupoA.utils.google.fakes.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.PostConstruct;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +20,7 @@ public class LoginController {
 
     private Login login;
     private Faker faker;
+    private UserTokenRepository userTokenRepository;
 
     @GET
     @Path("all")
@@ -41,12 +40,20 @@ public class LoginController {
         return result;
     }
 
-    @GET
+    /*@GET
     @Path("{id}")
     @Produces("application/json")
     public UserResponde findUserByID(@PathParam("id") Integer id) {
         UserModel userModel = this.getLogin().geUserByID(id);
         return UserResponde.build(userModel);
+    }*/
+
+    @GET
+    @Path("{userInfo}")
+    @Produces("application/json")
+    public UserResponde findUserLogin(@QueryParam("token") String token) {
+        UserModel user = this.getUserTokenRepository().findByUserToken(token);
+        return UserResponde.build(user);
     }
 
     @GET
@@ -81,4 +88,15 @@ public class LoginController {
     public void setFaker(Faker faker) {
         this.faker = faker;
     }
+
+    @Autowired
+    public void setUserTokenRepository(UserTokenRepository userTokenRepository) {
+        this.userTokenRepository = userTokenRepository;
+    }
+
+    public UserTokenRepository getUserTokenRepository() {
+        return userTokenRepository;
+    }
+
+
 }

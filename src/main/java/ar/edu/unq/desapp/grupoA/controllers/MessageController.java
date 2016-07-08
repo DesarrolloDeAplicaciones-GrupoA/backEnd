@@ -5,6 +5,7 @@ import ar.edu.unq.desapp.grupoA.controllers.requests.MessageCreationBody;
 import ar.edu.unq.desapp.grupoA.controllers.responses.MessageCreationResponse;
 import ar.edu.unq.desapp.grupoA.models.Message;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
+import ar.edu.unq.desapp.grupoA.repositories.UserModelRepository;
 import ar.edu.unq.desapp.grupoA.repositories.UserTokenRepository;
 import ar.edu.unq.desapp.grupoA.services.SendMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class MessageController {
 
     private UserTokenRepository userTokenRepository;
     private SendMessageService sendMessageService;
+    private UserModelRepository userModelRepository;
 
     @GET
     @Path("inbox")
@@ -39,8 +41,9 @@ public class MessageController {
     @Consumes("application/json")
     @Produces("application/json")
     public MessageCreationResponse create(@QueryParam("token") String token, MessageCreationBody messageBody) {
-        UserModel user = this.getUserTokenRepository().findByUserToken(token);
-        Message message = this.sendMessageService.sendMessage(messageBody.getSender(), messageBody.getReceiver(), messageBody.getSubject(), messageBody.getMessageText(), messageBody.isPublic());
+        UserModel userReceiver = this.getUserModelRepository().findById(messageBody.getReceiver());
+        UserModel userSender =this.getUserTokenRepository().findByUserToken(token);
+        Message message = this.sendMessageService.sendMessage( userSender,userReceiver, messageBody.getSubject(), messageBody.getMessageText(), messageBody.isPublic());
         return MessageCreationResponse.build(message);
     }
 
@@ -76,4 +79,12 @@ public class MessageController {
         return userTokenRepository;
     }
 
+    public UserModelRepository getUserModelRepository() {
+        return userModelRepository;
+    }
+
+    @Autowired
+    public void setUserModelRepository(UserModelRepository userModelRepository) {
+        this.userModelRepository = userModelRepository;
+    }
 }
