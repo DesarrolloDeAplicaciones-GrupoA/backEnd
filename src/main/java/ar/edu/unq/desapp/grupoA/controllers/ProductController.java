@@ -31,27 +31,13 @@ public class ProductController {
     @Path("create")
     @Consumes("application/json")
     @Produces("application/json")
-    //public ProductCreationResponse create(@QueryParam("token") String token, ProductCreationBody productBody) {
     public ProductCreationResponse create(ProductCreationBody productBody) {
-    //UserModel user = this.getUserTokenRepository().findByUserToken(token);
         Product product = this.productService.createProduct(productBody.getName(), productBody.getStock(), productBody.getPointCost());
         return ProductCreationResponse.build(product);
     }
-/*
-     @POST
-    @Path("create")
-    @Consumes("application/json")
-    @Produces("application/json")
-    public Product create(Product productBody) {
-      //  UserModel user = this.getUserTokenRepository().findByUserToken(token);
-        Product product = this.productService.createProduct(productBody.getName(),productBody.getStock(),productBody.getPointCost());
-        return (product);
-    }
-    */
 
     @GET
     @Path("{id}")
-    //@Consumes("application/json")
     @Produces("application/json")
     public Product findProductsByID(@PathParam("id") Integer id) {
         Product productFound = this.getProductFactory().getProductByID(id);

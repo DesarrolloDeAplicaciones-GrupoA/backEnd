@@ -74,7 +74,6 @@ public class MessageController {
 
     @GET
     @Path("{id}")
-    //@Consumes("application/json")
     @Produces("application/json")
     public MessageCreationResponse findProductsByID(@PathParam("id") Integer id) {
         Message messageFound = this.getSendMessageService().getMessageByID(id);
