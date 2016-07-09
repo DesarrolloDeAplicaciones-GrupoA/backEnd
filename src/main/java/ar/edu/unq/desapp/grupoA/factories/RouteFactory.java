@@ -22,8 +22,8 @@ public class RouteFactory {
     private RouteRepository routeRepository;
 
     @Transactional
-    public Route fromTo(String title, Point start, Point end) {
-        Route route = new Route(title, start, end);
+    public Route fromTo(Point start, Point end) {
+        Route route = new Route(start, end);
         this.routeRepository.save(route);
         return this.routeRepository.findById(route.getId());
     }

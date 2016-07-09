@@ -19,11 +19,8 @@ public class Route {
     private Point end;
     @ManyToOne
     private Point start;
-    @Column(name = "title")
-    private String title;
 
-    public Route(String title, Point start, Point end) {
-        this.title = title;
+    public Route(Point start, Point end) {
         this.start = start;
         this.end = end;
     }
@@ -40,11 +37,4 @@ public class Route {
         return id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 }

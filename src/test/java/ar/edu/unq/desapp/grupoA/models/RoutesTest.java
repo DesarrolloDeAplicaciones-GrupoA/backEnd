@@ -21,7 +21,7 @@ public class RoutesTest extends AbstractServiceTest{
 
     @Test
     public void aRouteHaveAStartAndEndPoint() {
-        Route route = this.routeFactory.fromTo(StringUtils.getRandomString(), this.pointFactory.create(-34.627712, -58.379718), this.pointFactory.create(-34.603722, -58.382002));
+        Route route = this.routeFactory.fromTo(this.pointFactory.create(-34.627712, -58.379718), this.pointFactory.create(-34.603722, -58.382002));
         assertNotNull(route.getStart());
         assertNotNull(route.getEnd());
     }

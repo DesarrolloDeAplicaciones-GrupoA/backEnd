@@ -11,7 +11,10 @@ public class TravelCreationResponse {
     String nameTravel;
     int fuel;
     int toll;
-    Route route;
+    double routePuntoInicioLatitud;
+    double routePuntoInicioLongitud;
+    double routePuntoFinLatitud;
+    double routePuntoFinLongitud;
     long inicio;
     long fin;
     Set<Integer> frequency;
@@ -39,14 +42,6 @@ public class TravelCreationResponse {
 
     public void setToll(int toll) {
         this.toll = toll;
-    }
-
-    public Route getRoute() {
-        return route;
-    }
-
-    public void setRoute(Route route) {
-        this.route = route;
     }
 
     public Set<Integer> getFrequency() {
@@ -81,19 +76,24 @@ public class TravelCreationResponse {
         this.fin = fin;
     }
 
-    public TravelCreationResponse(String nameTravel, int fuel, int toll, Route route, long inicio, long fin, Set<Integer> frequency, Integer id) {
+    public TravelCreationResponse(String nameTravel, int fuel, int toll, double routePuntoInicioLatitud, double routePuntoInicioLongitud, double routePuntoFinLatitud, double routePuntoFinLongitud, long inicio, long fin, Set<Integer> frequency, Integer id) {
         this.nameTravel = nameTravel;
         this.fuel = fuel;
         this.toll = toll;
-        this.route = route;
+        this.routePuntoInicioLatitud = routePuntoInicioLatitud;
+        this.routePuntoInicioLongitud = routePuntoInicioLongitud;
+        this.routePuntoFinLatitud = routePuntoFinLatitud;
+        this.routePuntoFinLongitud = routePuntoFinLongitud;
         this.inicio = inicio;
         this.fin = fin;
         this.frequency = frequency;
         this.id = id;
     }
 
-
     public static TravelCreationResponse build(Travel travel) {
-        return new TravelCreationResponse(travel.getNameTravel(), travel.getFuelCost(), travel.getTollCost(), travel.getRoute(), travel.getRangeFrom().getTime(), travel.getRangeTo().getTime(), travel.getFrequency(), travel.getId());
+        return new TravelCreationResponse(travel.getNameTravel(), travel.getFuelCost(), travel.getTollCost(),
+                travel.getRoute().getStart().getLatitude(), travel.getRoute().getStart().getLongitude(),
+                travel.getRoute().getEnd().getLatitude(), travel.getRoute().getEnd().getLongitude(), travel.getRangeFrom().getTime(),
+                travel.getRangeTo().getTime(), travel.getFrequency(), travel.getId());
     }
 }

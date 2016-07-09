@@ -25,7 +25,7 @@ public class TravelsController {
         UserModel user = this.getUserTokenRepository().findByUserToken(token);
         Time from = new Time(travelBody.getRangeHours().getStartMillis());
         Time to = new Time(travelBody.getRangeHours().getEndMillis());
-        Travel travel = this.travelAdding.createTravel(user, travelBody.getNameTravel(), travelBody.getFuel(), travelBody.getToll(), travelBody.getRouteFromString(), from, to, travelBody.getFrequency());
+        Travel travel = this.travelAdding.createTravel(user, travelBody.getNameTravel(), travelBody.getFuel(), travelBody.getToll(), travelBody.getRouteFromBody(), from, to, travelBody.getFrequency());
         return TravelCreationResponse.build(travel);
     }
 

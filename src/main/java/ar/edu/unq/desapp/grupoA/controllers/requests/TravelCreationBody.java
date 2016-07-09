@@ -1,6 +1,7 @@
 package ar.edu.unq.desapp.grupoA.controllers.requests;
 
 import ar.edu.unq.desapp.grupoA.models.Route;
+import ar.edu.unq.desapp.grupoA.models.utils.Point;
 import org.joda.time.Interval;
 
 import java.sql.Date;
@@ -13,11 +14,53 @@ public class TravelCreationBody {
     String nameTravel;
     int fuel;
     int toll;
-    String route;
+    double inicioLatitud;
+    double inicioLongitud;
+    double finLatitud;
+    double finLongitud;
     long inicio;
     long fin;
     Set<Integer> frequency;
 
+    public Route getRouteFromBody(){
+
+        Point start = new Point(this.inicioLatitud, this.inicioLongitud);
+        Point end = new Point(this.finLatitud, this.finLongitud);
+
+        return new Route(start,end);
+    }
+
+    public double getInicioLatitud() {
+        return inicioLatitud;
+    }
+
+    public void setInicioLatitud(double inicioLatitud) {
+        this.inicioLatitud = inicioLatitud;
+    }
+
+    public double getInicioLongitud() {
+        return inicioLongitud;
+    }
+
+    public void setInicioLongitud(double inicioLongitud) {
+        this.inicioLongitud = inicioLongitud;
+    }
+
+    public double getFinLatitud() {
+        return finLatitud;
+    }
+
+    public void setFinLatitud(double finLatitud) {
+        this.finLatitud = finLatitud;
+    }
+
+    public double getFinLongitud() {
+        return finLongitud;
+    }
+
+    public void setFinLongitud(double finLongitud) {
+        this.finLongitud = finLongitud;
+    }
 
     public Set<Integer> getFrequency() {
         return frequency;
@@ -25,11 +68,6 @@ public class TravelCreationBody {
 
     public void setFrequency(Set<Integer> frequency) {
         this.frequency = frequency;
-    }
-
-
-    public Route getRouteFromString() {
-        return new Route();
     }
 
     public Interval getRangeHours() {
@@ -58,14 +96,6 @@ public class TravelCreationBody {
 
     public void setToll(int toll) {
         this.toll = toll;
-    }
-
-    public String getRoute() {
-        return route;
-    }
-
-    public void setRoute(String route) {
-        this.route = route;
     }
 
     public Date getInicio() {
