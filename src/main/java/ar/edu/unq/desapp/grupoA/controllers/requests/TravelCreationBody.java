@@ -2,6 +2,7 @@ package ar.edu.unq.desapp.grupoA.controllers.requests;
 
 import ar.edu.unq.desapp.grupoA.models.Route;
 import ar.edu.unq.desapp.grupoA.models.utils.Point;
+import org.codehaus.jackson.annotate.JsonProperty;
 import org.joda.time.Interval;
 
 import java.sql.Date;
@@ -14,52 +15,34 @@ public class TravelCreationBody {
     String nameTravel;
     int fuel;
     int toll;
-    double inicioLatitud;
-    double inicioLongitud;
-    double finLatitud;
-    double finLongitud;
+    @JsonProperty("startPoint") Point startPoint;
+    @JsonProperty("endPoint") Point endPoint;
     long inicio;
     long fin;
     Set<Integer> frequency;
 
     public Route getRouteFromBody(){
 
-        Point start = new Point(this.inicioLatitud, this.inicioLongitud);
-        Point end = new Point(this.finLatitud, this.finLongitud);
+        Point start = new Point(0, 0);
+        Point end = new Point(0, 0);;
 
         return new Route(start,end);
     }
 
-    public double getInicioLatitud() {
-        return inicioLatitud;
+    public Point getStartPoint() {
+        return startPoint;
     }
 
-    public void setInicioLatitud(double inicioLatitud) {
-        this.inicioLatitud = inicioLatitud;
+    public void setStartPoint(Point startPoint) {
+        this.startPoint = startPoint;
     }
 
-    public double getInicioLongitud() {
-        return inicioLongitud;
+    public Point getEndPoint() {
+        return endPoint;
     }
 
-    public void setInicioLongitud(double inicioLongitud) {
-        this.inicioLongitud = inicioLongitud;
-    }
-
-    public double getFinLatitud() {
-        return finLatitud;
-    }
-
-    public void setFinLatitud(double finLatitud) {
-        this.finLatitud = finLatitud;
-    }
-
-    public double getFinLongitud() {
-        return finLongitud;
-    }
-
-    public void setFinLongitud(double finLongitud) {
-        this.finLongitud = finLongitud;
+    public void setEndPoint(Point endPoint) {
+        this.endPoint = endPoint;
     }
 
     public Set<Integer> getFrequency() {

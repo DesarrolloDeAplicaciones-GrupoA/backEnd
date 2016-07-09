@@ -1,7 +1,10 @@
 package ar.edu.unq.desapp.grupoA.models.utils;
 
 
+import org.codehaus.jackson.annotate.JsonProperty;
+
 import javax.persistence.*;
+
 
 @Entity
 @Table(name = "Point")
