@@ -33,7 +33,6 @@ public class TravelsController {
 
     @GET
     @Path("{id}")
-//    @Consumes("application/json")
     @Produces("application/json")
     public TravelCreationResponse create(@PathParam("id") Integer id) {
         return TravelCreationResponse.build(this.getTravelAdding().get(id));
@@ -58,13 +57,4 @@ public class TravelsController {
         this.userTokenRepository = userTokenRepository;
     }
 
-    /*
-    1. Servicio para dar de alta un recorrido debe estar
-    2. Crear un controller en el package controller similar al de vehicleController que cree el recorrido
-     3. En el frontENd, hay que crear:
-      a. un controller
-      b. una view
-      c. un service
-      d. vincular el path con los anteriores (ver app.js)
-     */
 }
