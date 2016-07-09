@@ -10,18 +10,20 @@ public class TravelResponse {
     private Route route;
     private Integer id;
     private Integer toll;
+    private Integer fuel;
     private Set<Integer> frequency;
 
-    public TravelResponse(String nameTravel, int id, Route route, Integer toll, Set<Integer> frequency) {
+    public TravelResponse(String nameTravel, int id, Route route, Integer toll, Set<Integer> frequency, Integer fuel) {
         this.setNameTravel(nameTravel);
         this.setId(id);
         this.setRoute(route);
         this.setToll(toll);
         this.setFrequency(frequency);
+        this.setFuel(fuel);
     }
 
     public static TravelResponse build(Travel travel) {
-        return new TravelResponse(travel.getNameTravel(), travel.getId(), travel.getRoute(), travel.getTollCost(), travel.getFrequency());
+        return new TravelResponse(travel.getNameTravel(), travel.getId(), travel.getRoute(), travel.getTollCost(), travel.getFrequency(), travel.getFuelCost());
     }
 
 
@@ -63,5 +65,13 @@ public class TravelResponse {
 
     public void setFrequency(Set<Integer> frequency) {
         this.frequency = frequency;
+    }
+
+    public Integer getFuel() {
+        return fuel;
+    }
+
+    public void setFuel(Integer fuel) {
+        this.fuel = fuel;
     }
 }
