@@ -2,13 +2,13 @@ package ar.edu.unq.desapp.grupoA.controllers.responses;
 
 import ar.edu.unq.desapp.grupoA.models.UserModel;
 
-public class UserResponde {
+public class UserResponse {
     private int id;
     private String fullName;
     private String email;
     private String picture;
 
-    public UserResponde(int id, String fullName, String email, String picture) {
+    public UserResponse(int id, String fullName, String email, String picture) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
@@ -16,8 +16,8 @@ public class UserResponde {
         // this.points = points;
     }
 
-    public static UserResponde build(UserModel userModel) {
-        return new UserResponde(userModel.getId(), userModel.getFullName(), userModel.getEmail(), userModel.getPicture());
+    public static UserResponse build(UserModel userModel) {
+        return new UserResponse(userModel.getId(), userModel.getFullName(), userModel.getEmail(), userModel.getPicture());
     }
 
     public int getId() {

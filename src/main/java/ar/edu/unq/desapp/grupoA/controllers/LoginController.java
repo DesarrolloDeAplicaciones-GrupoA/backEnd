@@ -1,7 +1,6 @@
 package ar.edu.unq.desapp.grupoA.controllers;
 
-import ar.edu.unq.desapp.grupoA.controllers.responses.UserResponde;
-import ar.edu.unq.desapp.grupoA.factories.UserModelFactory;
+import ar.edu.unq.desapp.grupoA.controllers.responses.UserResponse;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.repositories.UserTokenRepository;
 import ar.edu.unq.desapp.grupoA.services.Login;
@@ -32,10 +31,10 @@ public class LoginController {
     @GET
     @Path("listUsers")
     @Produces("application/json")
-    public List<UserResponde> listUserModel() {
-        List<UserResponde> result = new ArrayList<UserResponde>();
+    public List<UserResponse> listUserModel() {
+        List<UserResponse> result = new ArrayList<UserResponse>();
         for (UserModel user : this.getLogin().findAll()) {
-            result.add(UserResponde.build(user));
+            result.add(UserResponse.build(user));
         }
         return result;
     }
@@ -43,17 +42,17 @@ public class LoginController {
     /*@GET
     @Path("{id}")
     @Produces("application/json")
-    public UserResponde findUserByID(@PathParam("id") Integer id) {
+    public UserResponse findUserByID(@PathParam("id") Integer id) {
         UserModel userModel = this.getLogin().geUserByID(id);
-        return UserResponde.build(userModel);
+        return UserResponse.build(userModel);
     }*/
 
     @GET
-    @Path("{userInfo}")
+    @Path("userInfo")
     @Produces("application/json")
-    public UserResponde findUserLogin(@QueryParam("token") String token) {
+    public UserResponse findUserLogin(@QueryParam("token") String token) {
         UserModel user = this.getUserTokenRepository().findByUserToken(token);
-        return UserResponde.build(user);
+        return UserResponse.build(user);
     }
 
     @GET
