@@ -1,7 +1,8 @@
-package ar.edu.unq.desapp.grupoA.controllers.responses;
+package ar.edu.unq.desapp.grupoA.controllers;
 
 
 import ar.edu.unq.desapp.grupoA.controllers.requests.ProductCreationBody;
+import ar.edu.unq.desapp.grupoA.controllers.responses.ProductCreationResponse;
 import ar.edu.unq.desapp.grupoA.factories.ProductFactory;
 import ar.edu.unq.desapp.grupoA.models.Product;
 import ar.edu.unq.desapp.grupoA.services.ProductService;

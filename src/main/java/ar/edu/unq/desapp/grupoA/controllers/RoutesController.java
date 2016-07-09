@@ -1,5 +1,6 @@
 package ar.edu.unq.desapp.grupoA.controllers;
 
+import ar.edu.unq.desapp.grupoA.controllers.responses.TravelCreationResponse;
 import ar.edu.unq.desapp.grupoA.controllers.responses.TravelListResponse;
 import ar.edu.unq.desapp.grupoA.models.Travel;
 import ar.edu.unq.desapp.grupoA.repositories.TravelRepository;

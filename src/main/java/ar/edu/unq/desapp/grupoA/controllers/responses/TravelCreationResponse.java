@@ -1,10 +1,7 @@
-package ar.edu.unq.desapp.grupoA.controllers;
+package ar.edu.unq.desapp.grupoA.controllers.responses;
 
-import ar.edu.unq.desapp.grupoA.models.Route;
 import ar.edu.unq.desapp.grupoA.models.Travel;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 public class TravelCreationResponse {
