@@ -39,14 +39,6 @@ public class LoginController {
         return result;
     }
 
-    /*@GET
-    @Path("{id}")
-    @Produces("application/json")
-    public UserResponse findUserByID(@PathParam("id") Integer id) {
-        UserModel userModel = this.getLogin().geUserByID(id);
-        return UserResponse.build(userModel);
-    }*/
-
     @GET
     @Path("userInfo")
     @Produces("application/json")
