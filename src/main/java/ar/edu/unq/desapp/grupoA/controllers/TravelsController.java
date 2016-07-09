@@ -6,6 +6,7 @@ import ar.edu.unq.desapp.grupoA.controllers.responses.TravelListResponse;
 import ar.edu.unq.desapp.grupoA.controllers.responses.TravelResponse;
 import ar.edu.unq.desapp.grupoA.models.Travel;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
+import ar.edu.unq.desapp.grupoA.repositories.TravelRepository;
 import ar.edu.unq.desapp.grupoA.repositories.UserTokenRepository;
 import ar.edu.unq.desapp.grupoA.services.TravelAdding;
 import ar.edu.unq.desapp.grupoA.services.TravelsService;
@@ -20,6 +21,7 @@ import java.util.List;
 @Controller("travelController")
 public class TravelsController {
     private UserTokenRepository userTokenRepository;
+    private TravelRepository travelRepository;
     private TravelsService travelsService;
     private TravelAdding travelAdding;
 
@@ -52,6 +54,12 @@ public class TravelsController {
         return TravelListResponse.build(travels);
     }
 
+    @GET
+    @Path("{id}/details")
+    @Produces("application/json")
+    public TravelResponse details(@PathParam("id") Integer id) {
+        return TravelResponse.build(this.getTravelRepository().findById(id));
+    }
 
     @GET
     @Path("{id}")
@@ -86,5 +94,14 @@ public class TravelsController {
     @Autowired
     public void setTravelsService(TravelsService travelsService) {
         this.travelsService = travelsService;
+    }
+
+    public TravelRepository getTravelRepository() {
+        return travelRepository;
+    }
+
+    @Autowired
+    public void setTravelRepository(TravelRepository travelRepository) {
+        this.travelRepository = travelRepository;
     }
 }
