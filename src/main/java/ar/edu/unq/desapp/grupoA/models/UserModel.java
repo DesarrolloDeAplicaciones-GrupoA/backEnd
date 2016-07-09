@@ -30,6 +30,8 @@ public class UserModel implements ScoringModel {
     private String email;
     @Column(name = "points")
     private int points;
+    @Column(name = "picture")
+    private String picture;
 
     @OneToOne(cascade = CascadeType.ALL, targetEntity = Vehicle.class)
     @JoinColumn(name = "vehicle_fk")
@@ -60,7 +62,8 @@ public class UserModel implements ScoringModel {
     private GoogleOauthCredential googleOauthCredential;
 
 
-    public UserModel(){}
+    public UserModel() {
+    }
 
     public UserModel(String fullName, String email) {
         super();
@@ -193,5 +196,13 @@ public class UserModel implements ScoringModel {
 
     public void setGoogleOauthCredential(GoogleOauthCredential googleOauthCredential) {
         this.googleOauthCredential = googleOauthCredential;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

@@ -3,13 +3,14 @@ package ar.edu.unq.desapp.grupoA.services;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.models.oauth.GoogleOauthCredential;
 import ar.edu.unq.desapp.grupoA.repositories.UserModelRepository;
-import com.jcabi.aspects.Loggable;
 import com.google.api.services.oauth2.model.Userinfoplus;
+import com.jcabi.aspects.Loggable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 //@Loggable
 @Service("loginService")
 public class Login {
@@ -25,11 +26,13 @@ public class Login {
         this.getUserTokenService().create(user);
         return user;
     }
+
     @Loggable
     @Transactional
     public UserModel signUpWithCredentials(Userinfoplus userinfoplus, GoogleOauthCredential googleOauthCredential) {
         UserModel newUser = this.signUp(userinfoplus.getName(), userinfoplus.getEmail());
         newUser.setGoogleOauthCredential(googleOauthCredential);
+        newUser.setPicture(userinfoplus.getPicture());
         this.getRepository().update(newUser);
         return newUser;
     }
@@ -58,7 +61,8 @@ public class Login {
         this.userTokenService = userTokenService;
     }
 
-    public UserModel geUserByID(Integer id){
-        return this.userModelRepository.findById(id);}
+    public UserModel geUserByID(Integer id) {
+        return this.userModelRepository.findById(id);
+    }
 
 }

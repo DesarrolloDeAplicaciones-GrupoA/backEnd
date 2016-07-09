@@ -6,16 +6,18 @@ public class UserResponde {
     private int id;
     private String fullName;
     private String email;
+    private String picture;
 
-    public UserResponde(int id, String fullName, String email) {
+    public UserResponde(int id, String fullName, String email, String picture) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
-       // this.points = points;
+        this.picture = picture;
+        // this.points = points;
     }
 
     public static UserResponde build(UserModel userModel) {
-        return new UserResponde(userModel.getId(), userModel.getFullName(), userModel.getEmail());
+        return new UserResponde(userModel.getId(), userModel.getFullName(), userModel.getEmail(), userModel.getPicture());
     }
 
     public int getId() {
@@ -42,4 +44,11 @@ public class UserResponde {
         this.email = email;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
 }
