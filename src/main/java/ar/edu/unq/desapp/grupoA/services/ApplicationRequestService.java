@@ -7,6 +7,7 @@ import ar.edu.unq.desapp.grupoA.models.utils.Point;
 import ar.edu.unq.desapp.grupoA.repositories.ApplicationRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 
@@ -16,6 +17,7 @@ public class ApplicationRequestService {
     @Autowired
     private ApplicationRequestRepository applicationRequestRepository;
 
+    @Transactional
     public ApplicationRequest createApplicationRequest(UserModel user, Travel travel, Date dateTime, Point upPoint, Point downpoint) {
 
         ApplicationRequest request = new ApplicationRequest(user, travel, dateTime, upPoint, downpoint);

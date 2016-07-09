@@ -25,7 +25,7 @@ public class ApplicationsController {
     private TravelRepository travelRepository;
 
     @POST
-    @Path("new")
+    @Path("create")
     @Consumes("application/json")
     @Produces("application/json")
     public ApplicationRequestCreationResponse create(@QueryParam("token") String token, @PathParam("travelId") Integer travelId, ApplicationRequestCreationBody creationBody) {
