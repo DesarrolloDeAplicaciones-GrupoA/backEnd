@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Point")
 public class Point {
-    private static final long serialVersionUID = -3595963299665047378L;
 
     @Id()
     @GeneratedValue()

@@ -15,7 +15,7 @@ public class Travel {
     public Travel(){}
 
     @Id()
-    @GeneratedValue()
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "TRAVEL_ID")
     private int id;
 
