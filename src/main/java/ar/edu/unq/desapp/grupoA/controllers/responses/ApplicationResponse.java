@@ -10,11 +10,16 @@ import java.util.stream.Collectors;
 public class ApplicationResponse extends ApplicationRequestCreationResponse {
 
     private TravelResponse travel;
+    private Boolean isRejected;
+    private Boolean isApproved;
+    private Boolean isPending;
 
-    public ApplicationResponse(int id, Point upPoint, Point downPoint, Travel travel) {
+    public ApplicationResponse(int id, Point upPoint, Point downPoint, Travel travel, Boolean isApproved, Boolean isPending, Boolean isRejected) {
         super(id, upPoint, downPoint);
         this.setTravel(TravelResponse.build(travel));
-
+        this.setApproved(isApproved);
+        this.setPending(isPending);
+        this.setRejected(isRejected);
     }
 
     public static List<ApplicationResponse> buildMany(List<ApplicationRequest> applicationRequests) {
@@ -22,7 +27,15 @@ public class ApplicationResponse extends ApplicationRequestCreationResponse {
     }
 
     public static ApplicationResponse build(ApplicationRequest applicationRequest) {
-        return new ApplicationResponse(applicationRequest.getId(), applicationRequest.getUpPoint(), applicationRequest.getDownPoint(), applicationRequest.getTravel());
+        return new ApplicationResponse(
+                applicationRequest.getId(),
+                applicationRequest.getUpPoint(),
+                applicationRequest.getDownPoint(),
+                applicationRequest.getTravel(),
+                applicationRequest.isApproved(),
+                applicationRequest.isPending(),
+                applicationRequest.isRejected()
+        );
     }
 
     public TravelResponse getTravel() {
@@ -31,5 +44,29 @@ public class ApplicationResponse extends ApplicationRequestCreationResponse {
 
     public void setTravel(TravelResponse travel) {
         this.travel = travel;
+    }
+
+    public Boolean getRejected() {
+        return isRejected;
+    }
+
+    public void setRejected(Boolean rejected) {
+        isRejected = rejected;
+    }
+
+    public Boolean getApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(Boolean approved) {
+        isApproved = approved;
+    }
+
+    public Boolean getPending() {
+        return isPending;
+    }
+
+    public void setPending(Boolean pending) {
+        isPending = pending;
     }
 }
