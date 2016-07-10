@@ -16,7 +16,7 @@ import org.springframework.stereotype.Controller;
 import javax.ws.rs.*;
 import java.sql.Date;
 
-@Path("travels/{travelId}/applications/")
+@Path("travels/{travelId}/applications")
 @Controller("applicationController")
 public class ApplicationsController {
 
@@ -33,7 +33,7 @@ public class ApplicationsController {
         Travel travel = this.getTravelRepository().findById(travelId);
         Route route = travel.getRoute();
         Date upDate = creationBody.buildUpDate();
-        ApplicationRequest application = this.getApplicationRequestService().createApplicationRequest(user, travel, upDate, route.getStart(), route.getEnd() );
+        ApplicationRequest application = this.getApplicationRequestService().createApplicationRequest(user, travel, upDate, route.getStart(), route.getEnd());
 
         return ApplicationRequestCreationResponse.build(application);
     }
@@ -64,4 +64,5 @@ public class ApplicationsController {
     public void setTravelRepository(TravelRepository travelRepository) {
         this.travelRepository = travelRepository;
     }
+
 }

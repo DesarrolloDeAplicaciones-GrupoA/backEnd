@@ -27,6 +27,10 @@ public class ApplicationRequest {
     @OneToOne(cascade = CascadeType.ALL)
     private ApplicationRequestState state;
 
+    public ApplicationRequest() {
+
+    }
+
     public ApplicationRequest(UserModel requester, Travel travel, Date dateTime, Point upPoint, Point downpoint) {
         this.requester = requester;
         this.travel = travel;
