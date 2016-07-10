@@ -8,14 +8,16 @@ public class TravelCreationResponse {
     String nameTravel;
     int fuel;
     int toll;
-    double routePuntoInicioLatitud;
-    double routePuntoInicioLongitud;
-    double routePuntoFinLatitud;
-    double routePuntoFinLongitud;
+    double inicioLatitud;
+    double inicioLongitud;
+    double finLatitud;
+    double finLongitud;
     long inicio;
     long fin;
     Set<Integer> frequency;
     private Integer id;
+
+
 
     public String getNameTravel() {
         return nameTravel;
@@ -73,14 +75,46 @@ public class TravelCreationResponse {
         this.fin = fin;
     }
 
-    public TravelCreationResponse(String nameTravel, int fuel, int toll, double routePuntoInicioLatitud, double routePuntoInicioLongitud, double routePuntoFinLatitud, double routePuntoFinLongitud, long inicio, long fin, Set<Integer> frequency, Integer id) {
+    public double getInicioLatitud() {
+        return inicioLatitud;
+    }
+
+    public void setInicioLatitud(double inicioLatitud) {
+        this.inicioLatitud = inicioLatitud;
+    }
+
+    public double getInicioLongitud() {
+        return inicioLongitud;
+    }
+
+    public void setInicioLongitud(double inicioLongitud) {
+        this.inicioLongitud = inicioLongitud;
+    }
+
+    public double getFinLatitud() {
+        return finLatitud;
+    }
+
+    public void setFinLatitud(double finLatitud) {
+        this.finLatitud = finLatitud;
+    }
+
+    public double getFinLongitud() {
+        return finLongitud;
+    }
+
+    public void setFinLongitud(double finLongitud) {
+        this.finLongitud = finLongitud;
+    }
+
+    public TravelCreationResponse(String nameTravel, int fuel, int toll, double inicioLatitud, double inicioLongitud, double finLatitud, double finLongitud, long inicio, long fin, Set<Integer> frequency, Integer id) {
         this.nameTravel = nameTravel;
         this.fuel = fuel;
         this.toll = toll;
-        this.routePuntoInicioLatitud = routePuntoInicioLatitud;
-        this.routePuntoInicioLongitud = routePuntoInicioLongitud;
-        this.routePuntoFinLatitud = routePuntoFinLatitud;
-        this.routePuntoFinLongitud = routePuntoFinLongitud;
+        this.inicioLatitud = inicioLatitud;
+        this.inicioLongitud = inicioLongitud;
+        this.finLatitud = finLatitud;
+        this.finLongitud = finLongitud;
         this.inicio = inicio;
         this.fin = fin;
         this.frequency = frequency;

@@ -15,34 +15,52 @@ public class TravelCreationBody {
     String nameTravel;
     int fuel;
     int toll;
-    @JsonProperty("startPoint") Point startPoint;
-    @JsonProperty("endPoint") Point endPoint;
+    double inicioLatitud;
+    double inicioLongitud;
+    double finLatitud;
+    double finLongitud;
     long inicio;
     long fin;
     Set<Integer> frequency;
 
     public Route getRouteFromBody(){
 
-        Point start = new Point(0, 0);
-        Point end = new Point(0, 0);;
+        Point start = new Point(inicioLatitud, inicioLongitud);
+        Point end = new Point(finLatitud, finLongitud);
 
         return new Route(start,end);
     }
 
-    public Point getStartPoint() {
-        return startPoint;
+    public double getInicioLatitud() {
+        return inicioLatitud;
     }
 
-    public void setStartPoint(Point startPoint) {
-        this.startPoint = startPoint;
+    public void setInicioLatitud(double inicioLatitud) {
+        this.inicioLatitud = inicioLatitud;
     }
 
-    public Point getEndPoint() {
-        return endPoint;
+    public double getInicioLongitud() {
+        return inicioLongitud;
     }
 
-    public void setEndPoint(Point endPoint) {
-        this.endPoint = endPoint;
+    public void setInicioLongitud(double inicioLongitud) {
+        this.inicioLongitud = inicioLongitud;
+    }
+
+    public double getFinLatitud() {
+        return finLatitud;
+    }
+
+    public void setFinLatitud(double finLatitud) {
+        this.finLatitud = finLatitud;
+    }
+
+    public double getFinLongitud() {
+        return finLongitud;
+    }
+
+    public void setFinLongitud(double finLongitud) {
+        this.finLongitud = finLongitud;
     }
 
     public Set<Integer> getFrequency() {

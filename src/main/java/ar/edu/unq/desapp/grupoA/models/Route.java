@@ -15,9 +15,9 @@ public class Route {
     @Column(name = "ROUTE_ID")
     private int id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Point end;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Point start;
 
     public Route(Point start, Point end) {

@@ -16,7 +16,9 @@ import java.util.stream.Collectors;
 @Controller("pointController")
 public class PointController {
 
+    @Autowired
     private UserTokenRepository userTokenRepository;
+    @Autowired
     private PointRepository pointRepository;
 
     @GET
@@ -35,7 +37,7 @@ public class PointController {
         return pointRepository;
     }
 
-    @Autowired
+
     public void setPointRepository(PointRepository pointRepository) {
         this.pointRepository = pointRepository;
     }
@@ -44,7 +46,6 @@ public class PointController {
         return userTokenRepository;
     }
 
-    @Autowired
     public void setUserTokenRepository(UserTokenRepository userTokenRepository) {
         this.userTokenRepository = userTokenRepository;
     }
