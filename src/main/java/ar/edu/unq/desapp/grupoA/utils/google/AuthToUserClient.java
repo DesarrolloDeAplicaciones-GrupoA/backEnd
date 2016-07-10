@@ -38,11 +38,18 @@ public class AuthToUserClient extends AuthClient{
 
     @Override
     void storeCredentials(String userId, Credential credentials) {
-        GoogleOauthCredential user = new GoogleOauthCredential();
-        user.setGoogleUserId(userId);
-        user.setGoogleAccessToken(credentials.getAccessToken());
-        user.setGoogleRefreshToken(credentials.getRefreshToken());
-        this.getGoogleOauthCredentialRepository().save(user);
+        if (this.getGoogleOauthCredentialRepository().findByUserId(userId) == null) {
+            GoogleOauthCredential user = new GoogleOauthCredential();
+            user.setGoogleUserId(userId);
+            user.setGoogleAccessToken(credentials.getAccessToken());
+            user.setGoogleRefreshToken(credentials.getRefreshToken());
+            this.getGoogleOauthCredentialRepository().save(user);
+        } else {
+            GoogleOauthCredential user = this.getGoogleOauthCredentialRepository().findByUserId(userId);
+            user.setGoogleAccessToken(credentials.getAccessToken());
+            user.setGoogleRefreshToken(credentials.getRefreshToken());
+            this.getGoogleOauthCredentialRepository().update(user);
+        }
     }
 
     public GoogleOauthCredentialRepository getGoogleOauthCredentialRepository() {
