@@ -27,6 +27,10 @@ public class ApplicationRequest {
     @OneToOne(cascade = CascadeType.ALL)
     private ApplicationRequestState state;
 
+    public ApplicationRequest() {
+
+    }
+
     public ApplicationRequest(UserModel requester, Travel travel, Date dateTime, Point upPoint, Point downpoint) {
         this.requester = requester;
         this.travel = travel;
@@ -70,5 +74,29 @@ public class ApplicationRequest {
 
     public void reject() {
         this.state.reject();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Point getUpPoint() {
+        return upPoint;
+    }
+
+    public void setUpPoint(Point upPoint) {
+        this.upPoint = upPoint;
+    }
+
+    public Point getDownPoint() {
+        return downPoint;
+    }
+
+    public void setDownPoint(Point downPoint) {
+        this.downPoint = downPoint;
     }
 }

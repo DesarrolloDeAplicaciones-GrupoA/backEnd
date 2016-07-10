@@ -52,7 +52,7 @@ public class Travel {
     @Column(name = "frequency")
     private Set<Integer> frequency; //Frecuencia realizacion del recorrido Ej: Mon - Wed - Fri, Lista de Dias
 
-    @OneToMany(mappedBy = "travel")
+    @OneToMany(mappedBy = "travel", fetch = FetchType.EAGER)
     private Set<ApplicationRequest> applicationRequests;
 
 
