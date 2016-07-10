@@ -57,7 +57,7 @@ Ver [Proyecto frontend](https://github.com/DesarrolloDeAplicaciones-GrupoA/front
     * [x] Posibilidad de elegir lenguaje =I18n- US_ES
 * Funcionalidad
     * [x] Home
-    * [ ] Solicitar subirse a un recorrido
+    * [x] Solicitar subirse a un recorrido
     * [x] Gaming: ABM de Productos
     * [x] Registrar usuarios en la red
     * [x] Agregar vehiculo
