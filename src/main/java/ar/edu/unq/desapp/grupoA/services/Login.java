@@ -3,6 +3,7 @@ package ar.edu.unq.desapp.grupoA.services;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
 import ar.edu.unq.desapp.grupoA.models.oauth.GoogleOauthCredential;
 import ar.edu.unq.desapp.grupoA.repositories.UserModelRepository;
+import ar.edu.unq.desapp.grupoA.utils.google.fakes.Faker;
 import com.google.api.services.oauth2.model.Userinfoplus;
 import com.jcabi.aspects.Loggable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ public class Login {
 
     private UserModelRepository userModelRepository;
     private UserTokenService userTokenService;
+    private Faker faker;
 
     @Loggable
     @Transactional
@@ -24,6 +26,7 @@ public class Login {
         UserModel user = new UserModel(fullName, email);
         this.userModelRepository.save(user);
         this.getUserTokenService().create(user);
+        this.getFaker().afterSignUp(user);
         return user;
     }
 
@@ -65,4 +68,12 @@ public class Login {
         return this.userModelRepository.findById(id);
     }
 
+    public Faker getFaker() {
+        return faker;
+    }
+
+    @Autowired
+    public void setFaker(Faker faker) {
+        this.faker = faker;
+    }
 }

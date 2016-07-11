@@ -28,9 +28,17 @@ public class ApplicationListController {
     @Produces("application/json")
     public List<ApplicationResponse> mine(@QueryParam("token") String token) {
         UserModel user = this.getUserTokenRepository().findByUserToken(token);
-        return ApplicationResponse.buildMany(this.getApplicationRequestRepository().findAll());
+        return ApplicationResponse.buildMany(this.getApplicationRequestRepository().findForUser(user));
     }
 
+
+    @GET
+    @Path("received")
+    @Produces("application/json")
+    public List<ApplicationResponse> received(@QueryParam("token") String token) {
+        UserModel user = this.getUserTokenRepository().findByUserToken(token);
+        return ApplicationResponse.buildMany(this.getApplicationRequestRepository().findForReceiver(user));
+    }
 
     public ApplicationRequestService getApplicationRequestService() {
         return applicationRequestService;
