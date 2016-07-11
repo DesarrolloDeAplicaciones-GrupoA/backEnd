@@ -29,13 +29,17 @@ public class ApplicationRequestService {
 
     }
 
+    @Transactional
     public ApplicationRequest approveApplicationRequest(ApplicationRequest request) {
         request.approve();
+        this.applicationRequestRepository.update(request);
         return request;
     }
 
+    @Transactional
     public ApplicationRequest rejectApplicationRequest(ApplicationRequest request) {
         request.reject();
+        this.applicationRequestRepository.update(request);
         return request;
     }
 }

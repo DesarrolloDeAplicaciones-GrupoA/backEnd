@@ -27,10 +27,19 @@ public class ApplicationRequestRepository extends HibernateGenericDAO<Applicatio
         return (List<ApplicationRequest>) cr.list();
     }
 
-    public List<ApplicationRequest> findForReceiver(UserModel sender) {
+    public List<ApplicationRequest> findForReceiver(UserModel receiver) {
         Criteria c = this.getSession().createCriteria(this.getDomainClass(), "application");
         c.createAlias("application.travel", "travel"); // inner join by default
-        c.add(Restrictions.eq("travel.userModel", sender));
+        c.add(Restrictions.eq("travel.userModel", receiver));
         return (List<ApplicationRequest>) c.list();
+    }
+
+    public ApplicationRequest findForReceiverAndUser(UserModel receiver, Integer id) {
+
+        Criteria c = this.getSession().createCriteria(this.getDomainClass(), "application");
+        c.createAlias("application.travel", "travel"); // inner join by default
+        c.add(Restrictions.eq("travel.userModel", receiver));
+        c.add(Restrictions.eq("id", id));
+        return (ApplicationRequest) c.uniqueResult();
     }
 }
