@@ -48,6 +48,16 @@ public class ApplicationListController {
         return ApplicationResponse.build(applicationRequest);
     }
 
+    @PUT
+    @Path("{id}/reject")
+    @Produces("application/json")
+    public ApplicationResponse reject(@QueryParam("token") String token, @PathParam("id") Integer applicationId) {
+        UserModel user = this.getUserTokenRepository().findByUserToken(token);
+        ApplicationRequest applicationRequest = this.getApplicationRequestRepository().findForReceiverAndUser(user, applicationId);
+        this.getApplicationRequestService().rejectApplicationRequest(applicationRequest);
+        return ApplicationResponse.build(applicationRequest);
+    }
+
     public ApplicationRequestService getApplicationRequestService() {
         return applicationRequestService;
     }
