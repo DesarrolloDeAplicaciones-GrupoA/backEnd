@@ -31,7 +31,7 @@ public class MessageRepository extends HibernateGenericDAO<Message> implements G
     public List<Message> findAllMyMessagesSended(UserModel sender) {
         Criteria cr = this.getSession().createCriteria(this.getDomainClass());
         cr.add(Restrictions.eq("sender", sender));
-        return (List<Message>) cr.list();}
+    return (List<Message>) cr.list();}
 
     public List<Message> findAllPublicMessage() {
         Criteria cr = this.getSession().createCriteria(this.getDomainClass());

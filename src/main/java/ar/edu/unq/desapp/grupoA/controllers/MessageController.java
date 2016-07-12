@@ -41,7 +41,7 @@ public class MessageController {
     @GET
     @Path("outbox")
     @Produces("application/json")
-    public List<MessageCreationResponse> getMyOutBoox(@QueryParam("token") String token) {
+    public List<MessageCreationResponse> getMyOutBox(@QueryParam("token") String token) {
         UserModel user =this.getUserTokenRepository().findByUserToken(token);
         List<MessageCreationResponse> result = new ArrayList<MessageCreationResponse>();
         for (Message msj : this.getSendMessageService().findMessagesSended(user)) {
@@ -52,10 +52,10 @@ public class MessageController {
     @GET
     @Path("publicForUser")
     @Produces("application/json")
-    public List<MessageCreationResponse> getMyOutBoox(@PathParam("id") Integer id) {
+    public List<MessageCreationResponse> getAllMyPublic(@PathParam("id") Integer id) {
         UserModel user = this.getUserModelRepository().findById(id);
         List<MessageCreationResponse> result = new ArrayList<MessageCreationResponse>();
-        for (Message msj : this.getSendMessageService().findMessagesSended(user)) {
+        for (Message msj : this.getSendMessageService().findAllPublicSendedAndReceivedForAUser(user)) {
             result.add(MessageCreationResponse.build(msj));
         }
         return result;

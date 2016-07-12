@@ -40,12 +40,21 @@ public class LoginController {
     }
 
     @GET
-    @Path("userInfo")
+    @Path("myUserInfo")
     @Produces("application/json")
     public UserResponse findUserLogin(@QueryParam("token") String token) {
         UserModel user = this.getUserTokenRepository().findByUserToken(token);
         return UserResponse.build(user);
     }
+
+    @GET
+    @Path("{id}")
+    @Produces("application/json")
+    public UserResponse findUserInfo(@PathParam("id") Integer id) {
+        UserModel user = this.getLogin().getRepository().findById(id);
+        return UserResponse.build(user);
+    }
+
 
     @GET
     @Path("cantUsers")

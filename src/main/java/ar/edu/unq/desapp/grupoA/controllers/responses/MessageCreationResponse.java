@@ -2,6 +2,7 @@ package ar.edu.unq.desapp.grupoA.controllers.responses;
 
 import ar.edu.unq.desapp.grupoA.models.Message;
 import ar.edu.unq.desapp.grupoA.models.UserModel;
+import org.hibernate.id.IncrementGenerator;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -14,13 +15,17 @@ public class MessageCreationResponse {
     private String subject;
     private boolean isPublic;
     private Integer id;
+    private Integer idReceiver;
+    private Integer idSender;
     private DateTime dateTime;
     private String dt;
     private DateTimeFormatter fmt = DateTimeFormat.forPattern("d MMMM yyyy, HH:mm");
 
     public MessageCreationResponse(UserModel receiver, UserModel sender, String messageText, String subject, DateTime date, boolean isPublic, Integer id) {
         this.receiver = receiver.getFullName();
+        this.idReceiver = receiver.getId();
         this.sender = sender.getFullName();
+        this.idSender = sender.getId();
         this.messageText = messageText;
         this.subject = subject;
         this.isPublic = isPublic;
@@ -96,4 +101,22 @@ public class MessageCreationResponse {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    public Integer getIdReceiver() {
+        return idReceiver;
+    }
+
+    public void setIdReceiver(Integer idReceiver) {
+        this.idReceiver = idReceiver;
+    }
+
+    public Integer getIdSender() {
+        return idSender;
+    }
+
+    public void setIdSender(Integer idSender) {
+        this.idSender = idSender;
+    }
+
+
 }

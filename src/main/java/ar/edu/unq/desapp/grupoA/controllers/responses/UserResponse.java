@@ -7,17 +7,18 @@ public class UserResponse {
     private String fullName;
     private String email;
     private String picture;
+    private int points;
 
-    public UserResponse(int id, String fullName, String email, String picture) {
+    public UserResponse(int id, String fullName, String email, String picture, int points) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.picture = picture;
-        // this.points = points;
+        this.points = points;
     }
 
     public static UserResponse build(UserModel userModel) {
-        return new UserResponse(userModel.getId(), userModel.getFullName(), userModel.getEmail(), userModel.getPicture());
+        return new UserResponse(userModel.getId(), userModel.getFullName(), userModel.getEmail(), userModel.getPicture(),userModel.getPoints());
     }
 
     public int getId() {
@@ -50,5 +51,13 @@ public class UserResponse {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 }

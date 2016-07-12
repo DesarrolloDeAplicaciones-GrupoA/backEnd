@@ -22,7 +22,7 @@ public class SendMessageService {
     @Transactional
     public Message sendMessage(UserModel sender, UserModel receiver, String subject, String messageText, boolean isPublic) {
 
-        Message messageObjet = new Message(sender, receiver,subject, messageText, isPublic);
+        Message messageObjet = new Message(receiver,sender, subject, messageText, isPublic);
         sender.addMessageSend(messageObjet);
         receiver.addMessageReceived(messageObjet);
         messageRepository.save(messageObjet);
@@ -30,7 +30,7 @@ public class SendMessageService {
     }
     @Transactional
     public void createDefaultsMessage() {
-        Message defaultMessage = new Message(userFactory.getUserAdmin(),userFactory.getUser(),"Welcome","Welcome to SubiQueTeLlevo",true);
+        Message defaultMessage = new Message(userFactory.getUser(),userFactory.getUserAdmin(),"Welcome","Welcome to SubiQueTeLlevo",true);
         this.messageRepository.save(defaultMessage);
     }
     public List<Message> findMessagesReceived(UserModel receiver){
@@ -41,6 +41,10 @@ public class SendMessageService {
     }
     public List<Message> findPublicMessage(){
         return this.messageRepository.findAllPublicMessage();
+    }
+
+    public List<Message> findAllPublicSendedAndReceivedForAUser(UserModel userModel){
+        return this.messageRepository.findAllPublicSendedAndReceivedForAUser(userModel);
     }
 
     public Message getMessageByID(Integer id){
